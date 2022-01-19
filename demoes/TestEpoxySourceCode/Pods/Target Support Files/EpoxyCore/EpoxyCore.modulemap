@@ -1,0 +1,6 @@
+framework module EpoxyCore {
+  umbrella header "EpoxyCore-umbrella.h"
+
+  export *
+  module * { export * }
+}

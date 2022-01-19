@@ -1,0 +1,6 @@
+framework module EpoxyCollectionView {
+  umbrella header "EpoxyCollectionView-umbrella.h"
+
+  export *
+  module * { export * }
+}

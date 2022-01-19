@@ -1,0 +1,7 @@
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Epoxy.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EpoxyBars.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EpoxyCollectionView.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EpoxyCore.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EpoxyLayoutGroups.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EpoxyNavigationController.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EpoxyPresentations.framework

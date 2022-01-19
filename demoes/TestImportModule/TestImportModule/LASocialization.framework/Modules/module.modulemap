@@ -1,0 +1,6 @@
+framework module LASocialization {
+  umbrella header "LASocialization.h"
+
+  export *
+  module * { export * }
+}

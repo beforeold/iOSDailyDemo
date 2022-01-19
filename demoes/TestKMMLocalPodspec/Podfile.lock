@@ -1,0 +1,37 @@
+PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - SecondKMM (666):
+    - AFNetworking
+
+DEPENDENCIES:
+  - SecondKMM (from `/Users/dinglan/Downloads/demo/kmm/SecondKMMApp/SecondKMM`)
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+
+EXTERNAL SOURCES:
+  SecondKMM:
+    :path: "/Users/dinglan/Downloads/demo/kmm/SecondKMMApp/SecondKMM"
+
+SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  SecondKMM: e33b84eb316e3a3c715d0d333882764efa12acd5
+
+PODFILE CHECKSUM: c30a9b61b3887201a7dce375aa20bb87079bb207
+
+COCOAPODS: 1.10.0

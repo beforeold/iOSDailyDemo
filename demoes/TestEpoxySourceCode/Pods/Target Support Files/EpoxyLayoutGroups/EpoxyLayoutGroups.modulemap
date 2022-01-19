@@ -1,0 +1,6 @@
+framework module EpoxyLayoutGroups {
+  umbrella header "EpoxyLayoutGroups-umbrella.h"
+
+  export *
+  module * { export * }
+}

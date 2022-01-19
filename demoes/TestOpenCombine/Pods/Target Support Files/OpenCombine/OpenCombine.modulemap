@@ -1,0 +1,6 @@
+framework module OpenCombine {
+  umbrella header "OpenCombine-umbrella.h"
+
+  export *
+  module * { export * }
+}

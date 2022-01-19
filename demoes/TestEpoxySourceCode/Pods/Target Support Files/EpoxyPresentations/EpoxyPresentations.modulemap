@@ -1,0 +1,6 @@
+framework module EpoxyPresentations {
+  umbrella header "EpoxyPresentations-umbrella.h"
+
+  export *
+  module * { export * }
+}

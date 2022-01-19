@@ -1,0 +1,14 @@
+//
+//  AppDelegate.h
+//  TestUIWindowClearColor
+//
+//  Created by 席萍萍Brook.dinglan on 2021/10/20.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+
+@end
+

@@ -1,0 +1,12 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+ali_source 'alibaba-specs'
+ali_source 'alibaba-specs-mirror'
+
+target 'TestMansonryAnimation' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for TestMansonryAnimation
+pod 'Masonry', :git => 'https://github.com/cloudkite/Masonry.git', :commit => '8bd77ea92bbe995e14c454f821200b222e5a8804'
+end

@@ -1,0 +1,6 @@
+framework module OpenCombineDispatch {
+  umbrella header "OpenCombineDispatch-umbrella.h"
+
+  export *
+  module * { export * }
+}

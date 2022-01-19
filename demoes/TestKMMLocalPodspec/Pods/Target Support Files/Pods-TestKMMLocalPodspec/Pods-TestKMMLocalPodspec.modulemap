@@ -1,0 +1,6 @@
+framework module Pods_TestKMMLocalPodspec {
+  umbrella header "Pods-TestKMMLocalPodspec-umbrella.h"
+
+  export *
+  module * { export * }
+}

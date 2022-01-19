@@ -1,0 +1,6 @@
+framework module Pods_TestMansonryAnimation {
+  umbrella header "Pods-TestMansonryAnimation-umbrella.h"
+
+  export *
+  module * { export * }
+}

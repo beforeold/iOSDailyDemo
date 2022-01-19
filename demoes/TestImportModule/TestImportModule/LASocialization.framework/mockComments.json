@@ -1,0 +1,170 @@
+{
+    "data": {
+        "commentList": [
+                        {
+                        "userName":"Mathilda",
+                        "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                        "id":10000001,
+                        "content":"How about second product?How about second product?How about second product?How about second product?How about second product?",
+                        "timestamp":"Aug 22, 2017 at 7:39am",
+                        "commentType":1,
+                        "level":1,
+                        "subCommentList":[
+                                          {
+                                          "userName":"Jimmy",
+                                          "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                                          "id":10000002,
+                                          "content":"Awesome！The second product is awesome!The second product is awesome!The second product is awesome!",
+                                          "timestamp":"1 minute ago",
+                                          "commentType":1,
+                                          "level":2,
+                                          "lastAuthor":"Mathilda"
+                                          },
+                                          {
+                                          "userName":"Daisy",
+                                          "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                                          "id":10000003,
+                                          "content":"I dont like it",
+                                          "timestamp":"1 minute ago",
+                                          "commentType":1,
+                                          "level":2,
+                                          "lastAuthor":"Jimmy"
+                                          },
+                                          {
+                                          "userName":"Andy",
+                                          "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                                          "id":10000004,
+                                          "content":"Let me introduce it balabalabala",
+                                          "timestamp":"Just now",
+                                          "commentType":2,
+                                          "level":2,
+                                          "lastAuthor":"Jimmy"
+                                          },
+                                          ]
+                        },
+                        {
+                        "userName":"Mathilda",
+                        "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                        "id":10000005,
+                        "content":"How about second product?How about second product?How about second product?How about second product?How about second product?How about second product?How about second product?",
+                        "timestamp":"Aug 22, 2017 at 7:39am",
+                        "commentType":1,
+                        "level":1,
+                        "subCommentList":[
+                                          {
+                                          "userName":"Jimmy",
+                                          "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                                          "id":10000006,
+                                          "content":"Awesome！",
+                                          "timestamp":"1 minute ago",
+                                          "commentType":1,
+                                          "level":2,
+                                          "lastAuthor":"Mathilda"
+                                          },
+                                          {
+                                          "userName":"Daisy",
+                                          "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                                          "id":10000007,
+                                          "content":"I dont like it",
+                                          "timestamp":"1 minute ago",
+                                          "commentType":1,
+                                          "level":2,
+                                          "lastAuthor":"Jimmy"
+                                          },
+                                          {
+                                          "userName":"Andy",
+                                          "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                                          "id":10000008,
+                                          "content":"Let me introduce it balabalabala",
+                                          "timestamp":"Just now",
+                                          "commentType":2,
+                                          "level":2,
+                                          "lastAuthor":"Jimmy"
+                                          },
+                                          ]
+                        },
+                        {
+                        "userName":"Mathilda",
+                        "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                        "id":10000001,
+                        "content":"How about second product?How about second product?How about second product?How about second product?How about second product?",
+                        "timestamp":"Aug 22, 2017 at 7:39am",
+                        "commentType":1,
+                        "level":1,
+                        "subCommentList":[
+                                          {
+                                          "userName":"Jimmy",
+                                          "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                                          "id":10000002,
+                                          "content":"Awesome！The second product is awesome!The second product is awesome!The second product is awesome!",
+                                          "timestamp":"1 minute ago",
+                                          "commentType":1,
+                                          "level":2,
+                                          "lastAuthor":"Mathilda"
+                                          },
+                                          {
+                                          "userName":"Daisy",
+                                          "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                                          "id":10000003,
+                                          "content":"I dont like it",
+                                          "timestamp":"1 minute ago",
+                                          "commentType":1,
+                                          "level":2,
+                                          "lastAuthor":"Jimmy"
+                                          },
+                                          {
+                                          "userName":"Andy",
+                                          "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                                          "id":10000004,
+                                          "content":"Let me introduce it balabalabala",
+                                          "timestamp":"Just now",
+                                          "commentType":2,
+                                          "level":2,
+                                          "lastAuthor":"Jimmy"
+                                          },
+                                          ]
+                        },
+                        {
+                        "userName":"Mathilda",
+                        "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                        "id":10000005,
+                        "content":"How about second product?How about second product?How about second product?How about second product?How about second product?How about second product?How about second product?",
+                        "timestamp":"Aug 22, 2017 at 7:39am",
+                        "commentType":1,
+                        "level":1,
+                        "subCommentList":[
+                                          {
+                                          "userName":"Jimmy",
+                                          "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                                          "id":10000006,
+                                          "content":"Awesome！",
+                                          "timestamp":"1 minute ago",
+                                          "commentType":1,
+                                          "level":2,
+                                          "lastAuthor":"Mathilda"
+                                          },
+                                          {
+                                          "userName":"Daisy",
+                                          "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                                          "id":10000007,
+                                          "content":"I dont like it",
+                                          "timestamp":"1 minute ago",
+                                          "commentType":1,
+                                          "level":2,
+                                          "lastAuthor":"Jimmy"
+                                          },
+                                          {
+                                          "userName":"Andy",
+                                          "userAvatar":"http://gw.alicdn.com/mt/TB1u3dfxkZmBKNjSZPiXXXFNVXa-1536-2048.jpg",
+                                          "id":10000008,
+                                          "content":"Let me introduce it balabalabala",
+                                          "timestamp":"Just now",
+                                          "commentType":2,
+                                          "level":2,
+                                          "lastAuthor":"Jimmy"
+                                          },
+                                          ]
+                        }
+                        ]
+    }
+}

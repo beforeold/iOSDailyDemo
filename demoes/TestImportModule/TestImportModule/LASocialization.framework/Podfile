@@ -1,0 +1,32 @@
+ali_source 'alibaba-specs'
+ali_source 'alibaba-specs-mirror'
+
+use_modular_headers!
+
+def shared_pods
+    platform :ios, '9.0'
+    
+    # pod 'LAContentGenerator', :path => '../LAContentGenerator'
+    pod 'LAContentGenerator', '0.1.5.5-SNAPSHOT'
+    
+    cocoapods_sync_dependencies(:projectId=>"lazada-ios/Lazada4iPhone",
+                                :targetName=>["Lazada4iPhone","Lazada4iPhoneMTL"],
+                                :branch=>"master",
+                                :exclude=>["LASocialization"])
+
+end
+
+target 'Lazada4iPhone' do
+    shared_pods
+    target 'LASocialization' do
+        inherit! :search_paths
+    end
+end
+
+post_install do |lib|
+    lib.pods_project.targets.each do |target|
+         target.build_configurations.each do |config|
+             config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+         end
+    end
+end

@@ -1,0 +1,26 @@
+PODS:
+  - OpenCombine (0.12.0)
+  - OpenCombineDispatch (0.12.0):
+    - OpenCombine (>= 0.10.2)
+  - OpenCombineFoundation (0.12.0):
+    - OpenCombine (>= 0.10.2)
+
+DEPENDENCIES:
+  - OpenCombine (~> 0.12.0)
+  - OpenCombineDispatch (~> 0.12.0)
+  - OpenCombineFoundation (~> 0.12.0)
+
+SPEC REPOS:
+  trunk:
+    - OpenCombine
+    - OpenCombineDispatch
+    - OpenCombineFoundation
+
+SPEC CHECKSUMS:
+  OpenCombine: a8c52f249bc3c7e2bd5ffb75e8653e57a8e33d27
+  OpenCombineDispatch: 68ed85ae5255d558a14434a802f65fb833b50d39
+  OpenCombineFoundation: b279f27ca5a5a165f0c06e2beb266fc068967bb8
+
+PODFILE CHECKSUM: 40df10b810431a4292bbbee0ea4a02e2ac689d96
+
+COCOAPODS: 1.10.0
