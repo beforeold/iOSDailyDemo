@@ -1,0 +1,6 @@
+framework module EpoxyBars {
+  umbrella header "EpoxyBars-umbrella.h"
+
+  export *
+  module * { export * }
+}

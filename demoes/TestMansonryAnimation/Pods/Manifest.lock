@@ -1,0 +1,22 @@
+PODS:
+  - Masonry (1.1.0)
+
+DEPENDENCIES:
+  - Masonry (from `https://github.com/cloudkite/Masonry.git`, commit `8bd77ea92bbe995e14c454f821200b222e5a8804`)
+
+EXTERNAL SOURCES:
+  Masonry:
+    :commit: 8bd77ea92bbe995e14c454f821200b222e5a8804
+    :git: https://github.com/cloudkite/Masonry.git
+
+CHECKOUT OPTIONS:
+  Masonry:
+    :commit: 8bd77ea92bbe995e14c454f821200b222e5a8804
+    :git: https://github.com/cloudkite/Masonry.git
+
+SPEC CHECKSUMS:
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+
+PODFILE CHECKSUM: e0c2803d41ba44f0153b40e48ef8d0a2a8909389
+
+COCOAPODS: 1.7.5

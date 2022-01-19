@@ -1,0 +1,6 @@
+framework module LAKMMAdapter {
+  umbrella header "LAKMMAdapter.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,3 @@
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenCombine.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenCombineDispatch.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenCombineFoundation.framework

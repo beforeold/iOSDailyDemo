@@ -1,0 +1,6 @@
+framework module UT {
+  umbrella header "UTPublicSwift.h"
+
+  export *
+  module * { export * }
+}

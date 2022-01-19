@@ -1,0 +1,6 @@
+framework module Pods_TestEpoxy {
+  umbrella header "Pods-TestEpoxy-umbrella.h"
+
+  export *
+  module * { export * }
+}

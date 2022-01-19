@@ -1,0 +1,8 @@
+${PODS_ROOT}/Target Support Files/Pods-TestShareKit/Pods-TestShareKit-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
+${BUILT_PRODUCTS_DIR}/Facebook-iOS-SDK/FacebookSDK.framework
+${BUILT_PRODUCTS_DIR}/PKMultipartInputStream/PKMultipartInputStream.framework
+${BUILT_PRODUCTS_DIR}/SAMKeychain/SAMKeychain.framework
+${BUILT_PRODUCTS_DIR}/SAMTextView/SAMTextView.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/ShareKit/ShareKit.framework

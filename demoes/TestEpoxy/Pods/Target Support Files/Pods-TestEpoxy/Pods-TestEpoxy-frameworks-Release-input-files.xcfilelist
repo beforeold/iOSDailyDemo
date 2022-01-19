@@ -1,0 +1,8 @@
+${PODS_ROOT}/Target Support Files/Pods-TestEpoxy/Pods-TestEpoxy-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Epoxy/Epoxy.framework
+${BUILT_PRODUCTS_DIR}/EpoxyBars/EpoxyBars.framework
+${BUILT_PRODUCTS_DIR}/EpoxyCollectionView/EpoxyCollectionView.framework
+${BUILT_PRODUCTS_DIR}/EpoxyCore/EpoxyCore.framework
+${BUILT_PRODUCTS_DIR}/EpoxyLayoutGroups/EpoxyLayoutGroups.framework
+${BUILT_PRODUCTS_DIR}/EpoxyNavigationController/EpoxyNavigationController.framework
+${BUILT_PRODUCTS_DIR}/EpoxyPresentations/EpoxyPresentations.framework

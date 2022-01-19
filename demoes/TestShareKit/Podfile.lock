@@ -1,0 +1,51 @@
+PODS:
+  - Bolts (1.9.1):
+    - Bolts/AppLinks (= 1.9.1)
+    - Bolts/Tasks (= 1.9.1)
+  - Bolts/AppLinks (1.9.1):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.1)
+  - Facebook-iOS-SDK (3.24.4):
+    - Bolts (~> 1.2)
+  - PKMultipartInputStream (1.3.0)
+  - SAMKeychain (1.5.3)
+  - SAMTextView (0.2.2)
+  - SDWebImage (4.4.8):
+    - SDWebImage/Core (= 4.4.8)
+  - SDWebImage/Core (4.4.8)
+  - ShareKit/Core (6.0.1):
+    - PKMultipartInputStream
+    - SAMKeychain
+    - SAMTextView (~> 0.2.1)
+    - SDWebImage (~> 4.2)
+    - ShareKit/Reachability
+  - ShareKit/Facebook (6.0.1):
+    - Facebook-iOS-SDK (~> 3.0)
+    - ShareKit/Core
+  - ShareKit/Reachability (6.0.1)
+
+DEPENDENCIES:
+  - ShareKit/Facebook
+
+SPEC REPOS:
+  trunk:
+    - Bolts
+    - Facebook-iOS-SDK
+    - PKMultipartInputStream
+    - SAMKeychain
+    - SAMTextView
+    - SDWebImage
+    - ShareKit
+
+SPEC CHECKSUMS:
+  Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  Facebook-iOS-SDK: 5a7c414a084708220b72d5fd016f2cf3eb6deda4
+  PKMultipartInputStream: 933bc09492f3f8af47abbc4baaf583d49fba1d45
+  SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
+  SAMTextView: 979c43bb1fa5859ddfbfeb35e9c296a2b0ec55fd
+  SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
+  ShareKit: 970720d7760d3dba8a0f5085b24a016599a62435
+
+PODFILE CHECKSUM: 8a27555c74ad70a051c1bbb3dac8e71e64e161f6
+
+COCOAPODS: 1.10.0
