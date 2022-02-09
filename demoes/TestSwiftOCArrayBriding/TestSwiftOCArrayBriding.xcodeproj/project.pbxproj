@@ -311,7 +311,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9J87B48WLP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestSwiftOCArrayBriding/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -325,7 +325,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.xqrq;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LazadaSEA.Lazada.-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TestSwiftOCArrayBriding/TestSwiftOCArrayBriding-Bridging-Header.h";
@@ -343,7 +343,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9J87B48WLP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestSwiftOCArrayBriding/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -357,7 +357,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.xqrq;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LazadaSEA.Lazada.-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TestSwiftOCArrayBriding/TestSwiftOCArrayBriding-Bridging-Header.h";
