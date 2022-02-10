@@ -24,7 +24,9 @@
 
 - (void)callback {
     self.handler();
-    self.handler = nil;
+    
+    // option 2
+    // self.handler = nil;
 }
 
 - (void)dealloc {
@@ -41,7 +43,11 @@
 
 - (void)actionWithCompletionHandler:(dispatch_block_t)handler {
     [super actionWithCompletionHandler:handler];
-    [self description];
+    [self someThing];
+}
+
+- (void)someThing {
+    NSLog(@"call something");
 }
 
 @end
@@ -60,7 +66,11 @@
         NSLog(@"completion");
         
         // unsafe to nil-out self synchrously
-        ins = nil;
+        // error option
+        // ins = nil
+        
+        // option 1
+        ins.handler = nil;
     }];
 }
 
