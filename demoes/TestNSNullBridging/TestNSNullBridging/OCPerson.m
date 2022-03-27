@@ -48,6 +48,10 @@
 
 @implementation SomeNullableArray
 
+- (id)copy {
+    return [super copy];
+}
+
 - (instancetype)init {
     self = [super init];
     if (self) {
