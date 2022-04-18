@@ -1,11 +1,11 @@
 //
-//  OCPerson.m
+//  OCTestEntry.m
 //  TestNSNullBridging
 //
 //  Created by BrookXy on 2022/3/25.
 //
 
-#import "OCPerson.h"
+#import "OCTestEntry.h"
 #import "TestNSNullBridging-Swift.h"
 
 
@@ -25,9 +25,13 @@
 @end
 
 
-@implementation OCPerson
+@implementation OCTestEntry
 
 + (void)test {
+    [self success];
+}
+
++ (void)fail {
     __auto_type ins = [[SwiftCar alloc] init];
     [ins playWithArgs:@[@1, @2]];
     [ins playWithArgs:@[NSNull.null, NSNull.null]];
@@ -35,6 +39,33 @@
     __auto_type dxArray = [[SomeNullableArray alloc] init];
     [dxArray addObject:@5];
     [dxArray addObject:NSNull.null];
+    
+    [ins playWithArgs:dxArray];
+}
+
+/// 直接继承父类方法
++ (void)success {
+    __auto_type ins = [[SwiftBike alloc] init];
+    [ins playWithArgs:@[@1, @2]];
+    [ins playWithArgs:@[NSNull.null, NSNull.null]];
+    
+    __auto_type dxArray = [[SomeNullableArray alloc] init];
+    [dxArray addObject:@5];
+    [dxArray addObject:NSNull.null];
+    
+    [ins playWithArgs:dxArray];
+}
+
+/// 父类转发
++ (void)success2 {
+    __auto_type ins = [[SwiftBike alloc] init];
+    [ins playWithArgs:@[@1, @2]];
+    [ins playWithArgs:@[NSNull.null, NSNull.null]];
+    
+    __auto_type dxArray = [[SomeNullableArray alloc] init];
+    [dxArray addObject:@5];
+    [dxArray addObject:NSNull.null];
+    
     [ins playWithArgs:dxArray];
 }
 

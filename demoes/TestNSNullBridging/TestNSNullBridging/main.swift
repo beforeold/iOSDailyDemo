@@ -15,4 +15,10 @@ class SwiftCar : NSObject {
     }
 }
 
-OCPerson.test()
+class SwiftBike: OCObject {
+    override func subclass_play(withArgs args: [Any]) {
+        print(args)
+    }
+}
+
+OCTestEntry.test()

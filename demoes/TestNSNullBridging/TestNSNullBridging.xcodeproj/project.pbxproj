@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C62B407F27EDC4BD00270AE1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B407E27EDC4BD00270AE1 /* main.swift */; };
-		C62B408827EDC4D200270AE1 /* OCPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = C62B408727EDC4D200270AE1 /* OCPerson.m */; };
+		C62B408827EDC4D200270AE1 /* OCTestEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = C62B408727EDC4D200270AE1 /* OCTestEntry.m */; };
+		C6E7E8BD280D52EC00B26FCB /* OCObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E7E8BC280D52EC00B26FCB /* OCObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,8 +28,10 @@
 		C62B407B27EDC4BD00270AE1 /* TestNSNullBridging */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestNSNullBridging; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62B407E27EDC4BD00270AE1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C62B408527EDC4D100270AE1 /* TestNSNullBridging-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestNSNullBridging-Bridging-Header.h"; sourceTree = "<group>"; };
-		C62B408627EDC4D200270AE1 /* OCPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCPerson.h; sourceTree = "<group>"; };
-		C62B408727EDC4D200270AE1 /* OCPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCPerson.m; sourceTree = "<group>"; };
+		C62B408627EDC4D200270AE1 /* OCTestEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCTestEntry.h; sourceTree = "<group>"; };
+		C62B408727EDC4D200270AE1 /* OCTestEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCTestEntry.m; sourceTree = "<group>"; };
+		C6E7E8BB280D52EC00B26FCB /* OCObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCObject.h; sourceTree = "<group>"; };
+		C6E7E8BC280D52EC00B26FCB /* OCObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +65,10 @@
 			isa = PBXGroup;
 			children = (
 				C62B407E27EDC4BD00270AE1 /* main.swift */,
-				C62B408627EDC4D200270AE1 /* OCPerson.h */,
-				C62B408727EDC4D200270AE1 /* OCPerson.m */,
+				C62B408627EDC4D200270AE1 /* OCTestEntry.h */,
+				C62B408727EDC4D200270AE1 /* OCTestEntry.m */,
+				C6E7E8BB280D52EC00B26FCB /* OCObject.h */,
+				C6E7E8BC280D52EC00B26FCB /* OCObject.m */,
 				C62B408527EDC4D100270AE1 /* TestNSNullBridging-Bridging-Header.h */,
 			);
 			path = TestNSNullBridging;
@@ -128,8 +133,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C62B408827EDC4D200270AE1 /* OCPerson.m in Sources */,
+				C62B408827EDC4D200270AE1 /* OCTestEntry.m in Sources */,
 				C62B407F27EDC4BD00270AE1 /* main.swift in Sources */,
+				C6E7E8BD280D52EC00B26FCB /* OCObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
