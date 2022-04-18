@@ -1,5 +1,5 @@
 //
-//  OCPerson.h
+//  OCTestEntry.h
 //  TestNSNullBridging
 //
 //  Created by BrookXy on 2022/3/25.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OCPerson : NSObject
+@interface OCTestEntry : NSObject
 
 + (void)test;
 
