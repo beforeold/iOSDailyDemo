@@ -8,14 +8,15 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let manager = BTCentralManager()
+    let centralManager = BTCentralManager()
+    
+    let peripheralManager = BTPeriperalManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        manager.start()
+        // centralManager.start()
+        peripheralManager.start()
     }
-
- 
 }
 

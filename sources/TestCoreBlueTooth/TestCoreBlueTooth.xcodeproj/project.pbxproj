@@ -14,6 +14,7 @@
 		943CE56A28F2C10000830276 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 943CE56928F2C10000830276 /* Assets.xcassets */; };
 		943CE56D28F2C10000830276 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 943CE56B28F2C10000830276 /* LaunchScreen.storyboard */; };
 		943CE57528F2C11700830276 /* BTCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943CE57428F2C11700830276 /* BTCentralManager.swift */; };
+		943CE5B628F50EDC00830276 /* BTPeriperalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943CE5B528F50EDC00830276 /* BTPeriperalManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		943CE56C28F2C10000830276 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		943CE56E28F2C10000830276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		943CE57428F2C11700830276 /* BTCentralManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCentralManager.swift; sourceTree = "<group>"; };
+		943CE5B528F50EDC00830276 /* BTPeriperalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPeriperalManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				943CE56228F2C0FF00830276 /* SceneDelegate.swift */,
 				943CE56428F2C0FF00830276 /* ViewController.swift */,
 				943CE57428F2C11700830276 /* BTCentralManager.swift */,
+				943CE5B528F50EDC00830276 /* BTPeriperalManager.swift */,
 				943CE56628F2C0FF00830276 /* Main.storyboard */,
 				943CE56928F2C10000830276 /* Assets.xcassets */,
 				943CE56B28F2C10000830276 /* LaunchScreen.storyboard */,
@@ -144,6 +147,7 @@
 				943CE56528F2C0FF00830276 /* ViewController.swift in Sources */,
 				943CE56128F2C0FF00830276 /* AppDelegate.swift in Sources */,
 				943CE56328F2C0FF00830276 /* SceneDelegate.swift in Sources */,
+				943CE5B628F50EDC00830276 /* BTPeriperalManager.swift in Sources */,
 				943CE57528F2C11700830276 /* BTCentralManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
