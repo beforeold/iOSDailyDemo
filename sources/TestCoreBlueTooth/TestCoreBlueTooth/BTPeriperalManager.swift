@@ -8,6 +8,23 @@
 import Foundation
 import CoreBluetooth
 
+extension CBUUID {
+    enum Service {
+        static let data = CBUUID(string: "FFE0")
+        static let notify = CBUUID(string: "FFE1")
+    }
+    
+    enum Char {
+        static let read = CBUUID(string: "FFE2")
+        static let readWrite = CBUUID(string: "FFE3")
+        static let notify = CBUUID(string: "FFE4")
+    }
+    
+    enum DescUUID {
+        static let desc = CBUUID(string: CBUUIDCharacteristicUserDescriptionString)
+    }
+}
+
 class BTPeriperalManager: NSObject {
     
     private var manager: CBPeripheralManager!
@@ -17,15 +34,70 @@ class BTPeriperalManager: NSObject {
         manager.delegate = self
     }
     
-    fileprivate func addServices(_ services: [CBMutableService]) {
+    private func startAdvertising() {
+        let services = createServices()
         services.forEach(manager.add)
+        
+        // CBAdvertisementDataServiceDataKey not allowed
+        let keyValues = services.map { ($0.uuid, $0.uuid.uuidString.data(using: .utf8)!) }
+        let servicesData = Dictionary(uniqueKeysWithValues: keyValues)
+        _ = [CBAdvertisementDataServiceDataKey: servicesData]
+        
+        let data: [String: Any] = [
+            CBAdvertisementDataLocalNameKey: "bo.periperal",
+            CBAdvertisementDataServiceUUIDsKey: services.map(\.self.uuid),
+        ]
+        manager.startAdvertising(data)
     }
     
-    fileprivate func createServices() -> [CBMutableService] {
-        let service = CBMutableService(type: .init(string: "FFE0"),
+    private func createServices() -> [CBMutableService] {
+        return [createDataService(), createNotifyService()]
+    }
+    
+    private func createNotifyService() -> CBMutableService {
+        let service = CBMutableService(type: .Service.notify, primary: true)
+        
+        do {
+            let data = "bo.notify.notify".data(using: .utf8)
+            let char = CBMutableCharacteristic(type: .Char.notify,
+                                               properties: .notify,
+                                               value: data,
+                                               permissions: .readable)
+            service.characteristics?.append(char)
+        }
+        
+        return service
+    }
+    
+    private func createDataService() -> CBMutableService {
+        let service = CBMutableService(type: .Service.data,
                                        primary: true)
         
-        return [service]
+        do {
+            let data = "bo.data.read".data(using: .utf8)
+            let char = CBMutableCharacteristic(type: .Char.read,
+                                               properties: .read,
+                                               value: data,
+                                               permissions: .readable)
+            
+            let desc = "bo.data.read.desc"
+            let descriptor = CBMutableDescriptor(type: .DescUUID.desc,
+                                                 value: desc)
+            char.descriptors?.append(descriptor)
+            
+            service.characteristics?.append(char)
+        }
+        
+        do {
+            let data = "bo.data.readWrite".data(using: .utf8)
+            let char = CBMutableCharacteristic(type: .Char.readWrite,
+                                               properties: [CBCharacteristicProperties.read, .write],
+                                               value: data,
+                                               permissions: [.readable, .writeable])
+            service.characteristics?.append(char)
+        }
+        
+        return service
     }
 }
 
@@ -36,7 +108,12 @@ extension BTPeriperalManager: CBPeripheralManagerDelegate {
         print(peripheral.state.rawValue)
         
         if manager.state == .poweredOn {
-            addServices([])
+            startAdvertising()
         }
+    }
+    
+    func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager,
+                                              error: Error?) {
+        print(#function, error as Any)
     }
 }
