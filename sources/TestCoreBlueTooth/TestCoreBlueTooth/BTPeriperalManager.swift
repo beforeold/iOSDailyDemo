@@ -116,4 +116,8 @@ extension BTPeriperalManager: CBPeripheralManagerDelegate {
                                               error: Error?) {
         print(#function, error as Any)
     }
+    
+    func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
+        print("did add service", service)
+    }
 }

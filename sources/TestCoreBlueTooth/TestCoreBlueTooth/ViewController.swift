@@ -15,7 +15,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // centralManager.start()
+    }
+    
+    @IBAction func onCentralStart() {
+        centralManager.start()
+    }
+    
+    @IBAction func onPeriperalStart() {
         peripheralManager.start()
     }
 }
