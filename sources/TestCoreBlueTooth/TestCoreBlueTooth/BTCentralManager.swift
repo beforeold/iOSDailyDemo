@@ -16,6 +16,10 @@ class BTCentralManager: NSObject {
     var advertisementData: [String: Any]?
     
     func start() {
+        if manager != nil {
+            return
+        }
+        
         let manager = CBCentralManager()
         manager.delegate = self
         self.manager = manager
@@ -28,6 +32,7 @@ class BTCentralManager: NSObject {
 
 extension BTCentralManager: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        print("central state: ", central.state.rawValue)
         switch central.state {
         case .poweredOn:
             startScan()
@@ -46,8 +51,15 @@ extension BTCentralManager: CBCentralManagerDelegate {
         
         // self.manager.connect(peripheral)
         
-        if peripheral.name?.count ?? 0 > 0 {
-            print(peripheral, advertisementData, RSSI, separator: "\n")
+        let localName = advertisementData[CBAdvertisementDataLocalNameKey] as? String
+        if localName?.hasPrefix("bo") ?? false {
+            print(localName!,
+                  peripheral.name ?? "null",
+                  peripheral,
+                  advertisementData,
+                  RSSI,
+                  separator: "\n",
+                  terminator: "=================\n\n")
         }
     }
     
