@@ -1,5 +1,5 @@
 //
-//  BTManager.swift
+//  BTCentralManager.swift
 //  TestCoreBlueTooth
 //
 //  Created by beforeold on 2022/10/9.
@@ -8,7 +8,7 @@
 import Foundation
 import CoreBluetooth
 
-class BTManager: NSObject {
+class BTCentralManager: NSObject {
     var manager: CBCentralManager!
     
     var peripheral: CBPeripheral?
@@ -26,7 +26,7 @@ class BTManager: NSObject {
     }
 }
 
-extension BTManager: CBCentralManagerDelegate {
+extension BTCentralManager: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         case .poweredOn:
@@ -65,7 +65,7 @@ extension BTManager: CBCentralManagerDelegate {
     }
 }
 
-extension BTManager: CBPeripheralDelegate {
+extension BTCentralManager: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         print(peripheral.services ?? [], (error as? NSError)?.userInfo as Any)
         

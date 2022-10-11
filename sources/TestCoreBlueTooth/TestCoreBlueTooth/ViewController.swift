@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let manager = BTManager()
+    let manager = BTCentralManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
