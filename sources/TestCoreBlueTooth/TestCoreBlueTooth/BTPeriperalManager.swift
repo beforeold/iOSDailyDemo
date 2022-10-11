@@ -16,6 +16,17 @@ class BTPeriperalManager: NSObject {
         manager = CBPeripheralManager()
         manager.delegate = self
     }
+    
+    fileprivate func addServices(_ services: [CBMutableService]) {
+        services.forEach(manager.add)
+    }
+    
+    fileprivate func createServices() -> [CBMutableService] {
+        let service = CBMutableService(type: .init(string: "FFE0"),
+                                       primary: true)
+        
+        return [service]
+    }
 }
 
 extension BTPeriperalManager: CBPeripheralManagerDelegate {
@@ -23,5 +34,9 @@ extension BTPeriperalManager: CBPeripheralManagerDelegate {
         // simulator: rawValue: 2, unsupported
         // device: rawValue: 5, poweredOn
         print(peripheral.state.rawValue)
+        
+        if manager.state == .poweredOn {
+            addServices([])
+        }
     }
 }
