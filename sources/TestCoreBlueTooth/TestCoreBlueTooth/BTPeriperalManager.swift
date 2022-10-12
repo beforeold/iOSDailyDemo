@@ -8,23 +8,6 @@
 import Foundation
 import CoreBluetooth
 
-extension CBUUID {
-  enum Service {
-    static let data = CBUUID(string: "FFE0")
-    static let notify = CBUUID(string: "FFE1")
-  }
-  
-  enum Char {
-    static let read = CBUUID(string: "FFE2")
-    static let readWrite = CBUUID(string: "FFE3")
-    static let notify = CBUUID(string: "FFE4")
-  }
-  
-  enum DescUUID {
-    static let desc = CBUUID(string: CBUUIDCharacteristicUserDescriptionString)
-  }
-}
-
 class BTPeriperalManager: NSObject {
   
   private var manager: CBPeripheralManager!
@@ -46,8 +29,8 @@ class BTPeriperalManager: NSObject {
     _ = [CBAdvertisementDataServiceDataKey: servicesData]
     
     let data: [String: Any] = [
-      CBAdvertisementDataLocalNameKey: "bo.periperal",
-      CBAdvertisementDataServiceUUIDsKey: services.map(\.self.uuid),
+      CBAdvertisementDataLocalNameKey: "bud.periperal",
+      CBAdvertisementDataServiceUUIDsKey: services.map(\.uuid),
     ]
     manager.startAdvertising(data)
   }
@@ -60,7 +43,7 @@ class BTPeriperalManager: NSObject {
     let service = CBMutableService(type: .Service.notify, primary: true)
     
     do {
-      // let data = "bo.notify.notify.charValue".data(using: .utf8)
+      // let data = "bud.notify.notify.charValue".data(using: .utf8)
       let char = CBMutableCharacteristic(type: .Char.notify,
                                          properties: .notify,
                                          value: nil,
@@ -76,14 +59,14 @@ class BTPeriperalManager: NSObject {
                                    primary: true)
     
     do {
-      let data = "bo.data.read.charValue".data(using: .utf8)
+      let data = "bud.data.read.charValue".data(using: .utf8)
       let char = CBMutableCharacteristic(type: .Char.read,
                                          properties: .read,
                                          value: data,
                                          permissions: .readable)
       
-      let desc = "bo.data.read.descValue"
-      let descriptor = CBMutableDescriptor(type: .DescUUID.desc,
+      let desc = "bud.data.read.descValue"
+      let descriptor = CBMutableDescriptor(type: .Desc.desc,
                                            value: desc)
       char.descriptors = [descriptor] + (char.descriptors ?? [])
       
@@ -91,7 +74,7 @@ class BTPeriperalManager: NSObject {
     }
     
     do {
-      // let data = "bo.data.readWrite".data(using: .utf8)
+      // let data = "bud.data.readWrite".data(using: .utf8)
       let char = CBMutableCharacteristic(type: .Char.readWrite,
                                          properties: [CBCharacteristicProperties.read, .write],
                                          value: nil,
@@ -116,7 +99,7 @@ extension BTPeriperalManager: CBPeripheralManagerDelegate {
   
   func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager,
                                             error: Error?) {
-    print(#function, error as Any)
+    print(#function, info(of: error))
   }
   
   func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
