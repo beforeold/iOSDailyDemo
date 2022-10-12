@@ -36,7 +36,9 @@ class BTPeriperalManager: NSObject {
   
   private func startAdvertising() {
     let services = createServices()
-    services.forEach(manager.add)
+    services.forEach {
+      manager.add($0)
+    }
     
     // CBAdvertisementDataServiceDataKey not allowed
     let keyValues = services.map { ($0.uuid, $0.uuid.uuidString.data(using: .utf8)!) }
@@ -58,12 +60,12 @@ class BTPeriperalManager: NSObject {
     let service = CBMutableService(type: .Service.notify, primary: true)
     
     do {
-      let data = "bo.notify.notify".data(using: .utf8)
+      // let data = "bo.notify.notify.charValue".data(using: .utf8)
       let char = CBMutableCharacteristic(type: .Char.notify,
                                          properties: .notify,
-                                         value: data,
-                                         permissions: .readable)
-      service.characteristics?.append(char)
+                                         value: nil,
+                                         permissions: [.readable, .writeable])
+      service.characteristics = [char] + (service.characteristics ?? [])
     }
     
     return service
@@ -74,27 +76,27 @@ class BTPeriperalManager: NSObject {
                                    primary: true)
     
     do {
-      let data = "bo.data.read".data(using: .utf8)
+      let data = "bo.data.read.charValue".data(using: .utf8)
       let char = CBMutableCharacteristic(type: .Char.read,
                                          properties: .read,
                                          value: data,
                                          permissions: .readable)
       
-      let desc = "bo.data.read.desc"
+      let desc = "bo.data.read.descValue"
       let descriptor = CBMutableDescriptor(type: .DescUUID.desc,
                                            value: desc)
-      char.descriptors?.append(descriptor)
+      char.descriptors = [descriptor] + (char.descriptors ?? [])
       
-      service.characteristics?.append(char)
+      service.characteristics = [char] + (service.characteristics ?? [])
     }
     
     do {
-      let data = "bo.data.readWrite".data(using: .utf8)
+      // let data = "bo.data.readWrite".data(using: .utf8)
       let char = CBMutableCharacteristic(type: .Char.readWrite,
                                          properties: [CBCharacteristicProperties.read, .write],
-                                         value: data,
+                                         value: nil,
                                          permissions: [.readable, .writeable])
-      service.characteristics?.append(char)
+      service.characteristics = [char] + (service.characteristics ?? [])
     }
     
     return service
