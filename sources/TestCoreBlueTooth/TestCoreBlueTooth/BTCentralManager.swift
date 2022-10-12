@@ -51,20 +51,26 @@ extension BTCentralManager: CBCentralManagerDelegate {
     
     // self.manager.connect(peripheral)
     
-    let localName = advertisementData[CBAdvertisementDataLocalNameKey] as? String
-    if localName?.hasPrefix("luffy") ?? false {
-      print("didDiscover peripheral")
-      
-      print(localName!,
-            peripheral.name ?? "null",
-            peripheral,
-            advertisementData,
-            RSSI,
-            separator: "\n",
-            terminator: "=================\n\n")
-      manager.stopScan()
-      manager.connect(peripheral)
+    let localName = advertisementData[CBAdvertisementDataLocalNameKey] as? String ?? ""
+    // print("peripherial local name: \(localName)")
+    
+    guard localName.hasPrefix("bud.") else {
+      return
     }
+    
+    let line = "==============================="
+    print(line)
+    print("didDiscover peripheral")
+    print(localName,
+          peripheral.name ?? "null",
+          advertisementData,
+          RSSI,
+          "",
+          separator: "\n",
+          terminator: line + "\n\n")
+    
+    manager.stopScan()
+    manager.connect(peripheral)
   }
   
   func centralManager(_ central: CBCentralManager,
@@ -91,9 +97,10 @@ extension BTCentralManager: CBPeripheralDelegate {
                   didDiscoverServices error: Error?) {
     let services = peripheral.services ?? []
     // print("didDiscoverServices")
-    print("didDiscoverServices", services, info(of: error))
+    print("didDiscoverServices", services.map(\.readableDesc), info(of: error))
     
-    for service in services where ["FFE0", "FFE1"].contains(service.uuid.uuidString) {
+    let serviceUUIDStrings = [CBUUID.Service.data, .Service.notify].map(\.uuidString)
+    for service in services where serviceUUIDStrings.contains(service.uuid.uuidString) {
       peripheral.discoverCharacteristics(nil, for: service)
     }
   }
@@ -107,8 +114,8 @@ extension BTCentralManager: CBPeripheralDelegate {
                   error: Error?) {
     let chars = service.characteristics ?? []
     
-    print("service: \(service.uuid)",
-          "didDiscoverCharacteristics \(chars)",
+    print("service: \(service.readableDesc)",
+          "didDiscoverCharacteristics \(chars.map(\.readableDesc))",
           info(of: error))
     
     for cha in chars {
@@ -124,9 +131,12 @@ extension BTCentralManager: CBPeripheralDelegate {
                   error: Error?) {
     let descriptors = characteristic.descriptors ?? []
     
-    print("char: \(characteristic.uuid), didDiscoverDescriptors \(characteristic.uuid.uuidString)", info(of: error))
+    print("char: \(characteristic.readableDesc), didDiscoverDescriptors \(descriptors.map(\.readableDesc))", info(of: error))
     
     for dis in descriptors {
+      guard dis.readableDesc.contains("bud.") else {
+        continue
+      }
       peripheral.readValue(for: dis)
     }
   }
@@ -135,7 +145,7 @@ extension BTCentralManager: CBPeripheralDelegate {
   func peripheral(_ peripheral: CBPeripheral,
                   didUpdateValueFor characteristic: CBCharacteristic,
                   error: Error?) {
-    print("didUpdateValueFor characteristic \(characteristic.uuid.uuidString) value: ",
+    print("didUpdateValueFor characteristic \(characteristic.readableDesc) value: ",
           characteristic.value.flatMap { String(data: $0, encoding: .utf8)} ?? "null",
           info(of: error))
   }
@@ -143,7 +153,7 @@ extension BTCentralManager: CBPeripheralDelegate {
   func peripheral(_ peripheral: CBPeripheral,
                   didUpdateValueFor descriptor: CBDescriptor,
                   error: Error?) {
-    print("didUpdateValueFor descriptor \(descriptor.uuid.uuidString) value: ", descriptor.value as? String ?? "null",
+    print("didUpdateValueFor descriptor \(descriptor.readableDesc) value: ", descriptor.value as? String ?? "null",
           info(of: error))
   }
 }
