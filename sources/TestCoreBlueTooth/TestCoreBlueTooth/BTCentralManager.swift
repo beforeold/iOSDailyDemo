@@ -52,7 +52,7 @@ extension BTCentralManager: CBCentralManagerDelegate {
     // self.manager.connect(peripheral)
     
     let localName = advertisementData[CBAdvertisementDataLocalNameKey] as? String
-    if localName?.hasPrefix("bo") ?? false {
+    if localName?.hasPrefix("luffy") ?? false {
       print("didDiscover peripheral")
       
       print(localName!,
@@ -69,7 +69,7 @@ extension BTCentralManager: CBCentralManagerDelegate {
   
   func centralManager(_ central: CBCentralManager,
                       didConnect peripheral: CBPeripheral) {
-    print("didConnect peripheral")
+    print("didConnect peripheral: \(peripheral.name ?? "null")")
     
     self.peripheral = peripheral
     
@@ -89,29 +89,44 @@ extension BTCentralManager: CBPeripheralDelegate {
   // MARK: - Did Discover
   func peripheral(_ peripheral: CBPeripheral,
                   didDiscoverServices error: Error?) {
-    print("didDiscoverServices")
-    print(peripheral.services ?? [], (error as? NSError)?.userInfo as Any)
+    let services = peripheral.services ?? []
+    // print("didDiscoverServices")
+    print("didDiscoverServices", services, info(of: error))
     
-    for service in peripheral.services ?? [] {
+    for service in services where ["FFE0", "FFE1"].contains(service.uuid.uuidString) {
       peripheral.discoverCharacteristics(nil, for: service)
     }
+  }
+  
+  func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
+    print("didModifyServices")
   }
   
   func peripheral(_ peripheral: CBPeripheral,
                   didDiscoverCharacteristicsFor service: CBService,
                   error: Error?) {
-    print("didDiscoverCharacteristicsFor")
-    for cha in service.characteristics ?? [] {
+    let chars = service.characteristics ?? []
+    
+    print("service: \(service.uuid)",
+          "didDiscoverCharacteristics \(chars)",
+          info(of: error))
+    
+    for cha in chars {
       peripheral.discoverDescriptors(for: cha)
-      peripheral.readValue(for: cha)
+      if cha.properties.contains(.read) {
+        peripheral.readValue(for: cha)
+      }
     }
   }
   
   func peripheral(_ peripheral: CBPeripheral,
                   didDiscoverDescriptorsFor characteristic: CBCharacteristic,
                   error: Error?) {
-    print("didDiscoverDescriptorsFor")
-    for dis in characteristic.descriptors ?? [] {
+    let descriptors = characteristic.descriptors ?? []
+    
+    print("char: \(characteristic.uuid), didDiscoverDescriptors \(characteristic.uuid.uuidString)", info(of: error))
+    
+    for dis in descriptors {
       peripheral.readValue(for: dis)
     }
   }
@@ -120,14 +135,15 @@ extension BTCentralManager: CBPeripheralDelegate {
   func peripheral(_ peripheral: CBPeripheral,
                   didUpdateValueFor characteristic: CBCharacteristic,
                   error: Error?) {
-    print("didUpdateValueFor characteristic")
-    print("characteristic value: ", characteristic.value.flatMap { String(data: $0, encoding: .utf8)} ?? "null")
+    print("didUpdateValueFor characteristic \(characteristic.uuid.uuidString) value: ",
+          characteristic.value.flatMap { String(data: $0, encoding: .utf8)} ?? "null",
+          info(of: error))
   }
   
   func peripheral(_ peripheral: CBPeripheral,
                   didUpdateValueFor descriptor: CBDescriptor,
                   error: Error?) {
-    print("didUpdateValueFor descriptor")
-    print("descriptor value: ", descriptor.value as? String ?? "null")
+    print("didUpdateValueFor descriptor \(descriptor.uuid.uuidString) value: ", descriptor.value as? String ?? "null",
+          info(of: error))
   }
 }
