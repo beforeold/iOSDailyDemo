@@ -47,7 +47,9 @@
 				943CE55F28F2C0FF00830276 /* TestCoreBlueTooth */,
 				943CE55E28F2C0FF00830276 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		943CE55E28F2C0FF00830276 /* Products */ = {
 			isa = PBXGroup;

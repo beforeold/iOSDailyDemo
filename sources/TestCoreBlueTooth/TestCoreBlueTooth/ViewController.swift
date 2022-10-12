@@ -8,21 +8,21 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let centralManager = BTCentralManager()
+  let centralManager = BTCentralManager()
+  
+  let peripheralManager = BTPeriperalManager()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    let peripheralManager = BTPeriperalManager()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
-    @IBAction func onCentralStart() {
-        centralManager.start()
-    }
-    
-    @IBAction func onPeriperalStart() {
-        peripheralManager.start()
-    }
+  }
+  
+  @IBAction func onCentralStart() {
+    centralManager.start()
+  }
+  
+  @IBAction func onPeriperalStart() {
+    peripheralManager.start()
+  }
 }
 
