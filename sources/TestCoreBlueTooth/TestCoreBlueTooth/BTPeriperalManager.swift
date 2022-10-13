@@ -12,6 +12,8 @@ class BTPeriperalManager: NSObject {
   
   private var manager: CBPeripheralManager!
   
+  private var timer: Timer?
+  
   func start() {
     manager = CBPeripheralManager()
     manager.delegate = self
@@ -104,5 +106,22 @@ extension BTPeriperalManager: CBPeripheralManagerDelegate {
   
   func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
     print("did add service", service)
+  }
+  
+  func peripheralManager(_ peripheral: CBPeripheralManager,
+                         central: CBCentral,
+                         didSubscribeTo characteristic: CBCharacteristic) {
+    
+    guard let char = characteristic as? CBMutableCharacteristic else {
+      return
+    }
+    
+    timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+      let date = Date()
+      let data = try! JSONEncoder().encode(date)
+      peripheral.updateValue(data,
+                             for: char,
+                             onSubscribedCentrals: [central])
+    }
   }
 }

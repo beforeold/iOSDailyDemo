@@ -31,6 +31,12 @@ extension CBUUID {
   }
 }
 
+extension CBCharacteristic {
+  var isNotify: Bool {
+    return uuid.uuidString == CBUUID.Char.notify.uuidString
+  }
+}
+
 extension CBAttribute {
   var readableDesc: String {
     return "<\(_readableDesc)>"

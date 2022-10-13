@@ -118,10 +118,15 @@ extension BTCentralManager: CBPeripheralDelegate {
           "didDiscoverCharacteristics \(chars.map(\.readableDesc))",
           info(of: error))
     
-    for cha in chars {
-      peripheral.discoverDescriptors(for: cha)
-      if cha.properties.contains(.read) {
-        peripheral.readValue(for: cha)
+    for char in chars {
+      peripheral.discoverDescriptors(for: char)
+      
+      if char.uuid.uuidString == CBUUID.Char.notify.uuidString {
+        peripheral.setNotifyValue(true, for: char)
+      }
+      
+      if char.properties.contains(.read) {
+        peripheral.readValue(for: char)
       }
     }
   }
@@ -133,10 +138,8 @@ extension BTCentralManager: CBPeripheralDelegate {
     
     print("char: \(characteristic.readableDesc), didDiscoverDescriptors \(descriptors.map(\.readableDesc))", info(of: error))
     
-    for dis in descriptors {
-      guard dis.readableDesc.contains("bud.") else {
-        continue
-      }
+    // system might add default descriptor if not set
+    for dis in descriptors where dis.readableDesc.contains("bud.") {
       peripheral.readValue(for: dis)
     }
   }
@@ -145,6 +148,15 @@ extension BTCentralManager: CBPeripheralDelegate {
   func peripheral(_ peripheral: CBPeripheral,
                   didUpdateValueFor characteristic: CBCharacteristic,
                   error: Error?) {
+    if characteristic.isNotify {
+      if let data = characteristic.value {
+        if let date = try? JSONDecoder().decode(Date.self, from: data) {
+          print("didUpdateValueFor characteristic \(characteristic.readableDesc) value: ",
+                date)
+        }
+      }
+      return
+    }
     print("didUpdateValueFor characteristic \(characteristic.readableDesc) value: ",
           characteristic.value.flatMap { String(data: $0, encoding: .utf8)} ?? "null",
           info(of: error))
