@@ -184,4 +184,8 @@ extension BTCentralManager: CBPeripheralDelegate {
   func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
     print("didWriteValueFor \(characteristic.readableDesc)", info(of: error))
   }
+  
+  func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
+    
+  }
 }

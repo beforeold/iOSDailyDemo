@@ -47,7 +47,7 @@ class BTPeriperalManager: NSObject {
     do {
       // let data = "bud.notify.notify.charValue".data(using: .utf8)
       let char = CBMutableCharacteristic(type: .Char.notify,
-                                         properties: .notify,
+                                         properties: [.notify, .write],
                                          value: nil,
                                          permissions: [.readable, .writeable])
       service.characteristics = [char] + (service.characteristics ?? [])
@@ -111,21 +111,24 @@ extension BTPeriperalManager: CBPeripheralManagerDelegate {
   func peripheralManager(_ peripheral: CBPeripheralManager,
                          central: CBCentral,
                          didSubscribeTo characteristic: CBCharacteristic) {
+    print("didSubscribeTo: ", characteristic.readableDesc)
     
     guard let char = characteristic as? CBMutableCharacteristic else {
       return
     }
     
+    return
     timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
       let date = Date()
       let data = try! JSONEncoder().encode(date)
-      peripheral.updateValue(data,
+      peripheral.updateValue("hello luffy".data(using: .utf8)!,
                              for: char,
                              onSubscribedCentrals: [central])
     }
   }
   
   func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
+    print("didReceiveRead \(request.characteristic.readableDesc)")
     guard request.characteristic.properties.contains(.read) else {
       peripheral.respond(to: request, withResult: .readNotPermitted)
       return
@@ -137,6 +140,7 @@ extension BTPeriperalManager: CBPeripheralManagerDelegate {
   }
   
   func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
+    print("didReceiveWrite \(requests.map(\.characteristic.readableDesc))")
     for request in requests {
       guard request.characteristic.properties.contains(.write) else {
         peripheral.respond(to: request, withResult: .writeNotPermitted)
@@ -147,10 +151,20 @@ extension BTPeriperalManager: CBPeripheralManagerDelegate {
         peripheral.respond(to: request, withResult: .writeNotPermitted)
         continue
       }
-      
+      // return;
       let data = request.value
       char.value = data
       peripheral.respond(to: request, withResult: .success)
+      
+      // response data
+      if char.isNotify {
+        var string = data.flatMap { String(data: $0, encoding: .utf8) } ?? ""
+        string += ".bud"
+        print("did response: ", string)
+        peripheral.updateValue(string.data(using: .utf8)!,
+                               for: char,
+                               onSubscribedCentrals: nil)
+      }
     }
   }
 }
