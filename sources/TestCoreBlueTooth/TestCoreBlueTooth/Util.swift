@@ -35,6 +35,10 @@ extension CBCharacteristic {
   var isNotify: Bool {
     return uuid.uuidString == CBUUID.Char.notify.uuidString
   }
+  
+  var isReadWrite: Bool {
+    return uuid.uuidString == CBUUID.Char.readWrite.uuidString
+  }
 }
 
 extension CBAttribute {

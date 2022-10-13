@@ -17,6 +17,10 @@ class ViewController: UIViewController {
     
   }
   
+  @IBAction func onWriteClick(_ sender: Any) {
+    centralManager.write()
+  }
+  
   @IBAction func onCentralStart() {
     centralManager.start()
   }

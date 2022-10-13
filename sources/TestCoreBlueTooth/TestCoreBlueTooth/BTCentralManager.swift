@@ -14,6 +14,7 @@ class BTCentralManager: NSObject {
   var peripheral: CBPeripheral?
   var RSSI: NSNumber?
   var advertisementData: [String: Any]?
+  var readWriteChar: CBCharacteristic?
   
   func start() {
     if manager != nil {
@@ -27,6 +28,13 @@ class BTCentralManager: NSObject {
   
   private func startScan() {
     self.manager.scanForPeripherals(withServices: nil)
+  }
+  
+  func write() {
+    let data = "bo.hello".data(using: .utf8)
+    if let data, let peripheral, let readWriteChar {
+      peripheral.writeValue(data, for: readWriteChar, type: .withResponse)
+    }
   }
 }
 
@@ -121,8 +129,12 @@ extension BTCentralManager: CBPeripheralDelegate {
     for char in chars {
       peripheral.discoverDescriptors(for: char)
       
-      if char.uuid.uuidString == CBUUID.Char.notify.uuidString {
+      if char.isNotify {
         peripheral.setNotifyValue(true, for: char)
+      }
+      
+      if char.isReadWrite {
+        readWriteChar = char
       }
       
       if char.properties.contains(.read) {
@@ -167,5 +179,9 @@ extension BTCentralManager: CBPeripheralDelegate {
                   error: Error?) {
     print("didUpdateValueFor descriptor \(descriptor.readableDesc) value: ", descriptor.value as? String ?? "null",
           info(of: error))
+  }
+  
+  func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+    print("didWriteValueFor \(characteristic.readableDesc)", info(of: error))
   }
 }

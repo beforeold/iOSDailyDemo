@@ -124,4 +124,33 @@ extension BTPeriperalManager: CBPeripheralManagerDelegate {
                              onSubscribedCentrals: [central])
     }
   }
+  
+  func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
+    guard request.characteristic.properties.contains(.read) else {
+      peripheral.respond(to: request, withResult: .readNotPermitted)
+      return
+    }
+    
+    let data = request.characteristic.value
+    request.value = data
+    peripheral.respond(to: request, withResult: .success)
+  }
+  
+  func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
+    for request in requests {
+      guard request.characteristic.properties.contains(.write) else {
+        peripheral.respond(to: request, withResult: .writeNotPermitted)
+        continue
+      }
+      
+      guard let char = request.characteristic as? CBMutableCharacteristic else {
+        peripheral.respond(to: request, withResult: .writeNotPermitted)
+        continue
+      }
+      
+      let data = request.value
+      char.value = data
+      peripheral.respond(to: request, withResult: .success)
+    }
+  }
 }
