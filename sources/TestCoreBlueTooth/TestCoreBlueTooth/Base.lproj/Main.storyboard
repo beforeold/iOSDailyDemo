@@ -25,7 +25,7 @@
                                     <action selector="onCentralStart" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lsn-lK-zbH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lz4-zg-HtM">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lz4-zg-HtM">
                                 <rect key="frame" x="237" y="404.66666666666669" width="133" height="34.666666666666686"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Periperal Start"/>
@@ -49,8 +49,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="WyD-gW-noH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8DF-V6-hQR"/>
+                            <constraint firstItem="Lz4-zg-HtM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WyD-gW-noH" secondAttribute="trailing" constant="10" id="Lg3-eA-Nph"/>
                             <constraint firstItem="WyD-gW-noH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="OdU-SK-Rfa"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Lz4-zg-HtM" secondAttribute="trailing" constant="20" id="TYu-LB-SCL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lz4-zg-HtM" secondAttribute="trailing" constant="20" id="TYu-LB-SCL"/>
                             <constraint firstItem="WyD-gW-noH" firstAttribute="centerY" secondItem="Lz4-zg-HtM" secondAttribute="centerY" id="fvF-4D-sTn"/>
                             <constraint firstItem="9AO-Qv-HIx" firstAttribute="centerX" secondItem="WyD-gW-noH" secondAttribute="centerX" id="jZi-gm-RBD"/>
                             <constraint firstItem="9AO-Qv-HIx" firstAttribute="top" secondItem="WyD-gW-noH" secondAttribute="bottom" constant="33.333333333333314" id="wla-iH-QwI"/>
