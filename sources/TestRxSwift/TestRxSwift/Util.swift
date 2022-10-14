@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 extension ObservableType {
-  public func sink(onNext: @escaping ((Element) -> Void)) -> Disposable {
+  public func observe(onNext: @escaping ((Element) -> Void)) -> Disposable {
     return subscribe(onNext: onNext)
   }
 }

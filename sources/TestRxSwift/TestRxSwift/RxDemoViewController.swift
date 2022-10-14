@@ -40,7 +40,7 @@ class RxDemoViewController: UIViewController {
     _ = inputField.rx.text
       .map(intValue)
       .filter { $0 % 2 == 0}
-      .sink { value in
+      .observe { value in
         print(value)
       }
   }
@@ -48,7 +48,7 @@ class RxDemoViewController: UIViewController {
   func rxCounter() {
     counterDisposable = Observable<Int>.interval(.seconds(1),
                                                  scheduler: MainScheduler.instance)
-    .sink(onNext: { value in
+    .observe(onNext: { value in
       self.counterLabel.text = "\(value)"
     })
   }
@@ -62,6 +62,10 @@ class RxDemoViewController: UIViewController {
     counterDisposableBag = nil
   }
   
+  @IBAction func onShowLogin(_ sender: Any) {
+    let vc = LoginViewController()
+    present(vc, animated: true)
+  }
 }
 
 fileprivate func foo() {

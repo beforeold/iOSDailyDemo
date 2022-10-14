@@ -38,6 +38,15 @@
                                     <action selector="onStopCounter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IN8-Cl-5wq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Kf-Pb-CIp">
+                                <rect key="frame" x="21" y="371" width="112" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Show Login"/>
+                                <connections>
+                                    <action selector="onShowLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CkF-Ha-CsV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
