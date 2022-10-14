@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 import Alamofire
 import SwiftyJSON
 
@@ -34,8 +35,53 @@ class GitHubSearchViewController: UIViewController {
       .filter { $0.count > 2 }
       .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
       .flatMap { RepoModel.searchForGitHub($0) }
-      .subscribe(onNext: handle(repos:), onError: showError)
+      .subscribe(onNext: _4_handle(repos:), onError: showError)
       .disposed(by: bag)
+  }
+  
+  typealias SectionTableModel = SectionModel<String, RepoModel>
+  typealias RepositoryModel = RepoModel
+  
+  let dataSource = RxTableViewSectionedReloadDataSource<SectionTableModel> { dataSource, tableView, indexPath, model in
+    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    cell.textLabel?.text = model.full_name
+    cell.detailTextLabel?.text = model.description
+    return cell
+  }
+  
+  private func createGithubSectionModel(
+    repoInfo: [RepositoryModel]
+  ) -> [SectionTableModel] {
+    
+    var ret: [SectionTableModel] = []
+    var items: [RepositoryModel] = []
+    
+    if (repoInfo.count <= 10) {
+      let sectionLabel = "Top 1 - 10"
+      items = repoInfo
+      
+      ret.append(SectionTableModel(
+        model: sectionLabel, items: items))
+    }
+    else {
+      for i in 1...repoInfo.count {
+        items.append(repoInfo[i - 1])
+        
+        if (i / 10 != 0 && i % 10 == 0) {
+          let sectionLabel =
+          "Top \(i - 9) - \(i)"
+          
+          ret.append(
+            SectionTableModel(
+              model: sectionLabel,
+              items: items))
+          
+          items = []
+        }
+      }
+    }
+    
+    return ret
   }
   
   private func showError(_ error: Error) {
@@ -93,6 +139,15 @@ class GitHubSearchViewController: UIViewController {
     }.disposed(by: bag)
   }
   
+  /// 第四种，使用自定义的 dataSource
+  private func _4_handle(repos: [RepoModel]) {
+    self.tableView.dataSource = nil
+    Observable
+      .just(self.createGithubSectionModel(repoInfo: repos))
+      .bind(to: tableView.rx.items(dataSource: dataSource))
+      .disposed(by: self.bag)
+  }
+  
   /*
    // MARK: - Navigation
    
@@ -124,10 +179,10 @@ struct RepoModel {
     var info = [RepoModel]()
     
     for (_, subJson): (String, JSON) in items {
-      let fullName = subJson["full_name"].string!
-      let description = subJson["description"].string!
-      let htmlUrl = subJson["html_url"].string!
-      let avatarUrl = subJson["owner"]["avatar_url"].string!
+      let fullName = subJson["full_name"].stringValue
+      let description = subJson["description"].stringValue
+      let htmlUrl = subJson["html_url"].stringValue
+      let avatarUrl = subJson["owner"]["avatar_url"].stringValue
       
       info.append(.init(full_name: fullName,
                         description: description,
