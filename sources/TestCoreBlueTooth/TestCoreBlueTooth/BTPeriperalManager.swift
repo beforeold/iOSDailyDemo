@@ -113,11 +113,11 @@ extension BTPeriperalManager: CBPeripheralManagerDelegate {
                          didSubscribeTo characteristic: CBCharacteristic) {
     print("didSubscribeTo: ", characteristic.readableDesc)
     
+    /*
     guard let char = characteristic as? CBMutableCharacteristic else {
       return
     }
     
-    return
     timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
       let date = Date()
       let data = try! JSONEncoder().encode(date)
@@ -125,6 +125,13 @@ extension BTPeriperalManager: CBPeripheralManagerDelegate {
                              for: char,
                              onSubscribedCentrals: [central])
     }
+    */
+  }
+  
+  func peripheralManager(_ peripheral: CBPeripheralManager,
+                         central: CBCentral,
+                         didUnsubscribeFrom characteristic: CBCharacteristic) {
+    print(#function)
   }
   
   func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
