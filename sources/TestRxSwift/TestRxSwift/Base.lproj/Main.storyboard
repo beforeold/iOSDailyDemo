@@ -56,6 +56,15 @@
                                     <action selector="onShowProfile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ApW-9W-Gwd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kK-1p-oUX">
+                                <rect key="frame" x="112" y="269" width="124" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Show GitHub"/>
+                                <connections>
+                                    <action selector="onShowGitHub:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kz5-CO-Mck"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

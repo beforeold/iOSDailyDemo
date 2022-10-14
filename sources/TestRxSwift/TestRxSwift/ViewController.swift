@@ -47,6 +47,7 @@ class ViewController: UIViewController {
       }
   }
   
+  
   func rxCounter() {
     let pub = Observable<Int>.interval(.seconds(1),
                                        scheduler: MainScheduler.instance)
@@ -75,6 +76,10 @@ class ViewController: UIViewController {
   
   @IBAction func onShowProfile(_ sender: Any) {
     demo(ProfileViewController.self)
+  }
+  
+  @IBAction func onShowGitHub(_ sender: Any) {
+    demo(GitHubSearchViewController.self)
   }
   
   private func demo(_ vcType: UIViewController.Type) {

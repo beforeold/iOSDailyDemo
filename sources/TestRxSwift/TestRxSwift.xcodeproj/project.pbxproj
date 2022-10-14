@@ -20,6 +20,8 @@
 		94CF654328F95AB700AF2CAA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CF654128F95AB700AF2CAA /* LoginViewController.xib */; };
 		94CF654628F95E9500AF2CAA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CF654428F95E9500AF2CAA /* ProfileViewController.swift */; };
 		94CF654728F95E9500AF2CAA /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CF654528F95E9500AF2CAA /* ProfileViewController.xib */; };
+		94CF654A28F96F8F00AF2CAA /* GitHubSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CF654828F96F8F00AF2CAA /* GitHubSearchViewController.swift */; };
+		94CF654B28F96F8F00AF2CAA /* GitHubSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94CF654928F96F8F00AF2CAA /* GitHubSearchViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		94CF654128F95AB700AF2CAA /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		94CF654428F95E9500AF2CAA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		94CF654528F95E9500AF2CAA /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		94CF654828F96F8F00AF2CAA /* GitHubSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubSearchViewController.swift; sourceTree = "<group>"; };
+		94CF654928F96F8F00AF2CAA /* GitHubSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GitHubSearchViewController.xib; sourceTree = "<group>"; };
 		C6F0CF4ADE2D9939659A8E3C /* Pods-TestRxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestRxSwift.debug.xcconfig"; path = "Target Support Files/Pods-TestRxSwift/Pods-TestRxSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		FEC35E516B6ECE6D7A47AF55 /* Pods-TestRxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestRxSwift.release.xcconfig"; path = "Target Support Files/Pods-TestRxSwift/Pods-TestRxSwift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +88,8 @@
 				94CF654028F95AB700AF2CAA /* LoginViewController.swift */,
 				94CF654128F95AB700AF2CAA /* LoginViewController.xib */,
 				94CF654428F95E9500AF2CAA /* ProfileViewController.swift */,
+				94CF654828F96F8F00AF2CAA /* GitHubSearchViewController.swift */,
+				94CF654928F96F8F00AF2CAA /* GitHubSearchViewController.xib */,
 				94CF654528F95E9500AF2CAA /* ProfileViewController.xib */,
 				94CF653C28F94C3F00AF2CAA /* Util.swift */,
 				94CF652C28F90C9100AF2CAA /* Main.storyboard */,
@@ -172,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94CF654328F95AB700AF2CAA /* LoginViewController.xib in Resources */,
+				94CF654B28F96F8F00AF2CAA /* GitHubSearchViewController.xib in Resources */,
 				94CF653328F90C9200AF2CAA /* LaunchScreen.storyboard in Resources */,
 				94CF653028F90C9200AF2CAA /* Assets.xcassets in Resources */,
 				94CF654728F95E9500AF2CAA /* ProfileViewController.xib in Resources */,
@@ -234,6 +241,7 @@
 				94CF653D28F94C3F00AF2CAA /* Util.swift in Sources */,
 				94CF653B28F9484F00AF2CAA /* ViewController.swift in Sources */,
 				94CF654628F95E9500AF2CAA /* ProfileViewController.swift in Sources */,
+				94CF654A28F96F8F00AF2CAA /* GitHubSearchViewController.swift in Sources */,
 				94CF652928F90C9100AF2CAA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
