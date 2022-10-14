@@ -16,7 +16,7 @@ fileprivate func validStrig(_ string: String?) -> Bool {
 }
 
 class GitHubSearchViewController: UIViewController {
-
+  
   @IBOutlet weak var inputField: UITextField!
   @IBOutlet weak var tableView: UITableView!
   
@@ -25,16 +25,41 @@ class GitHubSearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    tableView.register(Cell.self, forCellReuseIdentifier: "cell")
+    tableView.register(RepoCell.self, forCellReuseIdentifier: "cell")
     
     self.inputField.rx.text
       .map { $0 ?? "" }
       .filter { $0.count > 2 }
       .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
       .flatMap { RepoModel.searchForGitHub($0) }
-      .observe { value in
-        print(value)
-      }.disposed(by: bag)
+      .subscribe(onNext: {
+        typealias List = [RepoModel]
+        typealias O = Observable<List>
+        typealias CC = (Int, RepoModel, RepoCell) -> Void
+        typealias BinderType = (O) -> (@escaping CC) -> Disposable
+        
+        
+        let binder: BinderType = self.tableView.rx.items(cellIdentifier: "cell")
+        
+        let configure: CC = { index, model, cell -> Void in
+          cell.textLabel?.text = model.full_name
+          cell.detailTextLabel?.text = model.description
+        }
+        self.tableView.dataSource = nil
+        Observable.just($0).bind(to: binder, curriedArgument: configure)
+          .disposed(by: self.bag)
+      },
+                 onError: showError)
+      .disposed(by: bag)
+  }
+  
+  func showError(_ error: Error) {
+    let vc = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+    
+    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+    vc.addAction(action)
+    
+    present(vc, animated: true)
   }
   
   
@@ -51,7 +76,7 @@ class GitHubSearchViewController: UIViewController {
 }
 
 extension GitHubSearchViewController {
-  class Cell: UITableViewCell {
+  class RepoCell: UITableViewCell {
     
   }
 }
@@ -69,11 +94,11 @@ struct RepoModel {
     var info = [RepoModel]()
     
     for (_, subJson): (String, JSON) in items {
-        let fullName = subJson["full_name"].string!
-        let description = subJson["description"].string!
-        let htmlUrl = subJson["html_url"].string!
-        let avatarUrl = subJson["owner"]["avatar_url"].string!
-
+      let fullName = subJson["full_name"].string!
+      let description = subJson["description"].string!
+      let htmlUrl = subJson["html_url"].string!
+      let avatarUrl = subJson["owner"]["avatar_url"].string!
+      
       info.append(.init(full_name: fullName,
                         description: description,
                         html_url: htmlUrl,
@@ -108,7 +133,7 @@ extension RepoModel {
           
           sub.onNext(RepoModel.parseModel(value))
           sub.onCompleted()
-      }
+        }
       
       return Disposables.create {
         request.cancel()
