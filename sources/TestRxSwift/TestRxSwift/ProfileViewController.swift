@@ -37,23 +37,23 @@ class ProfileViewController: UIViewController {
     let datePub = datePicker.rx.date.map(Validator.isValidDate(date:))
     
     datePub.map { $0 ? UIColor.green : .clear }
-      .observe { value in
+      .observe {[unowned self] value in
         self.datePicker.layer.borderColor = value.cgColor
       }
       .disposed(by: bag)
     
     let genderSelection = BehaviorSubject<Gender>(value: .unknown)
     
-    self.male.rx.tap
+    male.rx.tap
       .map { return Gender.male }
       .bind(to: genderSelection).disposed(by: bag)
     
-    self.female.rx.tap
+    female.rx.tap
       .map { return Gender.female }
       .bind(to: genderSelection)
       .disposed(by: bag)
     
-    genderSelection.observe { gender in
+    genderSelection.observe {[unowned self]  gender in
       switch gender {
       case .male:
         self.male.setTitleColor(.green, for: .normal)
@@ -74,8 +74,28 @@ class ProfileViewController: UIViewController {
       .map { $0.0 && $0.1 }
       .bind(to: self.update.rx.isEnabled)
       .disposed(by: bag)
+    
+    knowSwift.rx.value
+      .map { $0 ? 50 : 0 }
+      .bind(to: self.swiftLevel.rx.value)
+      .disposed(by: bag)
+    
+    swiftLevel.rx.value
+      .map { $0 > 0 }
+      .bind(to: self.knowSwift.rx.value)
+      .disposed(by: bag)
+    
+    passionToLearn.rx.value
+      .map { "\($0)" }
+      .observe { text in
+        print("stepper: \(text)")
+      }.disposed(by: bag)
   }
   
+  
+  deinit {
+    print("profile deinit")
+  }
   /*
    // MARK: - Navigation
    
