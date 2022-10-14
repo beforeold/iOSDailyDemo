@@ -22,6 +22,8 @@ class GitHubSearchViewController: UIViewController {
   
   var bag = DisposeBag()
   
+  var listSubject = BehaviorRelay<[RepoModel]>(value: [])
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -32,28 +34,11 @@ class GitHubSearchViewController: UIViewController {
       .filter { $0.count > 2 }
       .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
       .flatMap { RepoModel.searchForGitHub($0) }
-      .subscribe(onNext: {
-        typealias List = [RepoModel]
-        typealias O = Observable<List>
-        typealias CC = (Int, RepoModel, RepoCell) -> Void
-        typealias BinderType = (O) -> (@escaping CC) -> Disposable
-        
-        
-        let binder: BinderType = self.tableView.rx.items(cellIdentifier: "cell")
-        
-        let configure: CC = { index, model, cell -> Void in
-          cell.textLabel?.text = model.full_name
-          cell.detailTextLabel?.text = model.description
-        }
-        self.tableView.dataSource = nil
-        Observable.just($0).bind(to: binder, curriedArgument: configure)
-          .disposed(by: self.bag)
-      },
-                 onError: showError)
+      .subscribe(onNext: handle(repos:), onError: showError)
       .disposed(by: bag)
   }
   
-  func showError(_ error: Error) {
+  private func showError(_ error: Error) {
     let vc = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
     
     let action = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -62,6 +47,51 @@ class GitHubSearchViewController: UIViewController {
     present(vc, animated: true)
   }
   
+  /// 第一种方式：先声明变量，再通过 just 绑定
+  private func handle(repos: [RepoModel]) {
+    typealias List = [RepoModel]
+    typealias O = Observable<List>
+    typealias CC = (Int, RepoModel, RepoCell) -> Void
+    typealias BinderType = (O) -> (@escaping CC) -> Disposable
+    
+    let binder: BinderType = self.tableView.rx.items(cellIdentifier: "cell")
+    
+    let configure: CC = { index, model, cell -> Void in
+      cell.textLabel?.text = model.full_name
+      cell.detailTextLabel?.text = model.description
+    }
+    
+    // clear before binding
+    self.tableView.dataSource = nil
+    Observable.just(repos).bind(to: binder, curriedArgument: configure)
+      .disposed(by: self.bag)
+  }
+  
+  /// 第二种，优化第一种，更清晰的实现
+  private func _2_handle(repos: [RepoModel]) {
+    // clear before binding
+    self.tableView.dataSource = nil
+    
+    Observable
+      .just(repos)
+      .bind(to: tableView.rx.items(cellIdentifier: "cell", cellType: RepoCell.self)) { index, model, cell in
+        cell.textLabel?.text = model.full_name
+        cell.detailTextLabel?.text = model.description
+      }
+      .disposed(by: self.bag)
+  }
+  
+  /// 第三种，借用一个 BehaviorRelay，事先进行绑定，只需要在请求结束时传入数据
+  private func _3_handle(repos: [RepoModel]) {
+    listSubject.accept(repos)
+  }
+  
+  private func _3_bindTableView() {
+    listSubject.bind(to: tableView.rx.items(cellIdentifier: "cell", cellType: RepoCell.self)) {_, model, cell in
+      cell.textLabel?.text = model.full_name
+      cell.detailTextLabel?.text = model.description
+    }.disposed(by: bag)
+  }
   
   /*
    // MARK: - Navigation
@@ -104,7 +134,6 @@ struct RepoModel {
                         html_url: htmlUrl,
                         avatar_url: avatarUrl))
     }
-
     
     return info
   }
