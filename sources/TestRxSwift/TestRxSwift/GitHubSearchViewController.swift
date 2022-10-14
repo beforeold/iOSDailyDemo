@@ -23,12 +23,17 @@ class GitHubSearchViewController: UIViewController {
   
   var bag = DisposeBag()
   
-  var listSubject = BehaviorRelay<[RepoModel]>(value: [])
+  var repoReplay = BehaviorRelay<[RepoModel]>(value: [])
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     tableView.register(RepoCell.self, forCellReuseIdentifier: "cell")
+    tableView.delegate = self
+    
+    tableView.budDidSelectObservable.observe { tableView, indexPath in
+      tableView.deselectRow(at: indexPath, animated: true)
+    }.disposed(by: bag)
     
     self.inputField.rx.text
       .map { $0 ?? "" }
@@ -129,11 +134,11 @@ class GitHubSearchViewController: UIViewController {
   
   /// 第三种，借用一个 BehaviorRelay，事先进行绑定，只需要在请求结束时传入数据
   private func _3_handle(repos: [RepoModel]) {
-    listSubject.accept(repos)
+    repoReplay.accept(repos)
   }
   
   private func _3_bindTableView() {
-    listSubject.bind(to: tableView.rx.items(cellIdentifier: "cell", cellType: RepoCell.self)) {_, model, cell in
+    repoReplay.bind(to: tableView.rx.items(cellIdentifier: "cell", cellType: RepoCell.self)) {_, model, cell in
       cell.textLabel?.text = model.full_name
       cell.detailTextLabel?.text = model.description
     }.disposed(by: bag)
@@ -162,6 +167,62 @@ class GitHubSearchViewController: UIViewController {
 
 extension GitHubSearchViewController {
   class RepoCell: UITableViewCell {
+    
+  }
+}
+
+extension GitHubSearchViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let sectionCount = self.dataSource
+        .numberOfSections(in: tableView)
+    guard sectionCount != 0 else {
+        return nil
+    }
+
+    let label = UILabel(frame: CGRect.zero)
+    label.text = self.dataSource.sectionModels[section].model
+
+    return label
+  }
+}
+
+private extension Selector {
+    static let didSelectRowAtIndexPath = #selector(UITableViewDelegate.tableView(_:didSelectRowAt:))
+}
+
+fileprivate extension UITableView {
+  var budDelegate: GitHubSearchViewController.MyDelegateProxy {
+    return .proxy(for: self)
+  }
+  
+  var budDidSelectObservable: Observable<(UITableView, IndexPath)> {
+    return budDelegate
+      .methodInvoked(.didSelectRowAtIndexPath)
+      .map { params in
+        return (params[0] as! Self, params[1] as! IndexPath)
+      }
+  }
+}
+
+extension GitHubSearchViewController {
+  class MyDelegateProxy: DelegateProxy<UITableView, UITableViewDelegate>
+  , DelegateProxyType
+  , UITableViewDelegate {
+    static func registerKnownImplementations() {
+      self.register { parent in
+        return MyDelegateProxy(parentObject: parent,
+                               delegateProxy: MyDelegateProxy.self)
+      }
+    }
+    
+    static func currentDelegate(for object: UITableView) -> UITableViewDelegate? {
+      object.delegate
+    }
+    
+    static func setCurrentDelegate(_ delegate: UITableViewDelegate?, to object: UITableView) {
+      object.delegate = delegate
+    }
+    
     
   }
 }
