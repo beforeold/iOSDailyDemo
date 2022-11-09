@@ -55,7 +55,7 @@ class Remote<T>: ObservableObject {
 }
 
 struct ContentView: View {
-  @ObservedObject var model = Remote<[Photo]>.init(URL(string: "https://picsum.photos/v2/list")!) { data in
+  @StateObject var model = Remote<[Photo]>.init(URL(string: "https://picsum.photos/v2/list")!) { data in
     try? JSONDecoder().decode([Photo].self, from: data)
   }
   
