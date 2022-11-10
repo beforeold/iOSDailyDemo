@@ -7,6 +7,7 @@
 
 import Foundation
 
+// https://www.swiftbysundell.com/articles/under-the-hood-of-futures-and-promises-in-swift/
 
 public class Future<Value> {
     public typealias Result = Swift.Result<Value, Error>
