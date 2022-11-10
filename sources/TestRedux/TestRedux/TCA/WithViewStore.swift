@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public class SwiftUIStore<State, Action>: ObservableObject {
+public class ViewStore<State, Action>: ObservableObject {
   private let store: Store<State, Action>
   
   @Published private(set) var state: State
@@ -27,15 +27,15 @@ public class SwiftUIStore<State, Action>: ObservableObject {
 
 public struct WithStoreView<State, Action, Content: View>: View {
   @ObservedObject
-  private var store: SwiftUIStore<State, Action>
+  private var store: ViewStore<State, Action>
   
-  private let contentBuilder: (_ viewStore: SwiftUIStore<State, Action>) -> Content
+  private let contentBuilder: (_ viewStore: ViewStore<State, Action>) -> Content
   
   public init(
     store: Store<State, Action>,
-    contentBuilder: @escaping (_ viewStore: SwiftUIStore<State, Action>
+    contentBuilder: @escaping (_ viewStore: ViewStore<State, Action>
     ) -> Content) {
-    self.store = SwiftUIStore(store: store)
+    self.store = ViewStore(store: store)
     self.contentBuilder = contentBuilder
   }
   
