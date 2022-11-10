@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		949566F6291D402800DCFAB0 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949566F5291D402800DCFAB0 /* Promise.swift */; };
 		94BA5105291D304C004E3798 /* TestReduxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA5104291D304C004E3798 /* TestReduxApp.swift */; };
 		94BA5107291D304C004E3798 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BA5106291D304C004E3798 /* ContentView.swift */; };
 		94BA5109291D304C004E3798 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94BA5108291D304C004E3798 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		949566F5291D402800DCFAB0 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		94BA5101291D304C004E3798 /* TestRedux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestRedux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94BA5104291D304C004E3798 /* TestReduxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReduxApp.swift; sourceTree = "<group>"; };
 		94BA5106291D304C004E3798 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			children = (
 				94BA5112291D3054004E3798 /* Redux.swift */,
 				94BA5114291D320F004E3798 /* WithViewStore.swift */,
+				949566F5291D402800DCFAB0 /* Promise.swift */,
 			);
 			path = TCA;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 			files = (
 				94BA5107291D304C004E3798 /* ContentView.swift in Sources */,
 				94BA5105291D304C004E3798 /* TestReduxApp.swift in Sources */,
+				949566F6291D402800DCFAB0 /* Promise.swift in Sources */,
 				94BA5115291D320F004E3798 /* WithViewStore.swift in Sources */,
 				94BA5113291D3054004E3798 /* Redux.swift in Sources */,
 			);

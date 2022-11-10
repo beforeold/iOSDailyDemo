@@ -14,7 +14,7 @@ fileprivate enum Action {
 fileprivate func reducer(
   _ state: inout Int,
   _ action: Action
-) -> Effect? {
+) -> Effect<Action>? {
   state += 10
   return nil
 }
