@@ -7,11 +7,9 @@
 
 import Foundation
 
-public struct Effect {
-  
-}
+public typealias Effect<Action> = Promise<Action>
 
-public typealias Reducer<State, Action> = (_ state: inout State, _ action: Action) -> Effect?
+public typealias Reducer<State, Action> = (_ state: inout State, _ action: Action) -> Effect<Action>?
 
 public class Store<State, Action> {
   public var stateUpdateCallback: (State) -> Void = { _ in }
@@ -33,8 +31,16 @@ public class Store<State, Action> {
   }
   
   public func send(_ action: Action) {
-    let effect = reducer(&state, action)
-    print(effect as Any)
+    guard let effect = reducer(&state, action) else {
+      return
+    }
+    
+    effect.observe { [weak self] result in
+      guard let self = self,
+            let action = try? result.get() else {
+        return
+      }
+      self.send(action)
+    }
   }
 }
-

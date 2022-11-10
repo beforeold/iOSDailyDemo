@@ -44,9 +44,6 @@ public struct WithStoreView<State, Action, Content: View>: View {
   }
 }
 
-func emptyReducer<State, Action>(_ state: inout State, _ action: Action) -> Effect? {
-  return nil
-}
 
 struct WithStoreView_Previews: PreviewProvider {
   struct State {
@@ -57,14 +54,18 @@ struct WithStoreView_Previews: PreviewProvider {
     case buttonTap
   }
   
+  fileprivate static func appendReducer<State, Action>(
+    _ state: inout State,
+    _ action: Action
+  ) -> Effect<Action>? {
+    return nil
+  }
+  
   static var previews: some View {
     WithStoreView(
       store: Store<State, Action>.init(
-        initialState: .init(),
-        reducer: { state, action in
-          state.name += " tapped"
-          return .none
-        }
+        initialState: State.init(),
+        reducer: appendReducer
       )
     ) { viewStore in
       VStack {
