@@ -150,18 +150,18 @@ void testList4(void) {
 void testList5_ok(void) {
   let intCount = 8;
   let byteLength = intCount * sizeof(int);
-  int *list = (int *)malloc(byteLength);
-  
-  for (int i = 0; i < 8; i++) {
-    list[i] = i + 1;
-  }
-
-  let data = [NSData dataWithBytes:list length:byteLength];
-  
-  int *byteData = (int *)data.bytes;
+  int *pointer1 = (int *)malloc(byteLength);
   
   for (int i = 0; i < intCount; i++) {
-    printf("value: %d\n", byteData[i]);
+    pointer1[i] = i + 1;
+  }
+
+  let data = [NSData dataWithBytes:pointer1 length:byteLength];
+  
+  int *pointer2 = (int *)data.bytes;
+  
+  for (int i = 0; i < intCount; i++) {
+    printf("value: %d\n", pointer2[i]);
   }
 }
 
@@ -194,7 +194,10 @@ void testPhash(void) {
 
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
-    // insert code here...
+    
+    // 在下面的帖子中发现，应该是指针类型导致的数据位置恶化长度不同
+    // 具体地：是将 int * 的 bytes 转为 data 时，传入的 length 写的是 int 的长度（8），而不是实际的 bytes 长度（8 * 4）
+    // https://stackoverflow.com/questions/724086/how-to-convert-nsdata-to-byte-array-in-iphone
     
     testList5_ok();
     
