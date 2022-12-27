@@ -58,6 +58,8 @@
 		5777C885229910E100AEF7BB /* MountainsRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5777C884229910E100AEF7BB /* MountainsRawData.swift */; };
 		57F0E355247D8C4100821591 /* SimpleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F0E354247D8C4100821591 /* SimpleListViewController.swift */; };
 		67AD57CC248ACDAF00D9E73E /* EmojiDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD57CB248ACDAF00D9E73E /* EmojiDetailViewController.swift */; };
+		840DEC5A29593792007FDB0E /* GridDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DEC5929593792007FDB0E /* GridDeleteViewController.swift */; };
+		840DEC5C29599317007FDB0E /* DistinctDeleteSectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DEC5B29599317007FDB0E /* DistinctDeleteSectionsViewController.swift */; };
 		FD000CBA22F0E68100AE3B95 /* TableViewEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD000CB922F0E68100AE3B95 /* TableViewEditingViewController.swift */; };
 		FD002CD024A38A28004178C8 /* ReorderableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD002CCF24A38A28004178C8 /* ReorderableListViewController.swift */; };
 		FD09E6D42276BC250009D23B /* SectionHeadersFootersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09E6D32276BC250009D23B /* SectionHeadersFootersViewController.swift */; };
@@ -154,10 +156,12 @@
 		37B1C17124A2E6660041C9F6 /* CustomConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomConfigurationViewController.swift; sourceTree = "<group>"; };
 		5777C884229910E100AEF7BB /* MountainsRawData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainsRawData.swift; sourceTree = "<group>"; };
 		57F0E354247D8C4100821591 /* SimpleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleListViewController.swift; sourceTree = "<group>"; };
-		5AEBA7C0AB13D40C88941D7F /* SampleCode.xcconfig */ = {isa = PBXFileReference; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
+		5AEBA7C0AB13D40C88941D7F /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		67AD57CB248ACDAF00D9E73E /* EmojiDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiDetailViewController.swift; sourceTree = "<group>"; };
 		699CA3DA2383663700B50951 /* Modern Collection Views.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Modern Collection Views.entitlements"; sourceTree = "<group>"; };
-		85AA89463B64A375ADFAD7E9 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE.txt; sourceTree = "<group>"; };
+		840DEC5929593792007FDB0E /* GridDeleteViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = GridDeleteViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
+		840DEC5B29599317007FDB0E /* DistinctDeleteSectionsViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = DistinctDeleteSectionsViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
+		85AA89463B64A375ADFAD7E9 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		FD000CB922F0E68100AE3B95 /* TableViewEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewEditingViewController.swift; sourceTree = "<group>"; };
 		FD002CCF24A38A28004178C8 /* ReorderableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderableListViewController.swift; sourceTree = "<group>"; };
 		FD09E6D32276BC250009D23B /* SectionHeadersFootersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeadersFootersViewController.swift; sourceTree = "<group>"; };
@@ -346,7 +350,6 @@
 			children = (
 				85AA89463B64A375ADFAD7E9 /* LICENSE.txt */,
 			);
-			name = LICENSE;
 			path = LICENSE;
 			sourceTree = "<group>";
 		};
@@ -430,9 +433,11 @@
 			isa = PBXGroup;
 			children = (
 				FDD8A180226FB1B300CA5179 /* GridViewController.swift */,
+				840DEC5929593792007FDB0E /* GridDeleteViewController.swift */,
 				FD9DA0772270F09100D6168E /* TwoColumnViewController.swift */,
 				FD934DCE226FD6B70032CFFE /* InsetItemsGridViewController.swift */,
 				FD934DD0226FDB9A0032CFFE /* DistinctSectionsViewController.swift */,
+				840DEC5B29599317007FDB0E /* DistinctDeleteSectionsViewController.swift */,
 				FD934DD2226FE0F70032CFFE /* AdaptiveSectionsViewController.swift */,
 				FD65E1872276444F00F8AF46 /* ItemBadgeSupplementaryViewController.swift */,
 				FD09E6D32276BC250009D23B /* SectionHeadersFootersViewController.swift */,
@@ -672,6 +677,7 @@
 				FD65E18422763A4900F8AF46 /* LabelCell.swift in Sources */,
 				FD2A161C22A0B05400418F29 /* MountainsController.swift in Sources */,
 				FD74C13E2287E99600B3A8EE /* InsertionSortViewController.swift in Sources */,
+				840DEC5C29599317007FDB0E /* DistinctDeleteSectionsViewController.swift in Sources */,
 				FD1BB0AB225FA81D003ADF88 /* WiFiController.swift in Sources */,
 				FD48D9C0227E85F8002F1D62 /* ConferenceNewsFeedViewController.swift in Sources */,
 				FDCFA2992286995D00D658EB /* SectionBackgroundDecorationView.swift in Sources */,
@@ -702,6 +708,7 @@
 				37B1C17224A2E6660041C9F6 /* CustomConfigurations.swift in Sources */,
 				FD96B24B248859B900703C61 /* Emoji.swift in Sources */,
 				FDD8A181226FB1B300CA5179 /* GridViewController.swift in Sources */,
+				840DEC5A29593792007FDB0E /* GridDeleteViewController.swift in Sources */,
 				FDCE3654226901C000F3035B /* ConferenceVideoCell.swift in Sources */,
 				FDA8D13B225F8531000127E1 /* AppDelegate.swift in Sources */,
 				FD65E1822276394000F8AF46 /* MountainsViewController.swift in Sources */,
@@ -922,7 +929,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Modern Collection Views/Modern Collection Views.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DJ587BPX4R;
 				INFOPLIST_FILE = "Modern Collection Views/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -948,7 +955,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Modern Collection Views/Modern Collection Views.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DJ587BPX4R;
 				INFOPLIST_FILE = "Modern Collection Views/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
