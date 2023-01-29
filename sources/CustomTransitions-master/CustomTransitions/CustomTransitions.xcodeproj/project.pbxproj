@@ -12,21 +12,10 @@
 		5FF2AD601AA45CF60092F66C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FF2AD5E1AA45CF60092F66C /* Main.storyboard */; };
 		5FF2AD621AA45CF60092F66C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FF2AD611AA45CF60092F66C /* Images.xcassets */; };
 		5FF2AD651AA45CF60092F66C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF2AD631AA45CF60092F66C /* LaunchScreen.xib */; };
-		5FF2AD711AA45CF60092F66C /* CustomTransitionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2AD701AA45CF60092F66C /* CustomTransitionsTests.swift */; };
 		5FF2AD7B1AA45F680092F66C /* bike_traveler.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF2AD7A1AA45F680092F66C /* bike_traveler.png */; };
 		5FF2AD7D1AA467630092F66C /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2AD7C1AA467630092F66C /* ActionViewController.swift */; };
 		84DFE13829867B0500487C9A /* CustomPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DFE13729867B0500487C9A /* CustomPresentAnimationController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		5FF2AD6B1AA45CF60092F66C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5FF2AD4D1AA45CF60092F66C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5FF2AD541AA45CF60092F66C;
-			remoteInfo = CustomTransitions;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5FACF6631AA5AEBF009C6C88 /* ItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
@@ -36,9 +25,6 @@
 		5FF2AD5F1AA45CF60092F66C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FF2AD611AA45CF60092F66C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5FF2AD641AA45CF60092F66C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		5FF2AD6A1AA45CF60092F66C /* CustomTransitionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomTransitionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FF2AD6F1AA45CF60092F66C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5FF2AD701AA45CF60092F66C /* CustomTransitionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransitionsTests.swift; sourceTree = "<group>"; };
 		5FF2AD7A1AA45F680092F66C /* bike_traveler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bike_traveler.png; sourceTree = "<group>"; };
 		5FF2AD7C1AA467630092F66C /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		84DFE13729867B0500487C9A /* CustomPresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentAnimationController.swift; sourceTree = "<group>"; };
@@ -52,13 +38,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5FF2AD671AA45CF60092F66C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -66,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				5FF2AD571AA45CF60092F66C /* CustomTransitions */,
-				5FF2AD6D1AA45CF60092F66C /* CustomTransitionsTests */,
 				5FF2AD561AA45CF60092F66C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				5FF2AD551AA45CF60092F66C /* CustomTransitions.app */,
-				5FF2AD6A1AA45CF60092F66C /* CustomTransitionsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,23 +81,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5FF2AD6D1AA45CF60092F66C /* CustomTransitionsTests */ = {
-			isa = PBXGroup;
-			children = (
-				5FF2AD701AA45CF60092F66C /* CustomTransitionsTests.swift */,
-				5FF2AD6E1AA45CF60092F66C /* Supporting Files */,
-			);
-			path = CustomTransitionsTests;
-			sourceTree = "<group>";
-		};
-		5FF2AD6E1AA45CF60092F66C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5FF2AD6F1AA45CF60092F66C /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,24 +101,6 @@
 			productReference = 5FF2AD551AA45CF60092F66C /* CustomTransitions.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5FF2AD691AA45CF60092F66C /* CustomTransitionsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5FF2AD771AA45CF60092F66C /* Build configuration list for PBXNativeTarget "CustomTransitionsTests" */;
-			buildPhases = (
-				5FF2AD661AA45CF60092F66C /* Sources */,
-				5FF2AD671AA45CF60092F66C /* Frameworks */,
-				5FF2AD681AA45CF60092F66C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5FF2AD6C1AA45CF60092F66C /* PBXTargetDependency */,
-			);
-			name = CustomTransitionsTests;
-			productName = CustomTransitionsTests;
-			productReference = 5FF2AD6A1AA45CF60092F66C /* CustomTransitionsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -171,10 +113,6 @@
 					5FF2AD541AA45CF60092F66C = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = WS8S43M437;
-					};
-					5FF2AD691AA45CF60092F66C = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 5FF2AD541AA45CF60092F66C;
 					};
 				};
 			};
@@ -193,7 +131,6 @@
 			projectRoot = "";
 			targets = (
 				5FF2AD541AA45CF60092F66C /* CustomTransitions */,
-				5FF2AD691AA45CF60092F66C /* CustomTransitionsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -207,13 +144,6 @@
 				5FF2AD651AA45CF60092F66C /* LaunchScreen.xib in Resources */,
 				5FF2AD621AA45CF60092F66C /* Images.xcassets in Resources */,
 				5FF2AD7B1AA45F680092F66C /* bike_traveler.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5FF2AD681AA45CF60092F66C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,23 +161,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5FF2AD661AA45CF60092F66C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5FF2AD711AA45CF60092F66C /* CustomTransitionsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5FF2AD6C1AA45CF60092F66C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5FF2AD541AA45CF60092F66C /* CustomTransitions */;
-			targetProxy = 5FF2AD6B1AA45CF60092F66C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5FF2AD5E1AA45CF60092F66C /* Main.storyboard */ = {
@@ -308,6 +222,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -343,6 +258,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -374,40 +290,6 @@
 			};
 			name = Release;
 		};
-		5FF2AD781AA45CF60092F66C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CustomTransitionsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CustomTransitions.app/CustomTransitions";
-			};
-			name = Debug;
-		};
-		5FF2AD791AA45CF60092F66C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = CustomTransitionsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CustomTransitions.app/CustomTransitions";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -425,15 +307,6 @@
 			buildConfigurations = (
 				5FF2AD751AA45CF60092F66C /* Debug */,
 				5FF2AD761AA45CF60092F66C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5FF2AD771AA45CF60092F66C /* Build configuration list for PBXNativeTarget "CustomTransitionsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5FF2AD781AA45CF60092F66C /* Debug */,
-				5FF2AD791AA45CF60092F66C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
