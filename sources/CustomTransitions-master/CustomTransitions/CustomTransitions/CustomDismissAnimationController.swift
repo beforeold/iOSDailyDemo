@@ -14,7 +14,7 @@ class CustomDismissAnimationController: NSObject {
 
 extension CustomDismissAnimationController: UIViewControllerAnimatedTransitioning {
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-    return 0.5
+    return 2
   }
   
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -24,17 +24,24 @@ extension CustomDismissAnimationController: UIViewControllerAnimatedTransitionin
     }
     
     let finalFrameForVC = transitionContext.finalFrame(for: toViewController)
-    let containerView = transitionContext.containerView
     
     toViewController.view.frame = finalFrameForVC
     toViewController.view.alpha = 0.5
-//    containerView.addSubview(toViewController.view)
-//    containerView.sendSubviewToBack(toViewController.view)
+    
+//        let containerView = transitionContext.containerView
+//        containerView.addSubview(toViewController.view)
+//        containerView.sendSubviewToBack(toViewController.view)
     
     UIView.animate(withDuration: transitionDuration(using: transitionContext)) {
-      fromViewController.view.frame = CGRectInset(fromViewController.view.frame, fromViewController.view.frame.width * 0.5, fromViewController.view.frame.height * 0.5)
+      let finalFrameForFromVC = CGRectInset(
+        fromViewController.view.frame,
+        fromViewController.view.frame.width * 0.5,
+        fromViewController.view.frame.height * 0.5
+      )
+      fromViewController.view.frame = finalFrameForFromVC
       toViewController.view.alpha = 1.0
     } completion: { _ in
+      print(fromViewController)
       transitionContext.completeTransition(true)
     }
   }

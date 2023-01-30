@@ -67,14 +67,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bike_traveler.png" translatesAutoresizingMaskIntoConstraints="NO" id="TjU-7v-PTa">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bike_traveler.png" translatesAutoresizingMaskIntoConstraints="NO" id="TjU-7v-PTa">
+                                <rect key="frame" x="16" y="59" width="361" height="450"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="450" id="Ibt-QI-Lw6"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICd-2Z-Mdu">
-                                <rect key="frame" x="16" y="470" width="568" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICd-2Z-Mdu">
+                                <rect key="frame" x="16" y="529" width="361" height="30"/>
                                 <state key="normal" title="Dismiss">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -85,10 +85,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="TjU-7v-PTa" secondAttribute="trailing" constant="-16" id="0Ld-9O-yVf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TjU-7v-PTa" secondAttribute="trailing" id="0Ld-9O-yVf"/>
                             <constraint firstItem="ICd-2Z-Mdu" firstAttribute="leading" secondItem="toY-k9-7f9" secondAttribute="leadingMargin" id="A94-4R-Za4"/>
                             <constraint firstItem="ICd-2Z-Mdu" firstAttribute="top" secondItem="TjU-7v-PTa" secondAttribute="bottom" constant="20" id="FwR-FL-IPa"/>
-                            <constraint firstItem="TjU-7v-PTa" firstAttribute="leading" secondItem="toY-k9-7f9" secondAttribute="leadingMargin" constant="-16" id="SfI-dc-MZi"/>
+                            <constraint firstItem="TjU-7v-PTa" firstAttribute="leading" secondItem="toY-k9-7f9" secondAttribute="leadingMargin" id="SfI-dc-MZi"/>
                             <constraint firstItem="ICd-2Z-Mdu" firstAttribute="trailing" secondItem="toY-k9-7f9" secondAttribute="trailingMargin" id="VNn-Mw-NvI"/>
                             <constraint firstItem="TjU-7v-PTa" firstAttribute="top" secondItem="toY-k9-7f9" secondAttribute="topMargin" id="imm-yV-bEr"/>
                         </constraints>
@@ -110,8 +110,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Fa-VD-yRG">
-                                <rect key="frame" x="16" y="317" width="568" height="150"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Fa-VD-yRG">
+                                <rect key="frame" x="16" y="356" width="361" height="150"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="a8d-TN-OOa"/>
@@ -120,8 +120,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bike_traveler.png" translatesAutoresizingMaskIntoConstraints="NO" id="9wG-7L-NF8">
-                                <rect key="frame" x="16" y="72" width="568" height="225"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bike_traveler.png" translatesAutoresizingMaskIntoConstraints="NO" id="9wG-7L-NF8">
+                                <rect key="frame" x="16" y="111" width="361" height="225"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="225" id="Rit-Hh-bLe"/>
                                 </constraints>
