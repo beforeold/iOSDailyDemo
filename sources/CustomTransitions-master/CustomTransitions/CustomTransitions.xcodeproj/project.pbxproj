@@ -15,6 +15,7 @@
 		5FF2AD7B1AA45F680092F66C /* bike_traveler.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF2AD7A1AA45F680092F66C /* bike_traveler.png */; };
 		5FF2AD7D1AA467630092F66C /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF2AD7C1AA467630092F66C /* ActionViewController.swift */; };
 		84DFE13829867B0500487C9A /* CustomPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DFE13729867B0500487C9A /* CustomPresentAnimationController.swift */; };
+		84DFE13A29874EA500487C9A /* CustomDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DFE13929874EA500487C9A /* CustomDismissAnimationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5FF2AD7A1AA45F680092F66C /* bike_traveler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bike_traveler.png; sourceTree = "<group>"; };
 		5FF2AD7C1AA467630092F66C /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		84DFE13729867B0500487C9A /* CustomPresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentAnimationController.swift; sourceTree = "<group>"; };
+		84DFE13929874EA500487C9A /* CustomDismissAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDismissAnimationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				5FACF6631AA5AEBF009C6C88 /* ItemsTableViewController.swift */,
 				5FF2AD7C1AA467630092F66C /* ActionViewController.swift */,
 				84DFE13729867B0500487C9A /* CustomPresentAnimationController.swift */,
+				84DFE13929874EA500487C9A /* CustomDismissAnimationController.swift */,
 				5FF2AD5E1AA45CF60092F66C /* Main.storyboard */,
 				5FF2AD611AA45CF60092F66C /* Images.xcassets */,
 				5FF2AD631AA45CF60092F66C /* LaunchScreen.xib */,
@@ -155,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FF2AD7D1AA467630092F66C /* ActionViewController.swift in Sources */,
+				84DFE13A29874EA500487C9A /* CustomDismissAnimationController.swift in Sources */,
 				84DFE13829867B0500487C9A /* CustomPresentAnimationController.swift in Sources */,
 				5FF2AD5B1AA45CF60092F66C /* AppDelegate.swift in Sources */,
 				5FACF6641AA5AEBF009C6C88 /* ItemsTableViewController.swift in Sources */,
