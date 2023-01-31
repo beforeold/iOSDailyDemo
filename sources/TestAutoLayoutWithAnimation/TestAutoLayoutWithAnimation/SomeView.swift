@@ -19,6 +19,12 @@ class SomeView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
   
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    
+    print(subviews[0].frame)
+  }
+  
   func setupUI() {
     let button = UIButton(type: .custom)
     button.setTitle("Click", for: .normal)
@@ -26,6 +32,10 @@ class SomeView: UIView {
     
     button.translatesAutoresizingMaskIntoConstraints = false
     button.backgroundColor = .yellow
+    
+    clipsToBounds = true
+    
+//    button.frame = CGRect(x: 10, y: 10, width: 80, height: 80)
     
     NSLayoutConstraint.activate([
       button.topAnchor.constraint(equalTo: topAnchor, constant: 10),
