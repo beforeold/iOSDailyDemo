@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     if count % 2 == 0 {
       UIView.animate(withDuration: 2) {
         self.grayView.frame = CGRect(x: 100, y: 100, width: 0, height: 0)
+        self.grayView.layoutIfNeeded()
       }
     } else {
       self.grayView.frame = CGRectMake(100, 100, 100, SomeView.viewHeght)
