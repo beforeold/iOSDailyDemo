@@ -67,7 +67,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bike_traveler.png" translatesAutoresizingMaskIntoConstraints="NO" id="TjU-7v-PTa">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="bike_traveler.png" translatesAutoresizingMaskIntoConstraints="NO" id="TjU-7v-PTa">
                                 <rect key="frame" x="16" y="59" width="361" height="450"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="450" id="Ibt-QI-Lw6"/>
@@ -85,11 +85,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="TjU-7v-PTa" secondAttribute="trailing" id="0Ld-9O-yVf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TjU-7v-PTa" secondAttribute="trailing" priority="750" id="0Ld-9O-yVf"/>
                             <constraint firstItem="ICd-2Z-Mdu" firstAttribute="leading" secondItem="toY-k9-7f9" secondAttribute="leadingMargin" id="A94-4R-Za4"/>
                             <constraint firstItem="ICd-2Z-Mdu" firstAttribute="top" secondItem="TjU-7v-PTa" secondAttribute="bottom" constant="20" id="FwR-FL-IPa"/>
                             <constraint firstItem="TjU-7v-PTa" firstAttribute="leading" secondItem="toY-k9-7f9" secondAttribute="leadingMargin" id="SfI-dc-MZi"/>
-                            <constraint firstItem="ICd-2Z-Mdu" firstAttribute="trailing" secondItem="toY-k9-7f9" secondAttribute="trailingMargin" id="VNn-Mw-NvI"/>
+                            <constraint firstItem="ICd-2Z-Mdu" firstAttribute="trailing" secondItem="toY-k9-7f9" secondAttribute="trailingMargin" priority="750" id="VNn-Mw-NvI"/>
                             <constraint firstItem="TjU-7v-PTa" firstAttribute="top" secondItem="toY-k9-7f9" secondAttribute="topMargin" id="imm-yV-bEr"/>
                         </constraints>
                     </view>
