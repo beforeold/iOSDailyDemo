@@ -28,7 +28,7 @@ extension CustomDismissAnimationController: UIViewControllerAnimatedTransitionin
     toViewController.view.frame = finalFrameForVC
     toViewController.view.alpha = 0.5
     
-//        let containerView = transitionContext.containerView
+        let containerView = transitionContext.containerView
 //        containerView.addSubview(toViewController.view)
 //        containerView.sendSubviewToBack(toViewController.view)
     
@@ -39,7 +39,11 @@ extension CustomDismissAnimationController: UIViewControllerAnimatedTransitionin
         fromViewController.view.frame.height * 0.5
       )
       fromViewController.view.frame = finalFrameForFromVC
+      
+      containerView.layoutIfNeeded()
+      print(containerView)
       toViewController.view.alpha = 1.0
+      
     } completion: { _ in
       print(fromViewController)
       transitionContext.completeTransition(true)

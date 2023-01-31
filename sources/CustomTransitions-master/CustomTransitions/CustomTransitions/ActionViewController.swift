@@ -13,35 +13,34 @@ class ActionViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-//    self.view.subviews.forEach {
-//      ($0 as? UIImageView)?.removeFromSuperview()
-//    }
-    
     view.backgroundColor = .yellow
     
-    print("viewDidLoad", view.subviews)
+    log()
   }
   
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     
-    print("viewDidLayoutSubviews", view.subviews)
+    log()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     
-    print("viewWillDisappear", view.subviews)
+    log()
   }
   
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     
-    print("viewDidDisappear", view.subviews)
+    log()
   }
   
   @IBAction func dismiss(sender: UIButton) {
     dismiss(animated: true)
   }
   
+  func log(function: String = #function) {
+    print(function, view.subviews[0].frame)
+  }
 }

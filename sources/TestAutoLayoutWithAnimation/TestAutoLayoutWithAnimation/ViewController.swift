@@ -27,7 +27,8 @@ class ViewController: UIViewController {
     if count % 2 == 0 {
       UIView.animate(withDuration: 2) {
         // self.toCenterAnimation()
-        self.toOriginAnimation()
+        // self.toOriginAnimation()
+        self.toOriginAnimationZeroSize()
       }
     } else {
       self.grayView.frame = CGRectMake(100, 100, SomeView.viewHeght, SomeView.viewHeght)
@@ -58,6 +59,12 @@ class ViewController: UIViewController {
   
   func toOriginAnimation() {
     self.grayView.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
+    
+    self.view.layoutIfNeeded()
+  }
+  
+  func toOriginAnimationZeroSize() {
+    self.grayView.frame = CGRect(x: 100, y: 100, width: 0, height: 0)
     
     self.view.layoutIfNeeded()
   }
