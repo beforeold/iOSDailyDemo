@@ -36,6 +36,18 @@ class ViewController: UIViewController {
     self.count += 1
   }
   
+  /*
+   得到一个线索，尝试了一下可以解决问题（虽然还不理解），解法就是在动画 block 中使用
+
+   self.view.layoutIfNeeded()
+
+   （不是 grayView 调用）
+
+   参考：
+   Frames changing suddenly instead of animating [iOS]
+   https://stackoverflow.com/a/48668784/7333880
+   */
+  
   func toCenterAnimation() {
     let center = self.grayView.center
     self.grayView.frame.size = CGSize(width: 100, height: 100)
