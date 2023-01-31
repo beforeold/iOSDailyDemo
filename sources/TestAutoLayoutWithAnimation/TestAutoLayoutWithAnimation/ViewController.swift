@@ -14,7 +14,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    grayView.frame = CGRectMake(100, 100, 100, SomeView.viewHeght)
+    grayView.frame = CGRectMake(100, 100, SomeView.viewHeght, SomeView.viewHeght)
     grayView.backgroundColor = .lightGray
     view.addSubview(grayView)
   }
@@ -26,14 +26,28 @@ class ViewController: UIViewController {
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     if count % 2 == 0 {
       UIView.animate(withDuration: 2) {
-        self.grayView.frame = CGRect(x: 100, y: 100, width: 0, height: 0)
-        self.grayView.layoutIfNeeded()
+        // self.toCenterAnimation()
+        self.toOriginAnimation()
       }
     } else {
-      self.grayView.frame = CGRectMake(100, 100, 100, SomeView.viewHeght)
+      self.grayView.frame = CGRectMake(100, 100, SomeView.viewHeght, SomeView.viewHeght)
     }
     
     self.count += 1
+  }
+  
+  func toCenterAnimation() {
+    let center = self.grayView.center
+    self.grayView.frame.size = CGSize(width: 100, height: 100)
+    self.grayView.center = center
+    
+    self.view.layoutIfNeeded()
+  }
+  
+  func toOriginAnimation() {
+    self.grayView.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
+    
+    self.view.layoutIfNeeded()
   }
 }
 
