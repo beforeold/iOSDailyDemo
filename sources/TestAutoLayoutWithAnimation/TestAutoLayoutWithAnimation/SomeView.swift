@@ -33,8 +33,6 @@ class SomeView: UIView {
     button.translatesAutoresizingMaskIntoConstraints = false
     button.backgroundColor = .yellow
     
-    clipsToBounds = true
-    
 //    button.frame = CGRect(x: 10, y: 10, width: 80, height: 80)
     
     NSLayoutConstraint.activate([
@@ -45,7 +43,12 @@ class SomeView: UIView {
         ret.priority = .defaultHigh
         return ret
       }(),
-      button.heightAnchor.constraint(equalToConstant: 80),
+      // button.heightAnchor.constraint(equalToConstant: 80),
+      {
+        let ret = button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+        ret.priority = .defaultHigh
+        return ret
+      }(),
     ])
   }
   
