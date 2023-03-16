@@ -26,4 +26,23 @@ class ViewController: UIViewController {
     
     return ""
   }
+  
+  func subs(view: UIView) -> [UIView] {
+    var ret: [UIView] = []
+    var level: [UIView] = []
+    
+    level.append(view)
+    
+    while (level.count > 0) {
+      // append level
+      ret.append(contentsOf: level)
+      
+      // next level
+      level = level.reduce(into: []) { partialResult, view in
+        partialResult += view.subviews
+      }
+    }
+    
+    return ret
+  }
 }
