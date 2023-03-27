@@ -20,7 +20,21 @@ class SectionHeadersFootersViewController: UIViewController {
         navigationItem.title = "Section Headers/Footers"
         configureHierarchy()
         configureDataSource()
+      
+      let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onDelete))
+      navigationItem.rightBarButtonItem = button
     }
+  
+  @objc func onDelete() {
+    var snapshot = self.dataSource.snapshot()
+    let sections = snapshot.sectionIdentifiers
+    guard sections.count >= 2 else {
+      return
+    }
+    
+    snapshot.deleteSections([sections[1]])
+    self.dataSource.apply(snapshot, animatingDifferences: true)
+  }
 }
 
 extension SectionHeadersFootersViewController {
@@ -98,7 +112,7 @@ extension SectionHeadersFootersViewController {
         }
 
         // initial data
-        let itemsPerSection = 5
+        let itemsPerSection = 4
         let sections = Array(0..<5)
         var snapshot = NSDiffableDataSourceSnapshot<Int, Int>()
         var itemOffset = 0
