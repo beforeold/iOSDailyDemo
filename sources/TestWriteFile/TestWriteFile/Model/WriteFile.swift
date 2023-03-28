@@ -17,7 +17,7 @@ struct WriteFile {
   static func createLargeFile(
     fileSize: Int64,
     fileURL: URL,
-    progressHandler: @escaping (Int64, URL) -> Void
+    progressHandler: (Int64, URL) -> Void
   ) -> URL {
     let bufferSize = 1 * 1024 * 1024 // 1MB
     
@@ -26,31 +26,27 @@ struct WriteFile {
     var current: Int64 = 0
     func progress(count: Int64) {
       current += Int64(count)
-      DispatchQueue.main.async {
-        progressHandler(current, fileURL)
-      }
+      progressHandler(current, fileURL)
     }
     
-    DispatchQueue.global().async {
-      do {
-        let fileHandle = try FileHandle(forWritingTo: fileURL)
-        for _ in 0..<(fileSize / Int64(bufferSize)) {
-          let data = Data(count: bufferSize).map { _ in UInt8.random(in: 0...255) }
-          try fileHandle.write(contentsOf: data)
-          progress(count: Int64(data.count))
-        }
-        let remainingBytes = fileSize % Int64(bufferSize)
-        if remainingBytes > 0 {
-          let lastData = Data(count: Int(remainingBytes)).map { _ in UInt8.random(in: 0...255) }
-          try fileHandle.write(contentsOf: lastData)
-          progress(count: Int64(lastData.count))
-        }
-        fileHandle.closeFile()
-        print("Large file created at: \(fileURL)")
-      } catch {
-        print("Error creating large file: \(error)")
-        progress(count: fileSize)
+    do {
+      let fileHandle = try FileHandle(forWritingTo: fileURL)
+      for _ in 0..<(fileSize / Int64(bufferSize)) {
+        let data = Data(count: bufferSize).map { _ in UInt8.random(in: 0...255) }
+        try fileHandle.write(contentsOf: data)
+        progress(count: Int64(data.count))
       }
+      let remainingBytes = fileSize % Int64(bufferSize)
+      if remainingBytes > 0 {
+        let lastData = Data(count: Int(remainingBytes)).map { _ in UInt8.random(in: 0...255) }
+        try fileHandle.write(contentsOf: lastData)
+        progress(count: Int64(lastData.count))
+      }
+      fileHandle.closeFile()
+      print("Large file created at: \(fileURL)")
+    } catch {
+      print("Error creating large file: \(error)")
+      progress(count: fileSize)
     }
     
     return fileURL
@@ -61,6 +57,15 @@ struct WriteFile {
     do {
       // try fileManager.copyItem(at: sourceURL, to: destinationURL)
       let fileData = try Data(contentsOf: sourceURL)
+      try fileData.write(to: destinationURL)
+      print("File duplicated successfully")
+    } catch {
+      print("Error duplicating file: \(error)")
+    }
+  }
+  
+  static func duplicateFile(fileData: Data, destinationURL: URL) {
+    do {
       try fileData.write(to: destinationURL)
       print("File duplicated successfully")
     } catch {
