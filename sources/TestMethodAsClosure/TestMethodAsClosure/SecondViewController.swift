@@ -60,6 +60,14 @@ class SecondViewController: UIViewController {
       self.showTextLog(value: arg)
     }
     self.callbackWithArg = foo
+    
+    self.callbackWithArg = weakify(self, { strongSelf, arg in
+      strongSelf.showTextLog(value: arg)
+    })
+    
+    DemoNetwork.request(callback: weakify(self, { strongSelf, value in
+      self.showTextLog(value: value)
+    }))
   }
   
   deinit {
@@ -83,5 +91,10 @@ class SecondViewController: UIViewController {
   
   func showTextLog(value: Int) {
     print(#function)
+  }
+}
+
+struct DemoNetwork {
+  static func request(callback: @escaping (Int) -> Void) {
   }
 }
