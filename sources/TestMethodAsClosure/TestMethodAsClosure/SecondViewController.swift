@@ -65,9 +65,23 @@ class SecondViewController: UIViewController {
       strongSelf.showTextLog(value: arg)
     })
     
-    DemoNetwork.request(callback: weakify(self, { strongSelf, value in
+    demoRequest()
+  }
+  
+  func demoRequest() {
+    DemoNetwork.request(
+      callback: weakify(self) { (self, value) in
       self.showTextLog(value: value)
-    }))
+    })
+
+    DemoNetwork.request(
+      callback: WeakWrapper(self).build { `self`, arg in
+        self.showTextLog(value: arg)
+    })
+    
+    DemoNetwork.request { [weak self] value in
+      self?.showTextLog(value: value)
+    }
   }
   
   deinit {
