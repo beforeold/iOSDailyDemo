@@ -30,6 +30,15 @@ class WeakWrapper<T: AnyObject> {
       return function(baseValue)()
     }
   }
+  
+  func build<Arg>(
+    _ function: @escaping (T, Arg) -> Void
+  ) -> (Arg) -> Void {
+    return { [weak baseValue] arg in
+      guard let baseValue = baseValue else { return }
+      function(baseValue, arg)
+    }
+  }
 }
 
 func weakify<T: AnyObject, Arg>(
