@@ -55,7 +55,7 @@ class SecondViewController: UIViewController {
     self.delegate.delegate(on: self) { (self, _) in
       self.showTextLog()
     }
-
+    
     let foo = weakify(self) { (self, arg) in
       self.showTextLog(value: arg)
     }
@@ -69,18 +69,19 @@ class SecondViewController: UIViewController {
   }
   
   func demoRequest() {
-    DemoNetwork.request(
-      callback: weakify(self) { (self, value) in
+    let call = weakify(self) { (self, value) in
       self.showTextLog(value: value)
-    })
-
-    DemoNetwork.request(
-      callback: WeakWrapper(self).build { `self`, arg in
-        self.showTextLog(value: arg)
-    })
+    }
+    DemoNetwork.request(callback: call)
+    
+    let callback = WeakWrapper(self).build { `self`, arg in
+      self.showTextLog(value: arg)
+    }
+    DemoNetwork.request(callback: callback)
     
     DemoNetwork.request { [weak self] value in
-      self?.showTextLog(value: value)
+      guard let self = self else { return }
+      self.showTextLog(value: value)
     }
   }
   
