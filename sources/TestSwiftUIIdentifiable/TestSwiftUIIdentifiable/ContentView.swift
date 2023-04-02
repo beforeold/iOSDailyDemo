@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-class Person: Identifiable {
-  var id: UUID = .init()
+struct Person: Identifiable {
+  let id: UUID = .init()
   
   var age: Int = 0
 }
@@ -35,12 +35,10 @@ struct ContentView: View {
     
     var person = self.persons[index]
     person.age += 10
-//    self.persons[index] = person
-//    self.persons[index] = person
     
-//    withAnimation {
-//      self.persons[index] = person
-//    }
+    withAnimation {
+      self.persons[index] = person
+    }
   }
   
   var body: some View {
@@ -49,7 +47,7 @@ struct ContentView: View {
   
   var content: some View {
     List(persons) { person in
-      Text("age: \(person.age)")
+      Text("age: \(person.id)")
         .onTapGesture {
           self.update(person: person)
         }
