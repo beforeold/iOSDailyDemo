@@ -23,10 +23,17 @@ struct ContentView: View {
   ]
   
   private func update(person: Person) {
-//     self.persons = persons
-//     self.persons[0].age += 10
-//    return
-    
+    print(#function)
+    updatePlusAge(person: person)
+  }
+  
+  private func updateResetPersons() {
+    var persons = self.persons
+    persons[0] = persons[0]
+    self.persons = persons
+  }
+  
+  private func updatePlusAge(person: Person) {
     guard let index = persons.firstIndex(where: { p in
       p.id == person.id
     }) else {
@@ -42,15 +49,20 @@ struct ContentView: View {
   }
   
   var body: some View {
+    print(#function)
     return content
   }
   
   var content: some View {
     List(persons) { person in
-      Text("age: \(person.id)")
-        .onTapGesture {
-          self.update(person: person)
-        }
+      VStack(alignment: .leading) {
+        Text("Age: \(person.age)")
+        Text("ID: \(person.id)")
+          .foregroundColor(.gray)
+      }
+      .onTapGesture {
+        self.update(person: person)
+      }
     }
   }
 }
