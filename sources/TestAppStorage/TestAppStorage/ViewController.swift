@@ -10,12 +10,19 @@ import SwiftUI
 class ViewController: UIHostingController<HomeView> {
 
   required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder, rootView: HomeView())
+    super.init(coder: aDecoder, rootView: HomeView(flag: sharedBinding))
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+  }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    sharedBinding.wrappedValue = true
+  }
+  
+  func mockObserver() {
     Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(onTick), userInfo: nil, repeats: true)
     
     NotificationCenter.default.addObserver(
