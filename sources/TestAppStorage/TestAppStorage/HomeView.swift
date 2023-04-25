@@ -18,13 +18,38 @@ class ViewModel: ObservableObject {
   static let shared: ViewModel = .init()
 }
 
+var sharedFlag = false {
+  didSet {
+    print("did set", sharedFlag)
+  }
+}
+
+let sharedBinding: Binding<Bool> = .init {
+  print("get value", sharedFlag)
+  return sharedFlag
+} set: { newValue in
+  print("binding set newValue", newValue)
+  sharedFlag = newValue
+}
+
+
 struct HomeView: View {
 
+  @Binding var flag: Bool
+  
   var body: some View {
-    Text("count: \(countValue)")
-      .onTapGesture {
-        self.countValue += 10
+    VStack(spacing: 20) {
+      if flag {
+        Text("true")
+      } else {
+        Text("false")
       }
+      
+      Text("count: \(countValue)")
+        .onTapGesture {
+          self.countValue += 10
+        }
+    }
   }
   
   // MARK: - using property
@@ -55,6 +80,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
   static var previews: some View {
-    HomeView()
+    HomeView(flag: .constant(false))
   }
 }
