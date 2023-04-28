@@ -17,6 +17,7 @@ struct ContentView: View {
     }
     .padding()
     .onAppear {
+      // call this method will embem libSwift_concurrency.dylib into ipa Frameworks
       self.foo()
     }
   }
