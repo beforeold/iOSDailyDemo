@@ -17,11 +17,13 @@ print("Hello, World!")
   static func buildBlock<C0, C1>(_ c0: @autoclosure () -> C0, _ c1: @autoclosure () -> C1 ) -> C1 {
     print("build block begin")
 
-    _ = c0()
-    let value = c1()
+    let v1 = c0()
+    print("v1", v1)
+    let v2 = c1()
+    print("v2", v2)
     
     print("build block end")
-    return value
+    return v2
   }
 }
 
@@ -77,12 +79,16 @@ print("")
 bar()
 
 
+func provideInt() -> Int {
+  print(#function)
+  return 5
+}
 
 @Logged
-func forLog() {
-  let value = 5
-  print("for log \(value)")
-  print("ok")
+func forLog() -> Int {
+  var value = 5
+  print("value", value)
+  provideInt()
 }
 
 print("")
