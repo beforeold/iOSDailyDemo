@@ -29,7 +29,8 @@ class ViewController: UIHostingController<HomeView> {
     button.setTitleColor(.blue, for: .normal)
     view.addSubview(button)
     
-    self.rootView = HomeView(flag: $viewModel.flag)
+    // self.rootView = HomeView(flag: $viewModel.flag)
+    self.rootView = HomeView(flag: sharedBinding)
   }
   
   @objc func onToggleFlag() {
