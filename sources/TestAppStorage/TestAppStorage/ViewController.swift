@@ -8,18 +8,35 @@
 import SwiftUI
 
 class ViewController: UIHostingController<HomeView> {
-
+  
+  @StateObject var viewModel: ViewModel = .shared
+  
   required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder, rootView: HomeView(flag: sharedBinding))
+    super.init(coder: aDecoder, rootView: HomeView(flag: .constant(true)))
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
+    resetRootView()
   }
   
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+  func resetRootView() {
+    let button = UIButton(type: .custom)
+    button.frame = CGRectMake(100, 100, 200, 100)
+    button.setTitle("onToggleFlag", for: .normal)
+    button.addTarget(self, action: #selector(onToggleFlag), for: .touchUpInside)
+    button.setTitleColor(.blue, for: .normal)
+    view.addSubview(button)
+    
+    self.rootView = HomeView(flag: $viewModel.flag)
+  }
+  
+  @objc func onToggleFlag() {
+    print(#function)
     sharedBinding.wrappedValue = true
+    
+    viewModel.flag = true
   }
   
   func mockObserver() {

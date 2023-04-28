@@ -8,6 +8,11 @@
 import SwiftUI
 
 class ViewModel: ObservableObject {
+  
+  init() {
+    print("view model init")
+  }
+  
   @AppStorage("settings.count")
   var count: Int = 0 {
     didSet {
@@ -16,6 +21,8 @@ class ViewModel: ObservableObject {
   }
   
   static let shared: ViewModel = .init()
+  
+  @Published var flag = false
 }
 
 var sharedFlag = false {
@@ -39,10 +46,13 @@ struct HomeView: View {
   
   var body: some View {
     VStack(spacing: 20) {
-      if flag {
-        Text("true")
-      } else {
-        Text("false")
+      HStack {
+        Text("Flag Value")
+        if flag {
+          Text("true")
+        } else {
+          Text("false")
+        }
       }
       
       Text("count: \(countValue)")
@@ -50,10 +60,12 @@ struct HomeView: View {
           self.countValue += 10
         }
     }
+    .background(Color.gray)
   }
   
   // MARK: - using property
   @AppStorage("settings.count") var count: Int = 0
+  
   var countValue: Int {
     get {
       count
