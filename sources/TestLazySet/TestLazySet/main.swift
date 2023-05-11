@@ -30,3 +30,4 @@ let person = Person()
 person.name = "Hank"
 print("name:", person.name)
 
+print("ChatGPT back again～")
