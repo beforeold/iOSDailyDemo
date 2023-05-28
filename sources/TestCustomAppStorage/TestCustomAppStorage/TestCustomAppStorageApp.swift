@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct TestCustomAppStorageApp: App {
+  
+  
     var body: some Scene {
         WindowGroup {
             ContentView()
