@@ -15,6 +15,11 @@ class ViewModel: ObservableObject {
   
   @AppStorage("settings.count")
   var count: Int = 0 {
+    willSet {
+      DispatchQueue.main.async {
+        self.objectWillChange.send()
+      }
+    }
     didSet {
       print("")
     }
@@ -22,7 +27,13 @@ class ViewModel: ObservableObject {
   
   static let shared: ViewModel = .init()
   
-  @Published var flag = false
+  @Published var flag = false {
+    willSet {
+      DispatchQueue.main.async {
+        self.objectWillChange.send()
+      }
+    }
+  }
 }
 
 var sharedFlag = false {
@@ -92,7 +103,8 @@ struct HomeView: View {
 //          self.flag2 = true
 //          return
           DispatchQueue.global().async {
-            viewModel.flag.toggle()
+             viewModel.flag.toggle()
+//            viewModel.count += 7
           }
         }
     }
@@ -102,28 +114,28 @@ struct HomeView: View {
   // MARK: - using property
   @AppStorage("settings.count") var count: Int = 0
   
-  var countValue: Int {
-    get {
-      count
-    }
-
-    nonmutating set {
-      count = newValue
-    }
-  }
-  
-  // MARK: - using ViewModel
-  @StateObject var viewModel = ViewModel.shared
-//
 //  var countValue: Int {
 //    get {
-//      viewModel.count
+//      count
 //    }
 //
 //    nonmutating set {
-//      viewModel.count = newValue
+//      count = newValue
 //    }
 //  }
+  
+  // MARK: - using ViewModel
+  @StateObject var viewModel = ViewModel.shared
+
+  var countValue: Int {
+    get {
+      viewModel.count
+    }
+
+    nonmutating set {
+      viewModel.count = newValue
+    }
+  }
 }
 
 struct HomeView_Previews: PreviewProvider {
