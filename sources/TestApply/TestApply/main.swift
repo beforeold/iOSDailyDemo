@@ -12,13 +12,30 @@ struct Begin<T> {
   init(_ value: T) {
     self.value = value
   }
-  
+}
+
+extension Begin {
   func apply(_ action: (T) -> Void) -> Self {
     action(value)
     return self
   }
+}
+
+
+/// Thenable API
+extension Begin {
+  func then(_ action: (T) -> Void) -> T {
+    action(value)
+    return value
+  }
   
-  func end() -> T {
+  func `do`(_ action: (T) -> Void) {
+    action(value)
+  }
+  
+  func with(_ action: (inout T) -> Void) -> T {
+    var value = value
+    action(&value)
     return value
   }
 }
@@ -31,15 +48,9 @@ func apply<T>(_ value: T, _ action: (T) -> Void) -> T {
 }
 
 
-let value = Begin(5).apply { value in
+let value: Int = Begin(5).then { value in
   print(value)
 }
-.apply { value in
-  print(value)
-}
-.end()
-print(value)
-
 
 let v2 = apply(5) { value in
   print(value)
