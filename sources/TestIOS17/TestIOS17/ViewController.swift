@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import Observation
+
+@Observable
+class Car {
+  var name: String = ""
+}
 
 class ViewController: UIViewController {
 
@@ -14,6 +20,8 @@ class ViewController: UIViewController {
     // Do any additional setup after loading the view.
     
     viewIsAppearing(true)
+    
+    let car = Car()
   }
   
   func testSensitiveContentAnalysis() {
