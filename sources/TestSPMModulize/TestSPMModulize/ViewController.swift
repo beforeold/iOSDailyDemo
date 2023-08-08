@@ -15,9 +15,10 @@ class ViewController: UIViewController {
     
     
     let lib = MyLibrary()
-    print(lib.text)
+    print("lib:", lib.text)
+    
+    let file = File(name: "myName")
+    print("name:", file.name)
   }
-
-
 }
 
