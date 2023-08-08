@@ -6,14 +6,22 @@
 //
 
 import UIKit
+import MyLibrary
 
 class ViewController: UIViewController {
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+    
+    
+    testLib()
   }
-
-
+  
+  private func testLib() {
+    let ins = MyLibrary()
+    
+    print(ins.text)
+  }
+  
 }
 
