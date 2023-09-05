@@ -19,17 +19,28 @@ struct ContentView : View {
   
   @State private var showingResult = false
   
+  let showsHisotry = true
+  
   var body: some View {
+    let _ = print(#function, "ContentView")
     VStack(spacing: 12) {
       Spacer()
-      Button("操作履历: \(model.history.count)") {
-        self.editingHistory = true
-      }.sheet(isPresented: self.$editingHistory) {
+      if showsHisotry {
         HistoryView(
           model: self.model,
           editingHistory: $editingHistory
         )
+      } else {
+        Button("操作履历: \(model.history.count)") {
+          self.editingHistory = true
+        }.sheet(isPresented: self.$editingHistory) {
+          HistoryView(
+            model: self.model,
+            editingHistory: $editingHistory
+          )
+        }
       }
+      
       
       Text(
         model.brain.output
@@ -140,43 +151,5 @@ struct CalculatorButtonPad: View {
         CalculatorButtonRow(row: row)
       }
     }
-  }
-}
-
-struct HistoryView: View {
-  @Environment(\.dismiss) var dismiss
-  
-  @ObservedObject var model: CalculatorModel
-  @Binding var editingHistory: Bool
-  
-  var body: some View {
-    VStack(spacing: 20) {
-      HStack {
-        Button("Close") {
-          editingHistory = false
-        }
-        
-        Spacer()
-        
-        Button("Dismiss") {
-          dismiss()
-        }
-      }
-      .padding()
-      
-      if model.totalCount == 0 {
-        Text("没有履历")
-      } else {
-        HStack {
-          Text("履历").font(.headline)
-          Text("\(model.historyDetail)").lineLimit(nil)
-        }
-        HStack {
-          Text("显示").font(.headline)
-          Text("\(model.brain.output)")
-        }
-        Slider(value: $model.slidingIndex, in: 0...Float(model.totalCount), step: 1)
-      }
-    }.padding()
   }
 }
