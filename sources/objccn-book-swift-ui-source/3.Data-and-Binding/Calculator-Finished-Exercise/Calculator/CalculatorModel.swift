@@ -20,8 +20,8 @@ class CalculatorModel: ObservableObject {
         brain = brain.apply(item: item)
         history.append(item)
 
-        temporaryKept.removeAll()
-        slidingIndex = Float(totalCount)
+//        temporaryKept.removeAll()
+//        slidingIndex = Float(totalCount)
     }
 
     var historyDetail: String {
