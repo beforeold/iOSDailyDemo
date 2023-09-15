@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+  @StateObject private var tester = FaceImageTester()
+
   @State var showsDownloadView = false
+
+  @State var showsLabel = false
 
   var body: some View {
     VStack(spacing: 30) {
@@ -16,25 +20,37 @@ struct ContentView: View {
         showsDownloadView = true
       }
 
+      Button("Label") {
+        showsLabel = true
+      }
+
       Button("Test") {
-        onTest()
+        testAll()
       }
     }
     .padding()
     .sheet(isPresented: $showsDownloadView) {
       DownloadImagesView()
     }
-    .onAppear {
-      onTest()
+    .sheet(isPresented: $showsLabel) {
+      if let selected = tester.selectedInfo {
+        LabelPicker(
+          tester: tester
+        ) { isForward in
+          tester.handle(isForward: isForward, selected: selected)
+        } picker: { flag_ in
+          FaceImageTester.updateFront(flag: flag_, url: selected.item.url)
+        }
+
+      } else {
+        Text("not selected")
+      }
     }
   }
 
-  private func onTest() {
+  private func testAll() {
     Task {
       do {
-        let items = try await DataLoader.load()
-        let checkItems = Array(items.prefix(1000))
-        let tester = FaceImageTester(items: checkItems)
         try await tester.testFace()
       } catch {
         debugPrint(#function, error)

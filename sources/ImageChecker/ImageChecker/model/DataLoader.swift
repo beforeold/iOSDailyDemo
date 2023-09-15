@@ -8,14 +8,7 @@
 import Foundation
 
 struct DataLoader {
-  struct Item: Codable {
-    var id: String
-    var url: String
-    var status: Int
 
-    /// 保存结果时使用
-    var isFace: Bool?
-  }
 
   enum ContextError: Error {
     case unknown(Error)
@@ -41,5 +34,22 @@ struct DataLoader {
       throw ContextError.failToLoad(error)
     }
 
+  }
+}
+
+extension DataLoader {
+  struct Item: Codable {
+    var id: String
+    var url: String
+    var status: Int
+
+    /// 保存结果时使用
+    var isFace: Bool?
+
+    static let mock = Item(
+      id: "qrouq",
+      url: "https://d1yrhypp3nh74k.cloudfront.net/p/39f2c823c07388d3363f8248a07947ae.webp",
+      status: 0
+    )
   }
 }
