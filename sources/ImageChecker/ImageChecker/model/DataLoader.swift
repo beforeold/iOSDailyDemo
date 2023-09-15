@@ -7,12 +7,14 @@
 
 import Foundation
 
-
 struct DataLoader {
   struct Item: Codable {
     var id: String
     var url: String
     var status: Int
+
+    /// 保存结果时使用
+    var isFace: Bool?
   }
 
   enum ContextError: Error {

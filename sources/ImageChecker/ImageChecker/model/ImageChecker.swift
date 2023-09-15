@@ -88,6 +88,7 @@ extension ImageChecker {
 
       // Image has a low quality face
       guard let quality = qualityRequest.results?.first?.faceCaptureQuality else { throw Error.detector }
+      print(#function, "quality", quality)
       if Double(quality) < thresholdFaceQuality {
         model.result = .lowQuality
         continue
@@ -98,6 +99,8 @@ extension ImageChecker {
             let roll = rectangles.roll?.doubleValue,
             let yaw = rectangles.yaw?.doubleValue,
             let pitch = rectangles.pitch?.doubleValue else { throw Error.detector }
+      print(#function, roll, yaw, pitch)
+      
       if abs(roll) > thresholdRoll
           || abs(yaw) > thresholdYaw
           || abs(pitch) > thresholdPitch {
