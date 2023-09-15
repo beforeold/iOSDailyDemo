@@ -14,11 +14,11 @@ import Kingfisher
 @State private var showsInfo = false
 
   private var frontState: Bool? {
-    tester.selectedInfo.flatMap { FaceImageTester.frontFlags[$0.item.url] }
+    tester.selectedInfo.flatMap { tester.frontFlags[$0.item.url] }
   }
 
   private var qualityState: Bool? {
-    tester.selectedInfo.flatMap { FaceImageTester.qualityFlags[$0.item.url] }
+    tester.selectedInfo.flatMap { tester.qualityFlags[$0.item.url] }
   }
 
   var action: (Bool) -> Void
@@ -128,10 +128,12 @@ import Kingfisher
   private func onPick(flag: Bool?, type: String) {
     guard let selected = tester.selectedInfo else { return }
 
+    let beginDate = Date()
+
     if type == "FRONT" {
-      FaceImageTester.updateFront(flag: flag, url: selected.item.url)
+      tester.updateFront(flag: flag, url: selected.item.url)
     } else {
-      FaceImageTester.updateQuality(flag: flag, url: selected.item.url)
+      tester.updateQuality(flag: flag, url: selected.item.url)
     }
     tester.changed = UUID()
 
@@ -139,6 +141,8 @@ import Kingfisher
       // go to next one
       tester.handle(isForward: true, selected: selected)
     }
+
+    debugPrint(#function, -beginDate.timeIntervalSinceNow)
   }
 }
 
