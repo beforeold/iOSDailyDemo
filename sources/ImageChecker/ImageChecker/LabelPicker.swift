@@ -40,16 +40,15 @@ import Kingfisher
   }
 
   var body: some View {
-    VStack {
+    VStack(spacing: 4) {
       ImageViewer {
         KFImage((item?.url).flatMap(URL.init))
           .resizable()
           .scaledToFit()
       }
 
-      HStack {
-        VStack(spacing: 16) {
-          Text("FRONT")
+      HStack(spacing: 16) {
+        VStack(spacing: 12) {
           ForEach([nil, false, true], id: \.self) { flag in
             if flag == frontState {
               Button(flag?.description ?? "none") {
@@ -64,11 +63,12 @@ import Kingfisher
             }
           }
         }
+        Text("FRONT")
 
         Spacer()
 
-        VStack(spacing: 16) {
-          Text("QUALITY")
+        Text("QUALITY")
+        VStack(spacing: 12) {
           ForEach([nil, false, true], id: \.self) { flag in
             if flag == qualityState {
               Button(flag?.description ?? "none") {
@@ -93,13 +93,13 @@ import Kingfisher
 
         Spacer()
 
-        Text(tester.selectedInfo?.index.description ?? "null")
+        Text(indexString)
 
-        Text(tester.resultDesc)
-
+        /*
         Button("Info") {
           showsInfo = true
         }
+        */
 
         Spacer()
 
@@ -113,8 +113,16 @@ import Kingfisher
       print("onAppear")
     }
     .sheet(isPresented: $showsInfo) {
-      Text(item?.url ?? "null")
+      VStack(spacing: 20) {
+        Text(item?.url ?? "null")
+        Text(tester.resultDesc)
+      }
     }
+  }
+
+  var indexString: String {
+    let index = tester.selectedInfo?.index ?? 0
+    return "\(index + 1)/\(tester.items.count)"
   }
 
   private func onPick(flag: Bool?, type: String) {
@@ -168,7 +176,7 @@ struct ImageViewer<Content: View>: View {
             .gesture(makeMagnificationGesture(size: proxy.size))
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .edgesIgnoringSafeArea(.all)
+//        .edgesIgnoringSafeArea(.all)
       }
     }
 

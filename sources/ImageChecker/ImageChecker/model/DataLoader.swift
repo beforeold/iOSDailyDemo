@@ -26,8 +26,18 @@ struct DataLoader {
 
     do {
       let data = try Data(contentsOf: url)
-      let items = try JSONDecoder().decode([Item].self, from: data)
+      let fileItems = try JSONDecoder().decode([Item].self, from: data)
+
+      var items: [Item] = []
+      var set: Set<String> = []
+      for item in fileItems {
+        if set.insert(item.url).inserted {
+          items.append(item)
+        }
+      }
       debugPrint(#function, "loadItems", items.count)
+      debugPrint(#function, "unique url count", Set(items.map(\.url)).count)
+
       return items
 
     } catch {
