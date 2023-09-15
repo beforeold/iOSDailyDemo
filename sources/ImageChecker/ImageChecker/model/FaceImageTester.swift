@@ -54,7 +54,7 @@ import Kingfisher
     }
 
     if let checkResult {
-      return "\(checkResult) vs \(ImageChecker.Result(selected.item.status))"
+      return "\(ImageChecker.Result(selected.item.status)) (\(checkResult))"
     } else {
       return "none"
     }
@@ -65,7 +65,9 @@ import Kingfisher
   init() {
     Task {
       items = (try? await DataLoader.load()) ?? []
-
+      self.selected = SelectedInfo(index: 0, item: items[0])
+      return
+      
       if let selected {
         debugPrint(selected)
         self.selected = selected

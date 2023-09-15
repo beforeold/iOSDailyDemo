@@ -32,7 +32,7 @@ struct ContentView: View {
     .sheet(isPresented: $showsDownloadView) {
       DownloadImagesView()
     }
-    .sheet(isPresented: $showsLabel) {
+    .fullScreenCover(isPresented: $showsLabel) {
       if let selected = tester.selectedInfo {
         LabelPicker(
           tester: tester
