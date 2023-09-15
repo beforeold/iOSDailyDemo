@@ -136,9 +136,8 @@ import Kingfisher
     tester.changed = UUID()
 
     if qualityState != nil && frontState != nil {
-      withAnimation {
-        tester.handle(isForward: true, selected: selected)
-      }
+      // go to next one
+      tester.handle(isForward: true, selected: selected)
     }
   }
 }

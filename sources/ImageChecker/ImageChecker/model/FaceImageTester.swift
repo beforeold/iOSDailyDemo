@@ -65,9 +65,7 @@ import Kingfisher
   init() {
     Task {
       items = (try? await DataLoader.load()) ?? []
-      self.selected = SelectedInfo(index: 0, item: items[0])
-      return
-      
+
       if let selected {
         debugPrint(selected)
         self.selected = selected
