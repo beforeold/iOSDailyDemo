@@ -18,6 +18,8 @@
 		84C740892AB3124700E186C6 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C740882AB3124700E186C6 /* DataLoader.swift */; };
 		84C7408B2AB313C800E186C6 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7408A2AB313C800E186C6 /* ImageDownloader.swift */; };
 		84E1ED422AB3E7550012ACF7 /* FaceImageTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1ED412AB3E7550012ACF7 /* FaceImageTester.swift */; };
+		84E1ED452AB40BB50012ACF7 /* LabelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1ED442AB40BB50012ACF7 /* LabelPicker.swift */; };
+		84E1ED492AB40EA90012ACF7 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1ED482AB40EA90012ACF7 /* UserStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		84C740882AB3124700E186C6 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		84C7408A2AB313C800E186C6 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		84E1ED412AB3E7550012ACF7 /* FaceImageTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceImageTester.swift; sourceTree = "<group>"; };
+		84E1ED442AB40BB50012ACF7 /* LabelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPicker.swift; sourceTree = "<group>"; };
+		84E1ED482AB40EA90012ACF7 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 				84C740712AB30FA800E186C6 /* ImageCheckerApp.swift */,
 				84C740732AB30FA800E186C6 /* ContentView.swift */,
 				84C740832AB3110800E186C6 /* DownloadImagesView.swift */,
+				84E1ED442AB40BB50012ACF7 /* LabelPicker.swift */,
 				84E1ED432AB3F68A0012ACF7 /* model */,
 				84C740812AB310F500E186C6 /* check.json */,
 				84C740752AB30FAB00E186C6 /* Assets.xcassets */,
@@ -91,6 +96,7 @@
 				84C740882AB3124700E186C6 /* DataLoader.swift */,
 				84C7408A2AB313C800E186C6 /* ImageDownloader.swift */,
 				84E1ED412AB3E7550012ACF7 /* FaceImageTester.swift */,
+				84E1ED482AB40EA90012ACF7 /* UserStorage.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -173,9 +179,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C740892AB3124700E186C6 /* DataLoader.swift in Sources */,
+				84E1ED452AB40BB50012ACF7 /* LabelPicker.swift in Sources */,
 				84E1ED422AB3E7550012ACF7 /* FaceImageTester.swift in Sources */,
 				84C740742AB30FA800E186C6 /* ContentView.swift in Sources */,
 				84C740802AB30FD600E186C6 /* ImageChecker.swift in Sources */,
+				84E1ED492AB40EA90012ACF7 /* UserStorage.swift in Sources */,
 				84C740842AB3110800E186C6 /* DownloadImagesView.swift in Sources */,
 				84C7408B2AB313C800E186C6 /* ImageDownloader.swift in Sources */,
 				84C740722AB30FA800E186C6 /* ImageCheckerApp.swift in Sources */,
