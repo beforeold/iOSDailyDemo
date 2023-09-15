@@ -15,19 +15,21 @@ struct ContentView: View {
   @State var showsLabel = false
 
   var body: some View {
-    VStack(spacing: 30) {
-      Button("Download") {
-        showsDownloadView = true
-      }
-
-      Button("Label") {
+    HStack(spacing: 30) {
+      Button("打标") {
         showsLabel = true
       }
 
-      Button("Test") {
+      Button("检测") {
         testAll()
       }
+
+      Button("下载") {
+        showsDownloadView = true
+      }
     }
+    .frame(maxHeight: .infinity, alignment: .bottom)
+    .buttonStyle(.borderedProminent)
     .padding()
     .sheet(isPresented: $showsDownloadView) {
       DownloadImagesView()
