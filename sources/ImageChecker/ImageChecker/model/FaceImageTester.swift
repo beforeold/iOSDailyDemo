@@ -9,17 +9,33 @@ import SwiftUI
 import Kingfisher
 
 @MainActor class FaceImageTester: ObservableObject {
-  @UserStorage("FaceImageTester_v1_front")
-  static var frontFlags: [String: Bool] = [:]
+  var frontFlags: [String: Bool] = [:] {
+    didSet {
+      let frontFlags = self.frontFlags
+      DispatchQueue.global().async {
+        @UserStorage("FaceImageTester_v1_front")
+        var value: [String: Bool] = [:]
+        value = frontFlags
+      }
+    }
+  }
 
-  @UserStorage("FaceImageTester_v1_quality")
-  static var qualityFlags: [String: Bool] = [:]
+  var qualityFlags: [String: Bool] = [:] {
+    didSet {
+      let qualityFlags = self.qualityFlags
+      DispatchQueue.global().async {
+        @UserStorage("FaceImageTester_v1_front")
+        var value: [String: Bool] = [:]
+        value = qualityFlags
+      }
+    }
+  }
 
-  static func updateFront(flag: Bool?, url: String) {
+  func updateFront(flag: Bool?, url: String) {
     frontFlags[url] = flag
   }
 
-  static func updateQuality(flag: Bool?, url: String) {
+  func updateQuality(flag: Bool?, url: String) {
     qualityFlags[url] = flag
   }
 
@@ -33,6 +49,7 @@ import Kingfisher
   private var selected: SelectedInfo? = nil {
     didSet {
       selectedInfo = selected
+      /*
       Task {
         do {
           guard let item = selected?.item else {
@@ -45,6 +62,7 @@ import Kingfisher
           self.checkResult = nil
         }
       }
+      */
     }
   }
 
@@ -63,6 +81,14 @@ import Kingfisher
   var items: [DataLoader.Item] = []
 
   init() {
+    @UserStorage("FaceImageTester_v1_front")
+    var frontFlags: [String: Bool] = [:]
+    self.frontFlags = frontFlags
+
+    @UserStorage("FaceImageTester_v1_front")
+    var qualityFlags: [String: Bool] = [:]
+    self.qualityFlags = qualityFlags
+
     Task {
       items = (try? await DataLoader.load()) ?? []
 
@@ -72,6 +98,22 @@ import Kingfisher
       } else {
         self.selected = SelectedInfo(index: 0, item: items[0])
       }
+    }
+  }
+
+  func showInfo() {
+    items.forEach { item in
+      print(item.url)
+    }
+    
+    print("===== frontFlags")
+    
+    items.forEach { item in
+      print((frontFlags[item.url])?.description ?? "none")
+    }
+    print("===== qualityFlags")
+    items.forEach { item in
+      print((qualityFlags[item.url])?.description ?? "none")
     }
   }
 

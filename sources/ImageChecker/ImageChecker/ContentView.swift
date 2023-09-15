@@ -15,9 +15,15 @@ struct ContentView: View {
   @State var showsLabel = false
 
   var body: some View {
-    HStack(spacing: 30) {
-      Button("打标") {
-        showsLabel = true
+    VStack(spacing: 30) {
+      HStack {
+        Button("打标") {
+          showsLabel = true
+        }
+
+        Button("打印") {
+          tester.showInfo()
+        }
       }
 
       Button("检测") {
@@ -41,7 +47,7 @@ struct ContentView: View {
         ) { isForward in
           tester.handle(isForward: isForward, selected: selected)
         } picker: { flag_ in
-          FaceImageTester.updateFront(flag: flag_, url: selected.item.url)
+          tester.updateFront(flag: flag_, url: selected.item.url)
         }
 
       } else {
