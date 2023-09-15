@@ -5,7 +5,7 @@
 //  Created by Brook_Mobius on 9/14/23.
 //
 
-import Foundation
+import UIKit
 import Kingfisher
 
 actor Counter {
@@ -17,6 +17,20 @@ actor Counter {
 }
 
 struct ImageDownloader {
+  static func load(item: DataLoader.Item) async throws -> UIImage {
+    return try await withCheckedThrowingContinuation { continuation in
+      let url = URL(string: item.url)!
+      KingfisherManager.shared.retrieveImage(with: url) { result in
+        do {
+          let value = try result.get()
+          continuation.resume(returning: value.image)
+        } catch {
+          continuation.resume(throwing: error)
+        }
+      }
+    }
+  }
+
   static func loadItems(
     _ items: [DataLoader.Item],
     progress: @MainActor @escaping (Int) -> Void,
