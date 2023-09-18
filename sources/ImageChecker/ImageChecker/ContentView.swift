@@ -46,8 +46,6 @@ struct ContentView: View {
           tester: tester
         ) { isForward in
           tester.handle(isForward: isForward, selected: selected)
-        } picker: { flag_ in
-          tester.updateFront(flag: flag_, url: selected.item.url)
         }
 
       } else {

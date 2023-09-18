@@ -11,7 +11,11 @@ import Kingfisher
 @MainActor struct LabelPicker: View {
   @ObservedObject var tester: FaceImageTester
 
-@State private var showsInfo = false
+  @State private var showsInfo = false
+
+  private var countState: Int? {
+    tester.selectedInfo.flatMap { tester.countFlags[$0.item.url] }
+  }
 
   private var frontState: Bool? {
     tester.selectedInfo.flatMap { tester.frontFlags[$0.item.url] }
@@ -23,20 +27,16 @@ import Kingfisher
 
   var action: (Bool) -> Void
 
-  var picker: (Bool?) -> Void
-
   var item: DataLoader.Item? {
     tester.selectedInfo?.item
   }
 
   init(
     tester: FaceImageTester,
-    action: @escaping (Bool) -> Void,
-    picker: @escaping (Bool?) -> Void
+    action: @escaping (Bool) -> Void
   ) {
     self.tester = tester
     self.action = action
-    self.picker = picker
   }
 
   var body: some View {
@@ -47,44 +47,85 @@ import Kingfisher
           .scaledToFit()
       }
 
-      HStack(spacing: 16) {
-        VStack(spacing: 12) {
+      VStack(alignment: .leading, spacing: 16) {
+        HStack(spacing: 12) {
+          Text("COUNT")
+            .frame(width: 80)
+          ForEach([nil, 0, 1, 2], id: \.self) { flag in
+            Group {
+              if flag == countState {
+                Button {
+                  onPickCount(flag: flag, type: "COUNT")
+                } label: {
+                  Text(flag?.description ?? "none")
+                    .frame(width: 40)
+                }
+                .buttonStyle(.borderedProminent)
+              } else {
+                Button {
+                  onPickCount(flag: flag, type: "COUNT")
+                } label: {
+                  Text(flag?.description ?? "none")
+                    .frame(width: 40)
+                }
+                .buttonStyle(.bordered)
+              }
+            }
+          }
+          Spacer()
+        }
+
+        HStack(spacing: 12) {
+          Text("FRONT")
+            .frame(width: 80)
           ForEach([nil, false, true], id: \.self) { flag in
             if flag == frontState {
-              Button(flag?.description ?? "none") {
+              Button {
                 onPick(flag: flag, type: "FRONT")
+              } label: {
+                Text(flag?.description ?? "none")
+                  .frame(width: 40)
               }
               .buttonStyle(.borderedProminent)
             } else {
-              Button(flag?.description ?? "none") {
+              Button {
                 onPick(flag: flag, type: "FRONT")
+              } label: {
+                Text(flag?.description ?? "none")
+                  .frame(width: 40)
               }
               .buttonStyle(.bordered)
             }
           }
         }
-        Text("FRONT")
 
-        Spacer()
-
-        Text("QUALITY")
-        VStack(spacing: 12) {
+        HStack(spacing: 12) {
+          Text("QUALITY")
+            .frame(width: 80)
           ForEach([nil, false, true], id: \.self) { flag in
             if flag == qualityState {
-              Button(flag?.description ?? "none") {
+              Button {
                 onPick(flag: flag, type: "QUALITY")
+              } label: {
+                Text(flag?.description ?? "none")
+                  .frame(width: 40)
               }
               .buttonStyle(.borderedProminent)
             } else {
-              Button(flag?.description ?? "none") {
+              Button {
                 onPick(flag: flag, type: "QUALITY")
+              } label: {
+                Text(flag?.description ?? "none")
+                  .frame(width: 40)
               }
               .buttonStyle(.bordered)
             }
           }
         }
       }
-      .padding()
+      .font(.footnote)
+      .frame(maxWidth: .infinity, alignment: .leading)
+      .padding(.horizontal, 24)
 
       HStack(spacing: 16) {
         Button(action: { action(false) }) {
@@ -105,7 +146,7 @@ import Kingfisher
           Image(systemName: "arrowshape.forward.fill")
         }
       }
-      .padding()
+      .padding(.horizontal, 48)
     }
     .onAppear {
       print("onAppear")
@@ -123,6 +164,16 @@ import Kingfisher
     return "\(index + 1)/\(tester.items.count)"
   }
 
+  private func onPickCount(flag: Int?, type: String) {
+    guard let selected = tester.selectedInfo else { return }
+
+    tester.updateCount(flag: flag, url: selected.item.url)
+
+    if flag == 0 || flag == 2 {
+      tester.handle(isForward: true, selected: selected)
+    }
+  }
+
   private func onPick(flag: Bool?, type: String) {
     guard let selected = tester.selectedInfo else { return }
 
@@ -134,7 +185,7 @@ import Kingfisher
       tester.updateQuality(flag: flag, url: selected.item.url)
     }
 
-    if qualityState != nil && frontState != nil {
+    if let _ = frontState, let _ = qualityState {
       // go to next one
       tester.handle(isForward: true, selected: selected)
     }
@@ -148,8 +199,6 @@ struct ImageViewer_Previews: PreviewProvider {
     LabelPicker(
       tester: FaceImageTester()
     ) { _ in
-
-    } picker: { _ in
 
     }
   }
