@@ -9,30 +9,45 @@ import SwiftUI
 import Kingfisher
 
 @MainActor class FaceImageTester: ObservableObject {
-  var frontFlags: [String: Bool] = [:] {
+  @Published var countFlags: [String: Int] = [:] {
     didSet {
-      let frontFlags = self.frontFlags
+      let flags = self.countFlags
       DispatchQueue.global().async {
-        @UserStorage("FaceImageTester_v1_front")
-        var value: [String: Bool] = [:]
-        value = frontFlags
+        @UserStorage("FaceImageTester_v1_count")
+        var value: [String: Int] = [:]
+        value = flags
       }
     }
   }
 
-  var qualityFlags: [String: Bool] = [:] {
+  @Published var frontFlags: [String: Bool] = [:] {
     didSet {
-      let qualityFlags = self.qualityFlags
+      let flags = self.frontFlags
       DispatchQueue.global().async {
         @UserStorage("FaceImageTester_v1_front")
         var value: [String: Bool] = [:]
-        value = qualityFlags
+        value = flags
+      }
+    }
+  }
+
+  @Published var qualityFlags: [String: Bool] = [:] {
+    didSet {
+      let flags = self.qualityFlags
+      DispatchQueue.global().async {
+        @UserStorage("FaceImageTester_v1_quality")
+        var value: [String: Bool] = [:]
+        value = flags
       }
     }
   }
 
   func updateFront(flag: Bool?, url: String) {
     frontFlags[url] = flag
+  }
+
+  func updateCount(flag: Int?, url: String) {
+    countFlags[url] = flag
   }
 
   func updateQuality(flag: Bool?, url: String) {
@@ -67,13 +82,23 @@ import Kingfisher
   var items: [DataLoader.Item] = []
 
   init() {
-    @UserStorage("FaceImageTester_v1_front")
-    var frontFlags: [String: Bool] = [:]
-    self.frontFlags = frontFlags
+    do {
+      @UserStorage("FaceImageTester_v1_count")
+      var flags: [String: Int] = [:]
+      self.countFlags = flags
+    }
 
-    @UserStorage("FaceImageTester_v1_front")
-    var qualityFlags: [String: Bool] = [:]
-    self.qualityFlags = qualityFlags
+    do {
+      @UserStorage("FaceImageTester_v1_front")
+      var flags: [String: Bool] = [:]
+      self.frontFlags = flags
+    }
+
+    do {
+      @UserStorage("FaceImageTester_v1_quality")
+      var flags: [String: Bool] = [:]
+      self.qualityFlags = flags
+    }
 
     Task {
       items = (try? await DataLoader.load()) ?? []

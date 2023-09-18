@@ -99,7 +99,7 @@ extension ImageChecker {
             let roll = rectangles.roll?.doubleValue,
             let yaw = rectangles.yaw?.doubleValue,
             let pitch = rectangles.pitch?.doubleValue else { throw Error.detector }
-      print(#function, roll, yaw, pitch)
+      print(#function, "roll: \(roll)", "yaw: \(yaw)", "pitch: \(pitch)")
       
       if abs(roll) > thresholdRoll
           || abs(yaw) > thresholdYaw
@@ -152,7 +152,7 @@ extension ImageChecker {
   }
 
   private static var thresholdFaceQuality: Double {
-    0.5
+    0.2
   }
 
   private static var thresholdRoll: Double {
