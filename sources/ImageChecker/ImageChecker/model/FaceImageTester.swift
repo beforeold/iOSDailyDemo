@@ -39,8 +39,6 @@ import Kingfisher
     qualityFlags[url] = flag
   }
 
-  @Published var changed = UUID()
-
   @Published var checkResult: ImageChecker.Result? = nil
 
   @Published var selectedInfo: SelectedInfo?
@@ -49,20 +47,8 @@ import Kingfisher
   private var selected: SelectedInfo? = nil {
     didSet {
       selectedInfo = selected
-      /*
-      Task {
-        do {
-          guard let item = selected?.item else {
-            self.checkResult = nil
-            return
-          }
-          let image = try await ImageDownloader.load(item: item)
-          self.checkResult = try ImageChecker.checkOriginal(image)
-        } catch {
-          self.checkResult = nil
-        }
-      }
-      */
+
+      checkSelected()
     }
   }
 
@@ -105,9 +91,9 @@ import Kingfisher
     items.forEach { item in
       print(item.url)
     }
-    
+
     print("===== frontFlags")
-    
+
     items.forEach { item in
       print((frontFlags[item.url])?.description ?? "none")
     }
@@ -117,6 +103,21 @@ import Kingfisher
     }
   }
 
+  private func checkSelected() {
+    Task {
+      do {
+        guard let item = selected?.item else {
+          self.checkResult = nil
+          return
+        }
+
+        let image = try await ImageDownloader.load(item: item)
+        self.checkResult = try ImageChecker.checkOriginal(image)
+      } catch {
+        self.checkResult = nil
+      }
+    }
+  }
 
   func handle(isForward: Bool, selected: SelectedInfo) {
     let newIndex = selected.index + (isForward ? 1 : -1)

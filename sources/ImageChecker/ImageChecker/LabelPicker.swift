@@ -95,11 +95,9 @@ import Kingfisher
 
         Text(indexString)
 
-        /*
         Button("Info") {
           showsInfo = true
         }
-        */
 
         Spacer()
 
@@ -135,7 +133,6 @@ import Kingfisher
     } else {
       tester.updateQuality(flag: flag, url: selected.item.url)
     }
-    tester.changed = UUID()
 
     if qualityState != nil && frontState != nil {
       // go to next one
