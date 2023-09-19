@@ -115,7 +115,7 @@ import Kingfisher
   }
 
   func showInfo() {
-    showLabelCount()
+    logLabelResult()
   }
 
   func showLabelCount() {
@@ -148,6 +148,10 @@ import Kingfisher
 
   /// 打印打标的结果信息
   private func logLabelResult() {
+    let items = self.items.filter { item in
+      countFlags[item.url] == 1
+    }
+
     items.forEach { item in
       print(item.url)
     }
