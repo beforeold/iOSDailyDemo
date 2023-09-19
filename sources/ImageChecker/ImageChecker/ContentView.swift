@@ -26,8 +26,18 @@ struct ContentView: View {
         }
       }
 
-      Button("检测") {
-        testAll()
+      HStack {
+        Button("All") {
+          testAll()
+        }
+
+        Button("Front") {
+          tester.checkFront()
+        }
+
+        Button("Quality") {
+          tester.checkQuality()
+        }
       }
 
       Button("下载") {

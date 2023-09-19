@@ -82,6 +82,8 @@ import Kingfisher
   var items: [DataLoader.Item] = []
 
   init() {
+    KingfisherManager.shared.cache.diskStorage.config.sizeLimit = 0
+
     do {
       @UserStorage("FaceImageTester_v1_count")
       var flags: [String: Int] = [:]
@@ -113,6 +115,39 @@ import Kingfisher
   }
 
   func showInfo() {
+    showLabelCount()
+  }
+
+  func showLabelCount() {
+    let oneFaces = items.filter { item in
+      countFlags[item.url] == 1
+    }
+    print("oneFace", oneFaces.count)
+
+    let frontFaces = items.filter { item in
+      countFlags[item.url] == 1 && frontFlags[item.url] == true
+    }
+    print("frontFaces", frontFaces.count)
+
+    let notFrontFaces = items.filter { item in
+      countFlags[item.url] == 1 && frontFlags[item.url] == false
+    }
+    print("notFrontFaces", notFrontFaces.count)
+
+
+    let qualityFaces = items.filter { item in
+      countFlags[item.url] == 1 && qualityFlags[item.url] == true
+    }
+    print("qualityFaces", qualityFaces.count)
+
+    let lowQualityFrontFaces = items.filter { item in
+      countFlags[item.url] == 1 && qualityFlags[item.url] == false
+    }
+    print("lowQualityFrontFaces", lowQualityFrontFaces.count)
+  }
+
+  /// 打印打标的结果信息
+  private func logLabelResult() {
     items.forEach { item in
       print(item.url)
     }
@@ -122,10 +157,84 @@ import Kingfisher
     items.forEach { item in
       print((frontFlags[item.url])?.description ?? "none")
     }
+
     print("===== qualityFlags")
+
     items.forEach { item in
       print((qualityFlags[item.url])?.description ?? "none")
     }
+  }
+
+  func checkQuality() {
+    ImageChecker.thresholdFaceQuality = 0.4
+    ImageChecker.thresholdRoll = 10
+    ImageChecker.thresholdYaw = 10
+    ImageChecker.thresholdPitch = 10
+
+    let qualityFaces = items.filter { item in
+      countFlags[item.url] == 1 && qualityFlags[item.url] == true
+    }
+    print("qualityFaces", qualityFaces.count)
+
+    let lowQualityFrontFaces = items.filter { item in
+      countFlags[item.url] == 1 && qualityFlags[item.url] == false
+    }
+    print("lowQualityFrontFaces", lowQualityFrontFaces.count)
+
+    Task {
+      print("check qualityFaces")
+      await FaceImageTester.check(items: qualityFaces, expecting: .success)
+    }
+    Task {
+      print("check lowQualityFrontFaces")
+      await FaceImageTester.check(items: lowQualityFrontFaces, expecting: .lowQuality)
+    }
+  }
+
+  func checkFront() {
+    let value = 0.55
+    ImageChecker.thresholdFaceQuality = 0.0
+    ImageChecker.thresholdRoll = value
+    ImageChecker.thresholdYaw = value
+    ImageChecker.thresholdPitch = value
+
+    let frontFaces = items.filter { item in
+      countFlags[item.url] == 1 && frontFlags[item.url] == true
+    }
+    print("frontFaces", frontFaces.count)
+
+    let notFrontFaces = items.filter { item in
+      countFlags[item.url] == 1 && frontFlags[item.url] == false
+    }
+    print("notFrontFaces", notFrontFaces.count)
+
+    Task {
+      print("check frontFaces")
+      await FaceImageTester.check(items: frontFaces, expecting: .success)
+    }
+    Task {
+      print("check notFrontFaces")
+      await FaceImageTester.check(items: notFrontFaces, expecting: .notFront)
+    }
+  }
+
+  static func check(items: [DataLoader.Item], expecting: ImageChecker.Result) async {
+    var checkResult: (fullfil: Int, reject: Int, error: Int) = (0, 0, 0)
+
+    for item in items {
+      do {
+        let image = try await ImageDownloader.load(item: item)
+        let result = try ImageChecker.checkOriginal(image)
+        if result == expecting {
+          checkResult.fullfil += 1
+        } else {
+          checkResult.reject += 1
+        }
+      } catch {
+        checkResult.error += 1
+      }
+    }
+    print(checkResult)
   }
 
   private func checkSelected() {
@@ -135,12 +244,15 @@ import Kingfisher
           self.checkResult = nil
           return
         }
-
+        debugPrint()
         let image = try await ImageDownloader.load(item: item)
-        self.checkResult = try ImageChecker.checkOriginal(image)
+        let result = try ImageChecker.checkOriginal(image)
+        self.checkResult = result
       } catch {
+        print(error)
         self.checkResult = nil
       }
+      print(resultDesc)
     }
   }
 

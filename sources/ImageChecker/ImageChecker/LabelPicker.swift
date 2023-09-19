@@ -126,6 +126,7 @@ import Kingfisher
       .font(.footnote)
       .frame(maxWidth: .infinity, alignment: .leading)
       .padding(.horizontal, 24)
+      .padding(.vertical, 16)
 
       HStack(spacing: 16) {
         Button(action: { action(false) }) {
@@ -177,8 +178,6 @@ import Kingfisher
   private func onPick(flag: Bool?, type: String) {
     guard let selected = tester.selectedInfo else { return }
 
-    let beginDate = Date()
-
     if type == "FRONT" {
       tester.updateFront(flag: flag, url: selected.item.url)
     } else {
@@ -189,8 +188,6 @@ import Kingfisher
       // go to next one
       tester.handle(isForward: true, selected: selected)
     }
-
-    debugPrint(#function, -beginDate.timeIntervalSinceNow)
   }
 }
 
