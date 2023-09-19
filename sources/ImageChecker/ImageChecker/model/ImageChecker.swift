@@ -80,15 +80,26 @@ extension ImageChecker {
         continue
       }
 
+      if let rectangles = rectanglesRequest.results?.first,
+            let roll = rectangles.roll?.doubleValue,
+            let yaw = rectangles.yaw?.doubleValue,
+            let pitch = rectangles.pitch?.doubleValue {
+        print(#function,
+              "roll: \(String(format: "%.2f", roll))",
+              "yaw: \(String(format: "%.2f", yaw))",
+              "pitch: \(String(format: "%.2f", pitch))")
+      }
+
+      // Image has a low quality face
+      guard let quality = qualityRequest.results?.first?.faceCaptureQuality else { throw Error.detector }
+      print(#function, "quality", quality)
+
       // Image has multiple faces
       if observations.count > 1 {
         model.result = .multiFaces
         continue
       }
 
-      // Image has a low quality face
-      guard let quality = qualityRequest.results?.first?.faceCaptureQuality else { throw Error.detector }
-      print(#function, "quality", quality)
       if Double(quality) < thresholdFaceQuality {
         model.result = .lowQuality
         continue
@@ -99,7 +110,7 @@ extension ImageChecker {
             let roll = rectangles.roll?.doubleValue,
             let yaw = rectangles.yaw?.doubleValue,
             let pitch = rectangles.pitch?.doubleValue else { throw Error.detector }
-      print(#function, "roll: \(roll)", "yaw: \(yaw)", "pitch: \(pitch)")
+      // print(#function, "roll: \(roll)", "yaw: \(yaw)", "pitch: \(pitch)")
       
       if abs(roll) > thresholdRoll
           || abs(yaw) > thresholdYaw
@@ -147,25 +158,15 @@ extension ImageChecker {
 }
 
 extension ImageChecker {
-  private static var thresholdSimilarity: Double {
-    0.5
-  }
+  static var thresholdSimilarity: Double = 0.5
 
-  private static var thresholdFaceQuality: Double {
-    0.2
-  }
+  static var thresholdFaceQuality: Double = 0.5
 
-  private static var thresholdRoll: Double {
-    0.5
-  }
+  static var thresholdRoll: Double = 0.5
 
-  private static var thresholdYaw: Double {
-    0.5
-  }
+  static var thresholdYaw: Double = 0.5
 
-  private static var thresholdPitch: Double {
-    0.5
-  }
+  static var thresholdPitch: Double = 0.5
 }
 
 // MARK: - Result
