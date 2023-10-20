@@ -9,6 +9,6 @@ import Foundation
 
 let temp = string.split(separator: "\n").filter { !$0.isEmpty }
 let ret = temp.joined(separator: "\n")
-assert(temp.count == 343)
+assert(temp.count == 323)
 
 print(ret)
