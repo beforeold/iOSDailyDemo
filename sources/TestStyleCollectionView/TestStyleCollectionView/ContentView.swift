@@ -16,10 +16,6 @@ struct ContentView: View {
   }
 }
 
-#Preview {
-  ContentView()
-}
-
 struct PurchaseStyleCardListView: UIViewRepresentable {
   typealias StyleCell = PurchaseStyleCollectionView.StyleCell
 
@@ -39,7 +35,6 @@ struct PurchaseStyleCardListView: UIViewRepresentable {
         withReuseIdentifier: PurchaseStyleCollectionView.StyleCell.id,
         for: indexPath
       )
-      cell.backgroundColor = .blue
 
       let tag = 333
       if let view = cell.contentView.viewWithTag(tag), let label = view as? UILabel {
@@ -117,6 +112,69 @@ class PurchaseStyleCollectionView: UICollectionView {
 
     static let width: CGFloat = 100
     static let height: CGFloat = 135
+
+    var resultImageName: String? {
+      didSet {
+        resultImageView.image = resultImageName.flatMap(UIImage.init)
+      }
+    }
+
+    var originalImageName: String? {
+      didSet {
+        originalImageView.image = originalImageName.flatMap(UIImage.init)
+      }
+    }
+
+    private var resultImageView: UIImageView = {
+      let imageView = UIImageView()
+      imageView.contentMode = .scaleAspectFill
+      imageView.layer.cornerRadius = 12
+      imageView.layer.masksToBounds = true
+
+      return imageView
+    }()
+
+    private var originalImageView: UIImageView = {
+      let imageView = UIImageView()
+      imageView.contentMode = .scaleAspectFill
+      imageView.layer.cornerRadius = 18
+      imageView.layer.masksToBounds = true
+      imageView.layer.borderColor = UIColor.white.cgColor
+      imageView.layer.borderWidth = 1
+
+      return imageView
+    }()
+
+    override init(frame: CGRect) {
+      super.init(frame: frame)
+
+      setupUI()
+    }
+
+    private func setupUI() {
+      contentView.addSubview(resultImageView)
+      contentView.addSubview(originalImageView)
+
+      resultImageView.frame = contentView.bounds
+      resultImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+#if DEBUG
+      resultImageView.backgroundColor = .gray
+      originalImageView.backgroundColor = .blue
+#endif
+
+      originalImageView.translatesAutoresizingMaskIntoConstraints = false
+      NSLayoutConstraint.activate([
+        originalImageView.leadingAnchor.constraint(equalTo: resultImageView.leadingAnchor, constant: 8),
+        originalImageView.bottomAnchor.constraint(equalTo: resultImageView.bottomAnchor, constant: -8),
+        originalImageView.widthAnchor.constraint(equalToConstant: 36),
+        originalImageView.heightAnchor.constraint(equalToConstant: 36)
+      ])
+    }
+
+    required init?(coder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+    }
   }
 
   deinit {
@@ -166,4 +224,8 @@ class PurchaseStyleCollectionView: UICollectionView {
     )
     hasFirstScrolled = true
   }
+}
+
+#Preview {
+  ContentView()
 }
