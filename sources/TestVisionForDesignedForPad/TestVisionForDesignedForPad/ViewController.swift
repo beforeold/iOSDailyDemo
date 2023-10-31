@@ -13,7 +13,12 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
   }
-
-
+  
+  func foo() {
+#if os(xrOS)
+    print("yo xi")
+#endif
+  }
+  
 }
 
