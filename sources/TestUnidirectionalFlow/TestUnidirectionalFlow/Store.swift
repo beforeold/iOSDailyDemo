@@ -31,6 +31,6 @@ final class Store<State, Action>: ObservableObject {
     let oldState = state
     state = reduce(state, action)
     let value = diff(oldState, state) ?? "null"
-    print(value)
+    print(action, value)
   }
 }
