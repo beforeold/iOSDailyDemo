@@ -7,23 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		94F256E42AF15BCA00ABE175 /* TesrMultiplatform20231031App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F256E32AF15BCA00ABE175 /* TesrMultiplatform20231031App.swift */; };
-		94F256E62AF15BCA00ABE175 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F256E52AF15BCA00ABE175 /* ContentView.swift */; };
-		94F256E82AF15BCB00ABE175 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F256E72AF15BCB00ABE175 /* Assets.xcassets */; };
-		94F256EC2AF15BCB00ABE175 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94F256EB2AF15BCB00ABE175 /* Preview Assets.xcassets */; };
+		94E1DAF62AF93011001FBF22 /* TestStateObjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E1DAF52AF93011001FBF22 /* TestStateObjectApp.swift */; };
+		94E1DAF82AF93011001FBF22 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E1DAF72AF93011001FBF22 /* ContentView.swift */; };
+		94E1DAFA2AF93012001FBF22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94E1DAF92AF93012001FBF22 /* Assets.xcassets */; };
+		94E1DAFD2AF93012001FBF22 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94E1DAFC2AF93012001FBF22 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		94F256E02AF15BCA00ABE175 /* TesrMultiplatform20231031.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesrMultiplatform20231031.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		94F256E32AF15BCA00ABE175 /* TesrMultiplatform20231031App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesrMultiplatform20231031App.swift; sourceTree = "<group>"; };
-		94F256E52AF15BCA00ABE175 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		94F256E72AF15BCB00ABE175 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		94F256E92AF15BCB00ABE175 /* TesrMultiplatform20231031.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TesrMultiplatform20231031.entitlements; sourceTree = "<group>"; };
-		94F256EB2AF15BCB00ABE175 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		94E1DAF22AF93011001FBF22 /* TestStateObject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestStateObject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94E1DAF52AF93011001FBF22 /* TestStateObjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStateObjectApp.swift; sourceTree = "<group>"; };
+		94E1DAF72AF93011001FBF22 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		94E1DAF92AF93012001FBF22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		94E1DAFC2AF93012001FBF22 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		94F256DD2AF15BCA00ABE175 /* Frameworks */ = {
+		94E1DAEF2AF93011001FBF22 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,38 +32,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		94F256D72AF15BCA00ABE175 = {
+		94E1DAE92AF93011001FBF22 = {
 			isa = PBXGroup;
 			children = (
-				94F256E22AF15BCA00ABE175 /* TesrMultiplatform20231031 */,
-				94F256E12AF15BCA00ABE175 /* Products */,
+				94E1DAF42AF93011001FBF22 /* TestStateObject */,
+				94E1DAF32AF93011001FBF22 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		94F256E12AF15BCA00ABE175 /* Products */ = {
+		94E1DAF32AF93011001FBF22 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				94F256E02AF15BCA00ABE175 /* TesrMultiplatform20231031.app */,
+				94E1DAF22AF93011001FBF22 /* TestStateObject.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		94F256E22AF15BCA00ABE175 /* TesrMultiplatform20231031 */ = {
+		94E1DAF42AF93011001FBF22 /* TestStateObject */ = {
 			isa = PBXGroup;
 			children = (
-				94F256E32AF15BCA00ABE175 /* TesrMultiplatform20231031App.swift */,
-				94F256E52AF15BCA00ABE175 /* ContentView.swift */,
-				94F256E72AF15BCB00ABE175 /* Assets.xcassets */,
-				94F256E92AF15BCB00ABE175 /* TesrMultiplatform20231031.entitlements */,
-				94F256EA2AF15BCB00ABE175 /* Preview Content */,
+				94E1DAF52AF93011001FBF22 /* TestStateObjectApp.swift */,
+				94E1DAF72AF93011001FBF22 /* ContentView.swift */,
+				94E1DAF92AF93012001FBF22 /* Assets.xcassets */,
+				94E1DAFB2AF93012001FBF22 /* Preview Content */,
 			);
-			path = TesrMultiplatform20231031;
+			path = TestStateObject;
 			sourceTree = "<group>";
 		};
-		94F256EA2AF15BCB00ABE175 /* Preview Content */ = {
+		94E1DAFB2AF93012001FBF22 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				94F256EB2AF15BCB00ABE175 /* Preview Assets.xcassets */,
+				94E1DAFC2AF93012001FBF22 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -72,39 +70,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		94F256DF2AF15BCA00ABE175 /* TesrMultiplatform20231031 */ = {
+		94E1DAF12AF93011001FBF22 /* TestStateObject */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 94F256EF2AF15BCB00ABE175 /* Build configuration list for PBXNativeTarget "TesrMultiplatform20231031" */;
+			buildConfigurationList = 94E1DB002AF93012001FBF22 /* Build configuration list for PBXNativeTarget "TestStateObject" */;
 			buildPhases = (
-				94F256DC2AF15BCA00ABE175 /* Sources */,
-				94F256DD2AF15BCA00ABE175 /* Frameworks */,
-				94F256DE2AF15BCA00ABE175 /* Resources */,
+				94E1DAEE2AF93011001FBF22 /* Sources */,
+				94E1DAEF2AF93011001FBF22 /* Frameworks */,
+				94E1DAF02AF93011001FBF22 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = TesrMultiplatform20231031;
-			productName = TesrMultiplatform20231031;
-			productReference = 94F256E02AF15BCA00ABE175 /* TesrMultiplatform20231031.app */;
+			name = TestStateObject;
+			productName = TestStateObject;
+			productReference = 94E1DAF22AF93011001FBF22 /* TestStateObject.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		94F256D82AF15BCA00ABE175 /* Project object */ = {
+		94E1DAEA2AF93011001FBF22 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					94F256DF2AF15BCA00ABE175 = {
+					94E1DAF12AF93011001FBF22 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = 94F256DB2AF15BCA00ABE175 /* Build configuration list for PBXProject "TesrMultiplatform20231031" */;
+			buildConfigurationList = 94E1DAED2AF93011001FBF22 /* Build configuration list for PBXProject "TestStateObject" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -112,42 +110,42 @@
 				en,
 				Base,
 			);
-			mainGroup = 94F256D72AF15BCA00ABE175;
-			productRefGroup = 94F256E12AF15BCA00ABE175 /* Products */;
+			mainGroup = 94E1DAE92AF93011001FBF22;
+			productRefGroup = 94E1DAF32AF93011001FBF22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				94F256DF2AF15BCA00ABE175 /* TesrMultiplatform20231031 */,
+				94E1DAF12AF93011001FBF22 /* TestStateObject */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		94F256DE2AF15BCA00ABE175 /* Resources */ = {
+		94E1DAF02AF93011001FBF22 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94F256EC2AF15BCB00ABE175 /* Preview Assets.xcassets in Resources */,
-				94F256E82AF15BCB00ABE175 /* Assets.xcassets in Resources */,
+				94E1DAFD2AF93012001FBF22 /* Preview Assets.xcassets in Resources */,
+				94E1DAFA2AF93012001FBF22 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		94F256DC2AF15BCA00ABE175 /* Sources */ = {
+		94E1DAEE2AF93011001FBF22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94F256E62AF15BCA00ABE175 /* ContentView.swift in Sources */,
-				94F256E42AF15BCA00ABE175 /* TesrMultiplatform20231031App.swift in Sources */,
+				94E1DAF82AF93011001FBF22 /* ContentView.swift in Sources */,
+				94E1DAF62AF93011001FBF22 /* TestStateObjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		94F256ED2AF15BCB00ABE175 /* Debug */ = {
+		94E1DAFE2AF93012001FBF22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -199,16 +197,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		94F256EE2AF15BCB00ABE175 /* Release */ = {
+		94E1DAFF2AF93012001FBF22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -254,115 +254,96 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		94F256F02AF15BCB00ABE175 /* Debug */ = {
+		94E1DB012AF93012001FBF22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TesrMultiplatform20231031/TesrMultiplatform20231031.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TesrMultiplatform20231031/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TestStateObject/Preview Content\"";
 				DEVELOPMENT_TEAM = WS8S43M437;
-				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TesrMultiplatform20231031;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestStateObject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		94F256F12AF15BCB00ABE175 /* Release */ = {
+		94E1DB022AF93012001FBF22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TesrMultiplatform20231031/TesrMultiplatform20231031.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TesrMultiplatform20231031/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TestStateObject/Preview Content\"";
 				DEVELOPMENT_TEAM = WS8S43M437;
-				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TesrMultiplatform20231031;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestStateObject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		94F256DB2AF15BCA00ABE175 /* Build configuration list for PBXProject "TesrMultiplatform20231031" */ = {
+		94E1DAED2AF93011001FBF22 /* Build configuration list for PBXProject "TestStateObject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				94F256ED2AF15BCB00ABE175 /* Debug */,
-				94F256EE2AF15BCB00ABE175 /* Release */,
+				94E1DAFE2AF93012001FBF22 /* Debug */,
+				94E1DAFF2AF93012001FBF22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94F256EF2AF15BCB00ABE175 /* Build configuration list for PBXNativeTarget "TesrMultiplatform20231031" */ = {
+		94E1DB002AF93012001FBF22 /* Build configuration list for PBXNativeTarget "TestStateObject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				94F256F02AF15BCB00ABE175 /* Debug */,
-				94F256F12AF15BCB00ABE175 /* Release */,
+				94E1DB012AF93012001FBF22 /* Debug */,
+				94E1DB022AF93012001FBF22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 94F256D82AF15BCA00ABE175 /* Project object */;
+	rootObject = 94E1DAEA2AF93011001FBF22 /* Project object */;
 }
