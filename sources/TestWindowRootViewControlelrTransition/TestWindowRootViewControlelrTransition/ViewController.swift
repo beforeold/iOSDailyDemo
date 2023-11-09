@@ -42,7 +42,7 @@ class ViewController: UIViewController {
 
     view.backgroundColor = .green
 
-    let button = UIButton(frame: .init(x: 100, y: 100, width: 200, height: 100))
+    let button = UIButton(frame: .init(x: 100, y: 200, width: 200, height: 100))
     button.backgroundColor = .blue
     button.setTitleColor(.white, for: .normal)
     button.addTarget(self, action: #selector(onTap), for: .touchUpInside)
