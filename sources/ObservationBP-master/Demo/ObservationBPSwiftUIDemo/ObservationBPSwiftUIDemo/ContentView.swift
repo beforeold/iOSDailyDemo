@@ -31,9 +31,16 @@ struct ContentView: View {
         Text(person.name)
         Text("\(person.age)")
 
+        HStack {
+          Button("+") { person.age += 1 }
+          Button("-") { person.age -= 1 }
+        }
+
+        Divider()
+
         if person.isReady {
           Button("To Not Ready") {
-            person.isReady = false
+//            person.isReady = false
             person.readyCount += 1
           }
           Text(person.readyCount.description)
@@ -44,11 +51,6 @@ struct ContentView: View {
           }
           Text(person.readyCount.description)
         }
-
-        HStack {
-          Button("+") { person.age += 1 }
-          Button("-") { person.age -= 1 }
-        }
       }
       .padding()
     }
@@ -57,6 +59,7 @@ struct ContentView: View {
 
 #Preview {
   ContentView()
+    .preferredColorScheme(.dark)
 }
 
 //
