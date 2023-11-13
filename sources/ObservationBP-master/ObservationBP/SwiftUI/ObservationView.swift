@@ -27,15 +27,15 @@ public struct ObservationView<Content: View>: View {
     }
 }
 
-protocol ObserableView: View {
-  associatedtype SomeBody: View
-  @ViewBuilder var observerableBody: SomeBody { get }
+protocol ViewBP: View {
+  associatedtype BodyBP: View
+  @ViewBuilder var bodyBP: BodyBP { get }
 }
 
-extension ObserableView {
+extension ViewBP {
   var body: some View {
     ObservationView {
-      observerableBody
+      bodyBP
     }
   }
 }
