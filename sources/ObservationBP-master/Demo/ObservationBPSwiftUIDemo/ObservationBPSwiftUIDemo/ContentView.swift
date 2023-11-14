@@ -11,36 +11,40 @@ import ObservationBP
 @Observable final class Person {
   var name: String
   var age: Int
-
+  
   var isReady: Bool = false
   var readyCount: Int = 0
-
+  
   init(name: String, age: Int) {
     self.name = name
     self.age = age
   }
+  
+  var myName: String {
+    return name
+  }
 }
 
 struct ContentView: View {
-
+  
   private var person = Person(name: "Tom", age: 12)
-
+  
   var body: some View {
     ObservationView {
       VStack {
         Text(person.name)
         Text("\(person.age)")
-
+        
         HStack {
           Button("+") { person.age += 1 }
           Button("-") { person.age -= 1 }
         }
-
+        
         Divider()
-
+        
         if person.isReady {
           Button("To Not Ready") {
-//            person.isReady = false
+            //            person.isReady = false
             person.readyCount += 1
           }
           Text(person.readyCount.description)
