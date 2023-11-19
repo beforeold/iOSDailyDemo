@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		849EF5442B0A0B24004FAE91 /* TestForEachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849EF5432B0A0B24004FAE91 /* TestForEachView.swift */; };
+		849EF5462B0A0B8E004FAE91 /* ObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849EF5452B0A0B8E004FAE91 /* ObservationView.swift */; };
 		D172801F2A7C010700CDC50B /* ObservationBPSwiftUIDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D172801E2A7C010700CDC50B /* ObservationBPSwiftUIDemoApp.swift */; };
 		D17280232A7C010900CDC50B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17280222A7C010900CDC50B /* Assets.xcassets */; };
 		D17280262A7C010900CDC50B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17280252A7C010900CDC50B /* Preview Assets.xcassets */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		849EF5432B0A0B24004FAE91 /* TestForEachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestForEachView.swift; sourceTree = "<group>"; };
+		849EF5452B0A0B8E004FAE91 /* ObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationView.swift; sourceTree = "<group>"; };
 		D172801B2A7C010700CDC50B /* ObservationBPSwiftUIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservationBPSwiftUIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D172801E2A7C010700CDC50B /* ObservationBPSwiftUIDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationBPSwiftUIDemoApp.swift; sourceTree = "<group>"; };
 		D17280222A7C010900CDC50B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 				E4FDB4502AE1726900D755C3 /* ContentView_StateObject.swift */,
 				F79817D72AEF9236008A7E34 /* RefreshableScrollView.swift */,
 				E4DCE0A92AE18B3600DDBBC9 /* DevView.swift */,
+				849EF5452B0A0B8E004FAE91 /* ObservationView.swift */,
+				849EF5432B0A0B24004FAE91 /* TestForEachView.swift */,
 				F7F61B352B0220A900F7CF61 /* CompareDemo */,
 				F7F61B322B02136000F7CF61 /* ObservedObjectTest */,
 				F79817D92AEF93B1008A7E34 /* RrefreshScrollTestView.swift */,
@@ -227,6 +233,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				849EF5482B0A0C42004FAE91 /* PBXTargetDependency */,
 			);
 			name = ObservationBPSwiftUIDemo;
 			packageProductDependencies = (
@@ -346,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849EF5442B0A0B24004FAE91 /* TestForEachView.swift in Sources */,
 				E4FDB4512AE1726900D755C3 /* ContentView_StateObject.swift in Sources */,
 				F79817DA2AEF93B1008A7E34 /* RrefreshScrollTestView.swift in Sources */,
 				D172801F2A7C010700CDC50B /* ObservationBPSwiftUIDemoApp.swift in Sources */,
@@ -364,6 +372,7 @@
 				E4DCE0AA2AE18B3600DDBBC9 /* DevView.swift in Sources */,
 				F7F61B3F2B02210A00F7CF61 /* CompareDemo_StateObject.swift in Sources */,
 				F79817D82AEF9236008A7E34 /* RefreshableScrollView.swift in Sources */,
+				849EF5462B0A0B8E004FAE91 /* ObservationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +396,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		849EF5482B0A0C42004FAE91 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 849EF5472B0A0C42004FAE91 /* ObservationBP */;
+		};
 		D172802D2A7C010900CDC50B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D172801A2A7C010700CDC50B /* ObservationBPSwiftUIDemo */;
@@ -695,6 +708,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		849EF5472B0A0C42004FAE91 /* ObservationBP */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservationBP;
+		};
 		F7DD7F562AE28226009A5625 /* ObservationBP */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ObservationBP;
