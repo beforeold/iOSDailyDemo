@@ -7,13 +7,62 @@
 
 import UIKit
 
+// @MainActor
+func foo() {
+//  print("foo \(Thread.current)")
+  print(#function)
+}
+
+func buzz() {
+//  print("foo \(Thread.current)")
+  print(#function)
+}
+
+func asyncFunc() async {
+  print(#function)
+}
+
+func callIntTask(block: @escaping () -> Void) {
+  Task {
+    block()
+  }
+}
+
 class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+
+    bar()
   }
 
+  func fizz() {
+    callIntTask {
+      print("fizz")
+    }
+  }
 
+  func bar() {
+    //    DispatchQueue.global().async {
+    print("task begin \(Thread.current)")
+
+    for i in 0..<100 {
+      Task {
+        print("\(i)")
+      }
+    }
+
+    Task {
+
+      buzz()
+      foo()
+
+      await asyncFunc()
+
+      buzz()
+    }
+    print("task end \(Thread.current)")
+    //    }
+  }
 }
 
