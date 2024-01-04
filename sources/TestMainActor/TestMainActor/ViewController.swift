@@ -42,6 +42,11 @@ class ViewController: UIViewController {
     }
   }
 
+  func reload() {
+    print("reload")
+  }
+
+  /// Task under main actor will also be called on main queue
   func bar() {
     //    DispatchQueue.global().async {
     print("task begin \(Thread.current)")
@@ -49,6 +54,7 @@ class ViewController: UIViewController {
     for i in 0..<100 {
       Task {
         print("\(i)")
+        self.reload()
       }
     }
 
@@ -66,3 +72,9 @@ class ViewController: UIViewController {
   }
 }
 
+func look() {
+  Task {
+    let controller = await ViewController()
+    await controller.reload()
+  }
+}
