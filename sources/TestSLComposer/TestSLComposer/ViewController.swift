@@ -25,8 +25,9 @@ class ViewController: UIViewController {
       return
     }
 
-    controller.setInitialText("Pica AI Rocks")
+    controller.setInitialText("#picaai")
     controller.add(UIImage(named: "222"))
+    // controller.add(URL(string: "https://apps.apple.com/app/id6446337794"))
 
     self.present(
       controller,
