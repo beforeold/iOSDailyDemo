@@ -41,7 +41,7 @@ struct SideEffectAsyncSequence<AS>: AsyncSequence where AS: AsyncSequence {
 extension AsyncSequence {
   func print() -> SideEffectAsyncSequence<Self> {
     hook { element in
-      Swift.print("get value \(element)")
+      Swift.print("Got new value: \(element)")
     }
   }
 
@@ -54,7 +54,7 @@ class Model {
   func foo() async throws {
     let stream = AsyncStream { (continuation: AsyncStream<Int>.Continuation) in
       Task {
-        let items = [0, 1, 2, 3, 4, 5, 6]
+        let items = [0, 1, 2, 3, 4, 5, 6, 7, 8]
         for item in items {
           continuation.yield(item)
           try? await Task.sleep(nanoseconds: 1000000)
@@ -64,14 +64,12 @@ class Model {
     }
 
     let seq = stream
+      .prefix(5)
       .print()
       .filter { $0.isMultiple(of: 2) }
-      .hook { element in
-      print("hook", element)
-    }
 
     for try await value in seq {
-      print("ret", value)
+      print("Value:", value)
     }
   }
 }
