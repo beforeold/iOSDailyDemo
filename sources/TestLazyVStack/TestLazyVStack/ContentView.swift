@@ -11,7 +11,7 @@ struct ContentView: View {
   var body: some View {
     ScrollView {
       LazyVStack(alignment: .leading) {
-        ForEach(1...100, id: \.self) { value in
+        ForEach(0...100, id: \.self) { value in
           Text("Row \(value)")
             .frame(height: 200)
             .onAppear {
