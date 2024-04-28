@@ -1,0 +1,24 @@
+{
+  "originHash" : "12e5cea83fb23f31f93c524d4c67f597ea978f5dd9f389ffa1903c586469fe47",
+  "pins" : [
+    {
+      "identity" : "observationbp",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/beforeold/observationbp",
+      "state" : {
+        "branch" : "feature/brook/environment",
+        "revision" : "9f2ffed4e12a6a84a2131ab6b02b789d3d0bb1cf"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-syntax.git",
+      "state" : {
+        "revision" : "64889f0c732f210a935a0ad7cda38f77f876262d",
+        "version" : "509.1.1"
+      }
+    }
+  ],
+  "version" : 3
+}
