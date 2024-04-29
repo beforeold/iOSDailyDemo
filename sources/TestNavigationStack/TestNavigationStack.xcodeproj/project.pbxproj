@@ -38,7 +38,9 @@
 				9479D5332BDF271F0014BBFF /* TestNavigationStack */,
 				9479D5322BDF271F0014BBFF /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		9479D5322BDF271F0014BBFF /* Products */ = {
 			isa = PBXGroup;
