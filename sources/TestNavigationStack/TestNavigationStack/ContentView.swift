@@ -38,7 +38,7 @@ struct ListView: View {
       }
     }
   }
-  
+
   var items: [RowItem] {
     (0..<100).map(RowItem.init)
   }
@@ -50,16 +50,18 @@ struct ContentView: View {
       self.rootView
     }
   }
-  
+
   @ViewBuilder
   private var rootView: some View {
     VStack {
       HeaderView()
-      
+
       ListView()
     }
     .navigationDestination(for: Int.self) { index in
-      Text("dest of row \(index)")
+//      NavigationStack {
+        Text("dest of row \(index)")
+//      }
     }
     .navigationDestination(for: HeaderTag.self) { _ in
       Text("dest of header")
