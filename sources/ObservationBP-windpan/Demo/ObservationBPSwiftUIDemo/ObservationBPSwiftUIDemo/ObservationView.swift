@@ -29,6 +29,14 @@ public struct ObservationView<Content: View>: View {
   }
 }
 
+extension View {
+  func toObservationView() -> some View {
+    ObservationView {
+      self
+    }
+  }
+}
+
 protocol ViewBP: View {
   associatedtype BodyBP: View
   @ViewBuilder var bodyBP: BodyBP { get }
