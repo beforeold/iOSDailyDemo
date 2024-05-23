@@ -15,7 +15,7 @@
 
 /* Begin PBXFileReference section */
 		BCFF64622BFEF74D0068AFA5 /* TestBindable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestBindable.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCFF64652BFEF74D0068AFA5 /* TestBindableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBindableApp.swift; sourceTree = "<group>"; };
+		BCFF64652BFEF74D0068AFA5 /* TestBindableApp.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = TestBindableApp.swift; sourceTree = "<group>"; tabWidth = 2; };
 		BCFF64672BFEF74D0068AFA5 /* ContentView.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; tabWidth = 2; };
 		BCFF64692BFEF74E0068AFA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCFF646C2BFEF74E0068AFA5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -38,7 +38,9 @@
 				BCFF64642BFEF74D0068AFA5 /* TestBindable */,
 				BCFF64632BFEF74D0068AFA5 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		BCFF64632BFEF74D0068AFA5 /* Products */ = {
 			isa = PBXGroup;
