@@ -12,7 +12,23 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.configuration()
+    self.image()
+  }
+
+  func image() {
+    let button = UIButton(
+      configuration: .borderedProminent(),
+      primaryAction: UIAction(
+        title: "Tap Me",
+        image: UIImage(systemName: "clock"),
+        handler: { _ in
+          print("button tapped")
+        }
+      )
+    )
+    button.backgroundColor = .red
+    button.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
+    view.addSubview(button)
   }
 
   func configuration() {
