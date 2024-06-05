@@ -31,16 +31,24 @@ struct ContentView: View {
     Form {
       Picker("Option", selection: self.$viewModel.option) {
         ForEach(ViewModel.Option.all, id: \.self) { option in
-          Text(option?.rawValue ?? "Unset")
-            .tag(option)
+          HStack {
+            Image(systemName: "clock")
+            Text(option?.rawValue ?? "Unset")
+          }
+          .tag(option)
         }
       }
+      .pickerStyle(.automatic)
+      .tint(.red)
     }
     .padding()
+    .navigationTitle(Text("hello"))
   }
 }
 
 #Preview {
-  ContentView()
+  NavigationStack {
+    ContentView()
+  }
     .preferredColorScheme(.dark)
 }
