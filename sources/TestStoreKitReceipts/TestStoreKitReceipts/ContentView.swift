@@ -17,3 +17,15 @@ struct ContentView: View {
   ContentView()
     .preferredColorScheme(.dark)
 }
+
+
+func heavy() async {
+
+}
+
+func foo() async {
+  await MainActor.run {
+    //
+//    heavy()
+  }
+}
