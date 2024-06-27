@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "observationbp",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:beforeold/ObservationBP.git",
+      "state" : {
+        "revision" : "9f2ffed4e12a6a84a2131ab6b02b789d3d0bb1cf",
+        "version" : "0.1.4"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-syntax.git",
+      "state" : {
+        "revision" : "64889f0c732f210a935a0ad7cda38f77f876262d",
+        "version" : "509.1.1"
+      }
+    }
+  ],
+  "version" : 2
+}
