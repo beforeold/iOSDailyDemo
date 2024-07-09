@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct UIViewWrapper: UIViewRepresentable {
-  var view: UIView
-  var color: UIColor
+  let view: UIView
+  let color: UIColor
 
   func makeUIView(context: Context) -> UIView {
     print("makeUIView")
@@ -21,7 +21,7 @@ struct UIViewWrapper: UIViewRepresentable {
   }
 
   func updateUIView(_ uiView: UIView, context: Context) {
-//    uiView.backgroundColor = color
+    uiView.backgroundColor = color
     print("update")
   }
 }
@@ -37,8 +37,6 @@ struct ContentView: View {
         .onTapGesture {
           print("on tap")
           self.color = .blue
-
-
 //          self.id = UUID()
         }
     }
