@@ -40,6 +40,9 @@ class ViewModel: ObservableObject {
 //          print("action thread", Thread.current)
           return try await Service.request()
         },
+        start: { date in
+          print("start thread", Thread.current)
+        },
         success: { @MainActor stamp, value in
           print("success thread", Thread.current)
         },
