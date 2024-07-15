@@ -1,17 +1,20 @@
-//
-//  TestArticleSplitApp.swift
-//  TestArticleSplit
-//
-//  Created by xipingping on 7/9/24.
-//
-
 import SwiftUI
 
 @main
 struct TestArticleSplitApp: App {
+  @StateObject private var appViewModel = AppViewModel()
+
   var body: some Scene {
     WindowGroup {
-      ContentView2()
+      NavigationStack(path: $appViewModel.navigationPath) {
+        InputView(appViewModel: appViewModel)
+          .navigationDestination(for: Content.self) { content in
+            ContentView2(
+              appViewModel: appViewModel,
+              content: content
+            )
+          }
+      }
     }
   }
 }
