@@ -101,6 +101,35 @@ struct GradientBlurView: View {
 //  }
 //}
 
+struct TransparentBlurView: UIViewRepresentable {
+  var removeAllFilters: Bool? = false
+
+  func makeUIView(context: Context) -> UIVisualEffectView {
+    let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
+
+    return view
+  }
+
+  func updateUIView(_ uiView: UIViewType, context: Context) {
+    DispatchQueue.main.async {
+//      print(uiView.layer.sublayers?.count)
+//      print(uiView.layer.sublayers?[0].filters)
+      guard let removeAllFilters else { return }
+
+      if let backdropLayer = uiView.layer.sublayers?.first {
+        if removeAllFilters {
+          backdropLayer.filters = []
+        } else {
+          // Removing All Expect Blur Filter
+          backdropLayer.filters?.removeAll(where: { filter in
+            String(describing: filter) != "gaussianBlur"
+          })
+        }
+      }
+    }
+  }
+}
+
 struct ContentView: View {
   var body: some View {
     GradientBlurView()

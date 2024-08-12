@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  TestGradientTabbar
-//
-//  Created by xipingping on 8/12/24.
-//
-
 import SwiftUI
 import UIKit
 
@@ -96,53 +89,41 @@ import UIKit
 import UIKit
 
 class CustomTabBar: UITabBar {
+  private var controller: UIViewController!
+  private var blurEffectView: UIView!
 
-    private let blurEffectView: UIVisualEffectView = {
-        let blurEffect = UIBlurEffect(style: .light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.translatesAutoresizingMaskIntoConstraints = false
-        return blurEffectView
-    }()
+  override init(frame: CGRect) {
+    super.init(frame: frame)
 
-    private let alphaGradientLayer: CAGradientLayer = {
-        let gradientLayer = CAGradientLayer()
-        // 顶部透明，底部不透明
-        gradientLayer.colors = [UIColor.blue.cgColor, UIColor.black.cgColor]
-        gradientLayer.locations = [0.0, 1.0]
-        return gradientLayer
-    }()
+    setupBlurEffect()
+  }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupBlurEffect()
-    }
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+    setupBlurEffect()
+  }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupBlurEffect()
-    }
+  private func setupBlurEffect() {
+    let view = TransparentBlurView(removeAllFilters: true)
+      .blur(radius: 16, opaque: false)
+      .padding([.horizontal, .bottom], -16)
 
-    private func setupBlurEffect() {
-        addSubview(blurEffectView)
-        sendSubviewToBack(blurEffectView)
+    controller = UIHostingController(rootView: view)
+    controller.view.backgroundColor = .clear
+    blurEffectView = controller.view
+    blurEffectView.translatesAutoresizingMaskIntoConstraints = false
 
-        // 约束使模糊视图高出 tabBar 的高度 16 点
-        NSLayoutConstraint.activate([
-            blurEffectView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            blurEffectView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            blurEffectView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            blurEffectView.topAnchor.constraint(equalTo: topAnchor, constant: -100)
-        ])
+    addSubview(blurEffectView)
+    sendSubviewToBack(blurEffectView)
 
-        // 将 alpha 渐变层用作模糊视图的遮罩层
-        blurEffectView.layer.mask = alphaGradientLayer
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        // 调整 alpha 渐变层的大小
-        alphaGradientLayer.frame = blurEffectView.bounds
-    }
+    // 约束使模糊视图高出 tabBar 的高度 16 点
+    NSLayoutConstraint.activate([
+      blurEffectView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      blurEffectView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      blurEffectView.bottomAnchor.constraint(equalTo: bottomAnchor),
+      blurEffectView.topAnchor.constraint(equalTo: topAnchor, constant: -16)
+    ])
+  }
 }
 
 class CustomTabBarController: UITabBarController {
@@ -150,11 +131,17 @@ class CustomTabBarController: UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-//    setupCustomTabBar()
+        setupCustomTabBar()
   }
 
   private func setupCustomTabBar() {
     let customTabBar = CustomTabBar()
     setValue(customTabBar, forKey: "tabBar")
+  }
+
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+
+    print(self.tabBar.subviews)
   }
 }
