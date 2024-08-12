@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  TestGradientTabbar
-//
-//  Created by xipingping on 8/12/24.
-//
-
 import UIKit
 
 @main
