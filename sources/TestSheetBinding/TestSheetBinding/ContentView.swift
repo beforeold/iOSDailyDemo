@@ -23,6 +23,11 @@ extension View {
   }
 }
 
+func getText() -> String {
+  let _ = print("getText")
+  return "hello"
+}
+
 struct ContentView: View {
 //  @ObservedObject var model = Model()
 
@@ -41,7 +46,10 @@ struct ContentView: View {
     .onTapGesture {
       model.flag = true
     }
-    .sheet(isPresendted: $model.flag, text: "hello")
+    .sheet(
+      isPresendted: $model.flag,
+      text: getText()
+    )
   }
 }
 
