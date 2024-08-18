@@ -8,6 +8,8 @@ class Model: ObservableObject {
 @Observable
 class Model2 {
   var flag = false
+
+  var name: String?
 }
 
 extension View {
@@ -21,6 +23,22 @@ extension View {
         Text(text)
       }
   }
+
+  @ViewBuilder
+  func sheet(
+    valuePresendted: Binding<String?>
+  ) -> some View {
+    let _ = print("sheet calculate text")
+
+    self
+      .sheet(isPresented: .init(
+        get: { valuePresendted.wrappedValue != nil },
+        set: { flag in valuePresendted.wrappedValue = nil } )
+      ) {
+        let _ = print("make text")
+        Text(valuePresendted.wrappedValue!)
+      }
+  }
 }
 
 func getText() -> String {
@@ -29,7 +47,7 @@ func getText() -> String {
 }
 
 struct ContentView: View {
-//  @ObservedObject var model = Model()
+  //  @ObservedObject var model = Model()
 
   @Bindable var model = Model2()
 
@@ -44,11 +62,15 @@ struct ContentView: View {
     }
     .padding()
     .onTapGesture {
-      model.flag = true
+      //      model.flag = true
+      model.name = "Brook_" + (0..<100).randomElement()!.description
     }
     .sheet(
       isPresendted: $model.flag,
       text: getText()
+    )
+    .sheet(
+      valuePresendted: $model.name
     )
   }
 }
