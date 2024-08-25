@@ -12,4 +12,8 @@
   }
 }
 
++ (void)printObject:(id)object {
+  NSLog(@"object: %@, class: %@", object, [object class]);
+}
+
 @end
