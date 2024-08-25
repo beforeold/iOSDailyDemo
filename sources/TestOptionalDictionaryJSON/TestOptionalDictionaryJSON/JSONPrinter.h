@@ -6,6 +6,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)printDictionary:(NSDictionary *)dict;
 
++ (void)printObject:(id)object;
+
 @end
 
 NS_ASSUME_NONNULL_END
