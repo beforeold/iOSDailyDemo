@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		947BCA562C7B3F770089D280 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947BCA552C7B3F770089D280 /* main.swift */; };
+		947BCA5F2C7B405A0089D280 /* JSONPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 947BCA5E2C7B405A0089D280 /* JSONPrinter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,9 @@
 /* Begin PBXFileReference section */
 		947BCA522C7B3F770089D280 /* TestOptionalDictionaryJSON */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestOptionalDictionaryJSON; sourceTree = BUILT_PRODUCTS_DIR; };
 		947BCA552C7B3F770089D280 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		947BCA5C2C7B405A0089D280 /* TestOptionalDictionaryJSON-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestOptionalDictionaryJSON-Bridging-Header.h"; sourceTree = "<group>"; };
+		947BCA5D2C7B405A0089D280 /* JSONPrinter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONPrinter.h; sourceTree = "<group>"; };
+		947BCA5E2C7B405A0089D280 /* JSONPrinter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSONPrinter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,9 @@
 			isa = PBXGroup;
 			children = (
 				947BCA552C7B3F770089D280 /* main.swift */,
+				947BCA5D2C7B405A0089D280 /* JSONPrinter.h */,
+				947BCA5E2C7B405A0089D280 /* JSONPrinter.m */,
+				947BCA5C2C7B405A0089D280 /* TestOptionalDictionaryJSON-Bridging-Header.h */,
 			);
 			path = TestOptionalDictionaryJSON;
 			sourceTree = "<group>";
@@ -94,6 +101,7 @@
 				TargetAttributes = {
 					947BCA512C7B3F770089D280 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 				};
 			};
@@ -120,6 +128,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947BCA5F2C7B405A0089D280 /* JSONPrinter.m in Sources */,
 				947BCA562C7B3F770089D280 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,10 +257,13 @@
 		947BCA5A2C7B3F770089D280 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS8S43M437;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TestOptionalDictionaryJSON/TestOptionalDictionaryJSON-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -259,10 +271,12 @@
 		947BCA5B2C7B3F770089D280 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS8S43M437;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TestOptionalDictionaryJSON/TestOptionalDictionaryJSON-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
