@@ -5,9 +5,11 @@ struct Model: Identifiable {
 }
 
 struct ContentView: View {
-  var data: [Model] = []
+  var data: [Model] = [.init(id: 666)]
 
   var body: some View {
+    let _ = print("hello body")
+
     List {
       // ForEach(data.enumerated().map, id: \.element.id) { index, element in
       ForEach(
@@ -18,6 +20,7 @@ struct ContentView: View {
       }
     }
     .padding()
+    .background(Color.gray)
   }
 }
 
