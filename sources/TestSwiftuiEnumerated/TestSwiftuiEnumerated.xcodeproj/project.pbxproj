@@ -35,7 +35,7 @@
 		8469D2222BD227E000246C32 = {
 			isa = PBXGroup;
 			children = (
-				8469D22D2BD227E000246C32 /* TestSwiftuiEnumerated */,
+				8469D22D2BD227E000246C32 /* TestSwiftuiEnumeratedApp */,
 				8469D22C2BD227E000246C32 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,7 +48,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8469D22D2BD227E000246C32 /* TestSwiftuiEnumerated */ = {
+		8469D22D2BD227E000246C32 /* TestSwiftuiEnumeratedApp */ = {
 			isa = PBXGroup;
 			children = (
 				8469D22E2BD227E000246C32 /* TestSwiftuiEnumeratedApp.swift */,
@@ -56,7 +56,7 @@
 				8469D2322BD227E200246C32 /* Assets.xcassets */,
 				8469D2342BD227E200246C32 /* Preview Content */,
 			);
-			path = TestSwiftuiEnumerated;
+			path = TestSwiftuiEnumeratedApp;
 			sourceTree = "<group>";
 		};
 		8469D2342BD227E200246C32 /* Preview Content */ = {
@@ -197,7 +197,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -254,7 +254,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
