@@ -1,3 +1,4 @@
+/*
 import Foundation
 import ObservationBP
 import SwiftUI
@@ -65,3 +66,4 @@ struct ContentViewIndexed: View {
 #Preview {
   ContentViewIndexed()
 }
+*/

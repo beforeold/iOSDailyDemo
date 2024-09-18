@@ -2,7 +2,7 @@
 import Observation
 import SwiftUI
 
-struct ObserableView: View {
+struct ContentView: View {
 
   enum Option: Hashable {
     case first
@@ -59,6 +59,6 @@ struct ObserableView: View {
 }
 
 #Preview {
-  ObserableView()
+  ContentView()
 }
 */

@@ -1,8 +1,15 @@
-
+/*
+import Foundation
 import ObservationBP
 import SwiftUI
 
-public struct ContentView: View {
+extension Array: @retroactive Identifiable where Element: Hashable {
+  public var id: Element? {
+    first
+  }
+}
+
+public struct ContentViewIdentified: ViewBP {
 
   public enum Option: Hashable {
     case first
@@ -31,7 +38,7 @@ public struct ContentView: View {
 
   var model: Model = .init()
 
-  public var body: some View {
+  public var bodyBP: some View {
     ObservationView {
       let _ = print("bp 1")
 
@@ -42,27 +49,26 @@ public struct ContentView: View {
           model.append()
         }
 
-        ForEach(model.sections.indices, id: \.self) { item in
+        ForEach(model.sections, id: \.self) { item in
           let _ = print("outer foreach \(item)")
 
-          let index = item
           //        ObservationView {
           Section {
-            ForEach(model.sections[index].indices, id: \.self) { item in
-              let _ = print("inner foreach \(item)")
+            ForEach(item.indices, id: \.self) { item2 in
+              let _ = print("inner foreach \(item2)")
 
-              let index2 = item
-              Text("\(model.sections[index][index2])")
+              let index2 = item2
+              Text("\(item[index2])")
             }
           }
           //        }
         }
-//        .id(model.sections)
       }
     }
   }
 }
 
 #Preview {
-  ContentView()
+  ContentViewIdentified()
 }
+*/
