@@ -1,16 +1,15 @@
-
-import ObservationBP
+import Perception
 import SwiftUI
 
-public struct ContentView: View {
+struct PerceptionView: View {
 
-  public enum Option: Hashable {
+  enum Option: Hashable {
     case first
     case second
     case third
   }
 
-  @ObservationBP.Observable
+  @Perceptible
   class Model {
     var sections: [[Option]] = [
       [.first],
@@ -31,13 +30,13 @@ public struct ContentView: View {
 
   var model: Model = .init()
 
-  public var body: some View {
-    ObservationView {
+  var body: some View {
+    ObsView {
       content
     }
   }
 
-  @ViewBuilder var content: some View {
+  @ViewBuilder private var content: some View {
     let _ = print("bp 1")
 
     List {
@@ -49,6 +48,7 @@ public struct ContentView: View {
 
       ForEach(model.sections.indices, id: \.self) { item in
         let _ = print("outer foreach \(item)")
+
         let index = item
         Section {
           ForEach(model.sections[index].indices, id: \.self) { item in
@@ -63,31 +63,14 @@ public struct ContentView: View {
   }
 }
 
-
-import ObservationBP
-
-public struct ObsView<Content> {
-  @State var id = 0
-
-  let content: () -> Content
-
-  public var body: Content {
-    let _ = self.id
-    return withObservationTracking {
-      content()
-    } onChange: { [_id = UncheckedSendable(self._id)] in
-      _id.value.wrappedValue &+= 1
-    }
-  }
-}
-
-extension ObsView: View where Content: View {
-  public init(@ViewBuilder content: @escaping () -> Content) {
-    self.content = content
+@usableFromInline struct UncheckedSendable<Value>: @unchecked Sendable {
+  @usableFromInline let value: Value
+  @usableFromInline init(_ value: Value) {
+    self.value = value
   }
 }
 
 
 #Preview {
-  ContentView()
+  PerceptionView()
 }
