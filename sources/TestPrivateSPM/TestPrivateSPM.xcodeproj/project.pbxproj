@@ -37,6 +37,7 @@
 			children = (
 				841B2B7D2C9C1FC600141B55 /* TestPrivateSPM */,
 				841B2B7C2C9C1FC600141B55 /* Products */,
+				841B2B8D2C9C25C800141B55 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +68,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		841B2B8D2C9C25C800141B55 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,6 +91,8 @@
 			dependencies = (
 			);
 			name = TestPrivateSPM;
+			packageProductDependencies = (
+			);
 			productName = TestPrivateSPM;
 			productReference = 841B2B7B2C9C1FC600141B55 /* TestPrivateSPM.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +121,8 @@
 				Base,
 			);
 			mainGroup = 841B2B722C9C1FC600141B55;
+			packageReferences = (
+			);
 			productRefGroup = 841B2B7C2C9C1FC600141B55 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
