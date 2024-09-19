@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		84FB06932C9AE2C6000D62DD /* ObservationBP in Frameworks */ = {isa = PBXBuildFile; productRef = 84FB06922C9AE2C6000D62DD /* ObservationBP */; };
+		84FB06B62C9BAE1E000D62DD /* Perception in Frameworks */ = {isa = PBXBuildFile; productRef = 84FB06B52C9BAE1E000D62DD /* Perception */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84FB06932C9AE2C6000D62DD /* ObservationBP in Frameworks */,
+				84FB06B62C9BAE1E000D62DD /* Perception in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +73,7 @@
 			name = TestSwiftUiIndicies;
 			packageProductDependencies = (
 				84FB06922C9AE2C6000D62DD /* ObservationBP */,
+				84FB06B52C9BAE1E000D62DD /* Perception */,
 			);
 			productName = TestSwiftUiIndicies;
 			productReference = 84FB06802C9AE0BF000D62DD /* TestSwiftUiIndicies.app */;
@@ -102,6 +105,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				84FB06912C9AE2C6000D62DD /* XCRemoteSwiftPackageReference "ObservationBP" */,
+				84FB06B42C9BAE1E000D62DD /* XCRemoteSwiftPackageReference "swift-perception" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 84FB06812C9AE0BF000D62DD /* Products */;
@@ -343,6 +347,14 @@
 				minimumVersion = 0.1.4;
 			};
 		};
+		84FB06B42C9BAE1E000D62DD /* XCRemoteSwiftPackageReference "swift-perception" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:pointfreeco/swift-perception.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -350,6 +362,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 84FB06912C9AE2C6000D62DD /* XCRemoteSwiftPackageReference "ObservationBP" */;
 			productName = ObservationBP;
+		};
+		84FB06B52C9BAE1E000D62DD /* Perception */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84FB06B42C9BAE1E000D62DD /* XCRemoteSwiftPackageReference "swift-perception" */;
+			productName = Perception;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
