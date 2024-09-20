@@ -19,3 +19,13 @@ do {
   let value = #simpleMacro()
   print(value)
 }
+
+do {
+  struct P {
+    #generateGreetFunction()
+  }
+
+  let p = P()
+  let value = p.greet()
+  print(value)
+}
