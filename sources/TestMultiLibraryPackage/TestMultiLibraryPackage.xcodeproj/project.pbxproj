@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		84143B042C9D138500510EB4 /* BizTemplateA in Frameworks */ = {isa = PBXBuildFile; productRef = 84143B032C9D138500510EB4 /* BizTemplateA */; };
-		84143B062C9D138500510EB4 /* BizTemplateB in Frameworks */ = {isa = PBXBuildFile; productRef = 84143B052C9D138500510EB4 /* BizTemplateB */; };
+		84143B092C9D1E7F00510EB4 /* BizTemplateA in Frameworks */ = {isa = PBXBuildFile; productRef = 84143B082C9D1E7F00510EB4 /* BizTemplateA */; };
+		84143B0B2C9D1E8200510EB4 /* BizTemplateB in Frameworks */ = {isa = PBXBuildFile; productRef = 84143B0A2C9D1E8200510EB4 /* BizTemplateB */; };
 		841B2B9D2C9D0EF900141B55 /* TestMultiLibraryPackageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B2B9C2C9D0EF900141B55 /* TestMultiLibraryPackageApp.swift */; };
 		841B2B9F2C9D0EF900141B55 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B2B9E2C9D0EF900141B55 /* ContentView.swift */; };
 		841B2BA12C9D0EFB00141B55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841B2BA02C9D0EFB00141B55 /* Assets.xcassets */; };
@@ -16,7 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		84143AF12C9D104000510EB4 /* BizTemplate */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BizTemplate; sourceTree = "<group>"; };
 		84143AFC2C9D130700510EB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		841B2B992C9D0EF900141B55 /* TestMultiLibraryPackage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestMultiLibraryPackage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		841B2B9C2C9D0EF900141B55 /* TestMultiLibraryPackageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMultiLibraryPackageApp.swift; sourceTree = "<group>"; };
@@ -30,20 +29,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84143B042C9D138500510EB4 /* BizTemplateA in Frameworks */,
-				84143B062C9D138500510EB4 /* BizTemplateB in Frameworks */,
+				84143B092C9D1E7F00510EB4 /* BizTemplateA in Frameworks */,
+				84143B0B2C9D1E8200510EB4 /* BizTemplateB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84143B072C9D1E7F00510EB4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		841B2B902C9D0EF900141B55 = {
 			isa = PBXGroup;
 			children = (
-				84143AF12C9D104000510EB4 /* BizTemplate */,
 				841B2B9B2C9D0EF900141B55 /* TestMultiLibraryPackage */,
 				841B2B9A2C9D0EF900141B55 /* Products */,
+				84143B072C9D1E7F00510EB4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,8 +98,8 @@
 			);
 			name = TestMultiLibraryPackage;
 			packageProductDependencies = (
-				84143B032C9D138500510EB4 /* BizTemplateA */,
-				84143B052C9D138500510EB4 /* BizTemplateB */,
+				84143B082C9D1E7F00510EB4 /* BizTemplateA */,
+				84143B0A2C9D1E8200510EB4 /* BizTemplateB */,
 			);
 			productName = TestMultiLibraryPackage;
 			productReference = 841B2B992C9D0EF900141B55 /* TestMultiLibraryPackage.app */;
@@ -370,12 +376,14 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		84143B032C9D138500510EB4 /* BizTemplateA */ = {
+		84143B082C9D1E7F00510EB4 /* BizTemplateA */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 84143B022C9D138500510EB4 /* XCLocalSwiftPackageReference "BizTemplate" */;
 			productName = BizTemplateA;
 		};
-		84143B052C9D138500510EB4 /* BizTemplateB */ = {
+		84143B0A2C9D1E8200510EB4 /* BizTemplateB */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 84143B022C9D138500510EB4 /* XCLocalSwiftPackageReference "BizTemplate" */;
 			productName = BizTemplateB;
 		};
 /* End XCSwiftPackageProductDependency section */
