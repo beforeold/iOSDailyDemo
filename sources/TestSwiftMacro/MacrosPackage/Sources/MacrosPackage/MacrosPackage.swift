@@ -13,3 +13,9 @@ public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "M
 
 @freestanding(expression)
 public macro simpleMacro() -> Int = #externalMacro(module: "MacrosPackageMacros", type: "SimpleMacro")
+
+@freestanding(expression)
+public macro doubleMacro(_ value: Int) -> Int = #externalMacro(module: "MacrosPackageMacros", type: "DoubleMacro")
+
+@freestanding(declaration, names: arbitrary)
+public macro generateGreetFunction() = #externalMacro(module: "MacrosPackageMacros", type: "GreetMacro")

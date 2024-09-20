@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//import MacrosPackage
+import MacrosPackage
 
 print("Hello, World!")
 
@@ -21,3 +21,14 @@ print("Hello, World!")
 
 //let value = #simpleMacro()
 //print(value)
+
+do {
+  let value = #doubleMacro(5)
+  print(value)
+}
+
+struct Person {
+
+}
+
+#generateGreetFunction()
