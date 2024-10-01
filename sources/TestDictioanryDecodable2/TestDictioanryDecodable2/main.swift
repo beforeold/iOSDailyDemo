@@ -240,18 +240,60 @@ func test() {
   }
 
   do {
-    var dict = [5: 5, 8: 8]
-    dict[16] = 16
+    var dict: [Int: Int] = [5: 5, 8: 8]
+    dict[166] = 166
     let data = try JSONEncoder().encode(dict)
     print(#function, String(decoding: data, as: UTF8.self))
   } catch {
     print(error)
   }
 
+  do {
+    var dict: [Double: Int] = [5.5: 5, 8: 8]
+    dict[16.6] = 16
+    let data = try JSONEncoder().encode(dict)
+    print(#function, String(decoding: data, as: UTF8.self))
+  } catch {
+    print(error)
+  }
 
+  do {
+    var dict = [true: 5]
+    dict[false] = 16
+    let data = try JSONEncoder().encode(dict)
+    print(#function, String(decoding: data, as: UTF8.self))
+  } catch {
+    print(error)
+  }
+
+  // {"166":"166","8":"8","5":"5"}
+  let jsonString = #"""
+      {"166":166,"5":5,"8":8}
+    """#
+  let data = jsonString.data(using: .utf8)!
+  do {
+    let dict = try JSONDecoder().decode(Dictionary<Int, Int>.self, from: data)
+    print(#function, dict)
+  } catch {
+    print(#function, error)
+  }
+
+  do {
+    let dict = try JSONDecoder().decode(Dictionary<String, Int>.self, from: data)
+    print(#function, dict)
+  } catch {
+    print(#function, error)
+  }
+
+//  do {
+//    let dict = try JSONDecoder().decode(Dictionary<String, String>.self, from: data)
+//    print(#function, dict)
+//  } catch {
+//    print(#function, error)
+//  }
 }
 
- test()
+test()
 
 
 func test2() {
@@ -276,4 +318,5 @@ func test2() {
   }
 }
 
+print("\n\n")
 test2()
