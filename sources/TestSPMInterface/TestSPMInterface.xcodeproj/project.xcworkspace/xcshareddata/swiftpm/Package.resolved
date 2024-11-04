@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "testspmtargets",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/beforeold/TestSPMTargets",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f838075e96d3886aadec9d91ecf9ab8c31ec0626"
+      }
+    }
+  ],
+  "version" : 2
+}
