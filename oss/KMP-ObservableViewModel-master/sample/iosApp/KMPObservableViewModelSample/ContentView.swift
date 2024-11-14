@@ -11,7 +11,11 @@ import KMPObservableViewModelSwiftUI
 struct ContentView: View {
     
     @StateViewModel var viewModel = TimeTravelViewModel()
-    
+
+  func foo() {
+    // let flow = viewModel.actualTimeFlow
+  }
+
     private var isFixedTimeBinding: Binding<Bool> {
         Binding { viewModel.isFixedTime } set: { isFixedTime in
             if isFixedTime {
