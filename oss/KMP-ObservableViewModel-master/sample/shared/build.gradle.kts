@@ -9,7 +9,7 @@ plugins {
 
 kotlin {
     androidTarget()
-    jvmToolchain(11)
+    jvmToolchain(17)
     
     listOf(
         iosX64(),

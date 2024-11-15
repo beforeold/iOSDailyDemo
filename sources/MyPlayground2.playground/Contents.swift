@@ -13,7 +13,7 @@ struct MyView: View, PlaygroundLiveViewable {
   var body: some View {
     NavigationStack {
       List(0..<100) { item in
-        Button(action: { count += 1}) {
+        Button(action: { count += 1 }) {
           Text("count is: \(count)")
             .foregroundColor(Color.white)
             .frame(width: 500, height: 50)
@@ -36,7 +36,20 @@ label
 
 MyView()
 
+struct SwiftUIView: View {
+  var body: some View {
+    Text("customed view")
+      .frame(width: 100, height: 100)
+  }
+}
+
 Text("ook")
+
+PlaygroundPage.current.setLiveView(UIView())
+
+PlaygroundPage.current.setLiveView(Text("Text"))
+
+PlaygroundPage.current.setLiveView(SwiftUIView())
 
 // PlaygroundPage.current.liveView = MyView()
 //PlaygroundPage.current.setLiveView(
