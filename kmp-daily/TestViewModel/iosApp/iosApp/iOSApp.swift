@@ -163,7 +163,8 @@ class KotlinViewAdapter<ViewModelType, StateType: AnyObject>: ObservableObject {
 
   func cancel() {
     print("native log cancel")
-    observingTask?.cancel()
-//    IOSHelper().cancelCoroutineScope(scope: viewScope)
+//    observingTask?.cancel()
+    IOSHelper().run()
+    IOSHelper().cancelCoroutineScope(scope: viewScope)
   }
 }
