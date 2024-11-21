@@ -1,5 +1,5 @@
 import SwiftUI
-//import App
+import App
 
 class Router: ObservableObject {
   @Published var path: [String] = []
@@ -14,8 +14,14 @@ struct ObserableView<Content: View>: View {
   }
 }
 
-@Observable
-class Router2 {
+//@Observable
+//class Router2 {
+//  var path: [String] = []
+//}
+
+import Perception
+@Perceptible
+class Router3 {
   var path: [String] = []
 }
 
@@ -23,27 +29,24 @@ struct ContentView: View {
   // @StateObject private var router: Router = .init()
   // @Bindable var router: Router2 = .init()
 
-  @MyBindable var router: Router2 = .init()
+  @Perception.Bindable var router: Router3 = .init()
 
-  @State private var path: [String] = []
+  // @State private var path: [String] = []
 
   var body: some View {
     let _ = print("body")
 
-    ObserableView {
-      NavigationStack(path: $path) {
-        let _ = print("root view")
+    NavigationStack(path: $router.path) {
+      let _ = print("root view")
 
-        VStack {
-          Text("push")
+      VStack {
+        Button("push") {
+          router.path = ["hello"]
         }
-        .padding()
-        .onTapGesture {
-          path  = ["hello"]
-        }
-        .navigationDestination(for: String.self) { value in
-          Text("result: \(value)")
-        }
+      }
+      .padding()
+      .navigationDestination(for: String.self) { value in
+        Text("result: \(value)")
       }
     }
   }
@@ -54,17 +57,30 @@ struct ContentView: View {
 }
 
 @propertyWrapper
-struct MyBindable<V: Observable> {
-  var wrappedValue: V
+@dynamicMemberLookup
+public struct BindableBP<Value> where Value: AnyObject, Value: Perceptible {
+  public var wrappedValue: Value
 
-  var projectedValue: Self {
+  public init(wrappedValue: Value) {
+    self.wrappedValue = wrappedValue
+  }
+
+  public var projectedValue: BindableBP<Value> {
     self
   }
 
-  subscript<S>(keyPath: ReferenceWritableKeyPath<V, S>) -> Binding<S> {
-    .init(
-      get: { self.wrappedValue[keyPath: keyPath] },
-      set: { self.wrappedValue[keyPath: keyPath] = $0 }
+  public subscript<Subject>(
+    dynamicMember keyPath: ReferenceWritableKeyPath<Value, Subject>
+  ) -> Binding<Subject> {
+    return Binding<Subject>(
+      get: {
+        print("bindable get")
+        return self.wrappedValue[keyPath: keyPath]
+      },
+      set: { value in
+        print("bindable set", value)
+        self.wrappedValue[keyPath: keyPath] = value
+      }
     )
   }
 }
