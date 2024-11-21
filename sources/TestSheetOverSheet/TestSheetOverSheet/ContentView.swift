@@ -33,13 +33,36 @@ struct InnerView: View {
   var body: some View {
     VStack(spacing: 30) {
       Button("show outer") {
-        manager.outer = true
+        // manager.outer = true
+        print("show outer")
+
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+          print("no window scenee")
+          return
+        }
+
+        guard let controller = windowScene.windows.first?.rootViewController else {
+          print("no controller")
+          return
+        }
+
+        print("get root controller", controller)
+
+        controller.present(RedViewController(), animated: true)
       }
 
       Button("dismiss self") {
         dismiss()
       }
     }
+  }
+}
+
+class RedViewController: UIViewController {
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    view.backgroundColor = .red
   }
 }
 
