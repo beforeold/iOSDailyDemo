@@ -46,9 +46,9 @@ struct ContentView: View {
       InnerView {
 //        router.path = ["hello"]
 //                  path = ["hello"]
-        Navigator.shared.path.append("hello2")
+        Navigator.shared.push("hello2")
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-          print("timer")
+//          print("timer")
 //          path.append("hello2")
         }
       }
@@ -84,7 +84,14 @@ struct InnerView: View {
     }
     .padding()
     .navigationDestination(for: String.self) { value in
-      Text("result: \(value)")
+      VStack {
+        Text("result: \(value)")
+
+        Button("pop") {
+          Navigator.shared.pop()
+        }
+        .padding(.top, 30)
+      }
     }
   }
 }
