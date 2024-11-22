@@ -2,7 +2,7 @@ import SwiftUI
 import App
 
 class Router: ObservableObject {
-  @Published var path: [String] = []
+  @State var path: [String] = []
 }
 
 struct ObserableView<Content: View>: View {
@@ -13,7 +13,6 @@ struct ObserableView<Content: View>: View {
     content()
   }
 }
-
 
 @Observable
 class Router2 {
@@ -31,25 +30,27 @@ class Router2 {
 //}
 
 struct ContentView: View {
+     @Binding var path: [String]
 //   @State private var path: [String] = []
   //  @BindableBP var router: Router3 = .init()
-  @Bindable var router: Router2 = .init()
-  //   @StateObject private var router: Router = .init()
+//  @Bindable var router: Router2 = .init()
+//     @StateObject private var router: Router = .init()
   //   @Perception.Bindable var router: Router3 = .init()
-
-  init() {
-    //    isPerceptionCheckingEnabled = true
-  }
 
   var body: some View {
     let _ = print("body")
     //    WithPerceptionTracking {
 //        NavigationStack(path: $path) {
-    NavigationStack(path: router.binding()) {
+    NavigationStack(path: $path) {
       let _ = print("root view")
       InnerView {
-        router.path = ["hello"]
-        //          path = ["hello"]
+//        router.path = ["hello"]
+//                  path = ["hello"]
+        Navigator.shared.path.append("hello2")
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+          print("timer")
+//          path.append("hello2")
+        }
       }
 
     }
@@ -89,7 +90,7 @@ struct InnerView: View {
 }
 
 #Preview {
-  ContentView()
+  ContentView(path: .constant([]))
 }
 
 //
