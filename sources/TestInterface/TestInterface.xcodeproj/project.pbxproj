@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXCopyFilesBuildPhase section */
-		84DF4E812CE71EDA003323CD /* CopyFiles */ = {
+		84DF4EC82CE83F5D003323CD /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -19,19 +19,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		84DF4E832CE71EDA003323CD /* TestOSLog */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestOSLog; sourceTree = BUILT_PRODUCTS_DIR; };
+		84DF4ECA2CE83F5D003323CD /* TestInterface */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestInterface; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		84DF4E852CE71EDA003323CD /* TestOSLog */ = {
+		84DF4ECC2CE83F5D003323CD /* TestInterface */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TestOSLog;
+			path = TestInterface;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		84DF4E802CE71EDA003323CD /* Frameworks */ = {
+		84DF4EC72CE83F5D003323CD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,18 +41,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		84DF4E7A2CE71EDA003323CD = {
+		84DF4EC12CE83F5D003323CD = {
 			isa = PBXGroup;
 			children = (
-				84DF4E852CE71EDA003323CD /* TestOSLog */,
-				84DF4E842CE71EDA003323CD /* Products */,
+				84DF4ECC2CE83F5D003323CD /* TestInterface */,
+				84DF4ECB2CE83F5D003323CD /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		84DF4E842CE71EDA003323CD /* Products */ = {
+		84DF4ECB2CE83F5D003323CD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84DF4E832CE71EDA003323CD /* TestOSLog */,
+				84DF4ECA2CE83F5D003323CD /* TestInterface */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,65 +60,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		84DF4E822CE71EDA003323CD /* TestOSLog */ = {
+		84DF4EC92CE83F5D003323CD /* TestInterface */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84DF4E8A2CE71EDA003323CD /* Build configuration list for PBXNativeTarget "TestOSLog" */;
+			buildConfigurationList = 84DF4ED12CE83F5D003323CD /* Build configuration list for PBXNativeTarget "TestInterface" */;
 			buildPhases = (
-				84DF4E7F2CE71EDA003323CD /* Sources */,
-				84DF4E802CE71EDA003323CD /* Frameworks */,
-				84DF4E812CE71EDA003323CD /* CopyFiles */,
+				84DF4EC62CE83F5D003323CD /* Sources */,
+				84DF4EC72CE83F5D003323CD /* Frameworks */,
+				84DF4EC82CE83F5D003323CD /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				84DF4E852CE71EDA003323CD /* TestOSLog */,
+				84DF4ECC2CE83F5D003323CD /* TestInterface */,
 			);
-			name = TestOSLog;
+			name = TestInterface;
 			packageProductDependencies = (
 			);
-			productName = TestOSLog;
-			productReference = 84DF4E832CE71EDA003323CD /* TestOSLog */;
+			productName = TestInterface;
+			productReference = 84DF4ECA2CE83F5D003323CD /* TestInterface */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		84DF4E7B2CE71EDA003323CD /* Project object */ = {
+		84DF4EC22CE83F5D003323CD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
-					84DF4E822CE71EDA003323CD = {
+					84DF4EC92CE83F5D003323CD = {
 						CreatedOnToolsVersion = 16.0;
-						LastSwiftMigration = 1600;
 					};
 				};
 			};
-			buildConfigurationList = 84DF4E7E2CE71EDA003323CD /* Build configuration list for PBXProject "TestOSLog" */;
+			buildConfigurationList = 84DF4EC52CE83F5D003323CD /* Build configuration list for PBXProject "TestInterface" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 84DF4E7A2CE71EDA003323CD;
+			mainGroup = 84DF4EC12CE83F5D003323CD;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 84DF4E842CE71EDA003323CD /* Products */;
+			productRefGroup = 84DF4ECB2CE83F5D003323CD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				84DF4E822CE71EDA003323CD /* TestOSLog */,
+				84DF4EC92CE83F5D003323CD /* TestInterface */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		84DF4E7F2CE71EDA003323CD /* Sources */ = {
+		84DF4EC62CE83F5D003323CD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -128,7 +127,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		84DF4E882CE71EDA003323CD /* Debug */ = {
+		84DF4ECF2CE83F5D003323CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -191,7 +190,7 @@
 			};
 			name = Debug;
 		};
-		84DF4E892CE71EDA003323CD /* Release */ = {
+		84DF4ED02CE83F5D003323CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -246,25 +245,20 @@
 			};
 			name = Release;
 		};
-		84DF4E8B2CE71EDA003323CD /* Debug */ = {
+		84DF4ED22CE83F5D003323CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "TestOSLog/TestOSLog-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		84DF4E8C2CE71EDA003323CD /* Release */ = {
+		84DF4ED32CE83F5D003323CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "TestOSLog/TestOSLog-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -272,25 +266,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		84DF4E7E2CE71EDA003323CD /* Build configuration list for PBXProject "TestOSLog" */ = {
+		84DF4EC52CE83F5D003323CD /* Build configuration list for PBXProject "TestInterface" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				84DF4E882CE71EDA003323CD /* Debug */,
-				84DF4E892CE71EDA003323CD /* Release */,
+				84DF4ECF2CE83F5D003323CD /* Debug */,
+				84DF4ED02CE83F5D003323CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		84DF4E8A2CE71EDA003323CD /* Build configuration list for PBXNativeTarget "TestOSLog" */ = {
+		84DF4ED12CE83F5D003323CD /* Build configuration list for PBXNativeTarget "TestInterface" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				84DF4E8B2CE71EDA003323CD /* Debug */,
-				84DF4E8C2CE71EDA003323CD /* Release */,
+				84DF4ED22CE83F5D003323CD /* Debug */,
+				84DF4ED32CE83F5D003323CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 84DF4E7B2CE71EDA003323CD /* Project object */;
+	rootObject = 84DF4EC22CE83F5D003323CD /* Project object */;
 }
