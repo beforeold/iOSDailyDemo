@@ -12,10 +12,19 @@ struct ContentView: View {
     .padding()
     .task {
       let value: Int? = try? await withPolling(
-        stops: myStop,
+        stops: { value in
+          // return value > 5
+          // return myStop(value)
+          Task {
+            let value = await self.myStop(5)
+            print("task stop at?: ", value)
+          }
+
+          return value > 5
+        },
         gap: { try await Task.sleep(nanoseconds: 1_000_000_000) },
         task: {
-          print("task");
+          print("task")
           return 5
         }
       )
@@ -23,7 +32,11 @@ struct ContentView: View {
     }
   }
 
+  @MainActor
   private func myStop(_ value: Int) -> Bool {
+    let vc = UIViewController()
+    vc.view.addSubview(UILabel())
+
     print("hello")
     print(Thread.current)
     return false
@@ -38,7 +51,7 @@ struct ContentView: View {
 /// - Throws: 原 task 和 gap 错误
 /// - Returns: 最终的 value
 public func withPolling<T>(
-  stops: (T) -> Bool,
+  stops: @Sendable (T) -> Bool,
   gap: () async throws -> Void,
   task: () async throws -> T
 ) async rethrows -> T {
