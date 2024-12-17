@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		BC8A3F232CF07956003F08CD /* TestOnceTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestOnceTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8439BF812CFDF00B0060B0A4 /* TestGroupUpdates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestGroupUpdates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		BC8A3F252CF07956003F08CD /* TestOnceTask */ = {
+		8439BF832CFDF00B0060B0A4 /* TestGroupUpdates */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TestOnceTask;
+			path = TestGroupUpdates;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BC8A3F202CF07956003F08CD /* Frameworks */ = {
+		8439BF7E2CFDF00B0060B0A4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BC8A3F1A2CF07956003F08CD = {
+		8439BF782CFDF00B0060B0A4 = {
 			isa = PBXGroup;
 			children = (
-				BC8A3F252CF07956003F08CD /* TestOnceTask */,
-				BC8A3F242CF07956003F08CD /* Products */,
+				8439BF832CFDF00B0060B0A4 /* TestGroupUpdates */,
+				8439BF822CFDF00B0060B0A4 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		BC8A3F242CF07956003F08CD /* Products */ = {
+		8439BF822CFDF00B0060B0A4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC8A3F232CF07956003F08CD /* TestOnceTask.app */,
+				8439BF812CFDF00B0060B0A4 /* TestGroupUpdates.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BC8A3F222CF07956003F08CD /* TestOnceTask */ = {
+		8439BF802CFDF00B0060B0A4 /* TestGroupUpdates */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC8A3F312CF07957003F08CD /* Build configuration list for PBXNativeTarget "TestOnceTask" */;
+			buildConfigurationList = 8439BF8F2CFDF00D0060B0A4 /* Build configuration list for PBXNativeTarget "TestGroupUpdates" */;
 			buildPhases = (
-				BC8A3F1F2CF07956003F08CD /* Sources */,
-				BC8A3F202CF07956003F08CD /* Frameworks */,
-				BC8A3F212CF07956003F08CD /* Resources */,
+				8439BF7D2CFDF00B0060B0A4 /* Sources */,
+				8439BF7E2CFDF00B0060B0A4 /* Frameworks */,
+				8439BF7F2CFDF00B0060B0A4 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				BC8A3F252CF07956003F08CD /* TestOnceTask */,
+				8439BF832CFDF00B0060B0A4 /* TestGroupUpdates */,
 			);
-			name = TestOnceTask;
+			name = TestGroupUpdates;
 			packageProductDependencies = (
 			);
-			productName = TestOnceTask;
-			productReference = BC8A3F232CF07956003F08CD /* TestOnceTask.app */;
+			productName = TestGroupUpdates;
+			productReference = 8439BF812CFDF00B0060B0A4 /* TestGroupUpdates.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		BC8A3F1B2CF07956003F08CD /* Project object */ = {
+		8439BF792CFDF00B0060B0A4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
-					BC8A3F222CF07956003F08CD = {
+					8439BF802CFDF00B0060B0A4 = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
-			buildConfigurationList = BC8A3F1E2CF07956003F08CD /* Build configuration list for PBXProject "TestOnceTask" */;
+			buildConfigurationList = 8439BF7C2CFDF00B0060B0A4 /* Build configuration list for PBXProject "TestGroupUpdates" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = BC8A3F1A2CF07956003F08CD;
+			mainGroup = 8439BF782CFDF00B0060B0A4;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = BC8A3F242CF07956003F08CD /* Products */;
+			productRefGroup = 8439BF822CFDF00B0060B0A4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BC8A3F222CF07956003F08CD /* TestOnceTask */,
+				8439BF802CFDF00B0060B0A4 /* TestGroupUpdates */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BC8A3F212CF07956003F08CD /* Resources */ = {
+		8439BF7F2CFDF00B0060B0A4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BC8A3F1F2CF07956003F08CD /* Sources */ = {
+		8439BF7D2CFDF00B0060B0A4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		BC8A3F2F2CF07957003F08CD /* Debug */ = {
+		8439BF8D2CFDF00D0060B0A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -188,7 +188,7 @@
 			};
 			name = Debug;
 		};
-		BC8A3F302CF07957003F08CD /* Release */ = {
+		8439BF8E2CFDF00D0060B0A4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -244,14 +244,14 @@
 			};
 			name = Release;
 		};
-		BC8A3F322CF07957003F08CD /* Debug */ = {
+		8439BF902CFDF00D0060B0A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TestOnceTask/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TestGroupUpdates/Preview Content\"";
 				DEVELOPMENT_TEAM = DJ587BPX4R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -260,13 +260,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestOnceTask;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestGroupUpdates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -274,14 +273,14 @@
 			};
 			name = Debug;
 		};
-		BC8A3F332CF07957003F08CD /* Release */ = {
+		8439BF912CFDF00D0060B0A4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TestOnceTask/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TestGroupUpdates/Preview Content\"";
 				DEVELOPMENT_TEAM = DJ587BPX4R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -290,13 +289,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestOnceTask;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestGroupUpdates;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -307,25 +305,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BC8A3F1E2CF07956003F08CD /* Build configuration list for PBXProject "TestOnceTask" */ = {
+		8439BF7C2CFDF00B0060B0A4 /* Build configuration list for PBXProject "TestGroupUpdates" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BC8A3F2F2CF07957003F08CD /* Debug */,
-				BC8A3F302CF07957003F08CD /* Release */,
+				8439BF8D2CFDF00D0060B0A4 /* Debug */,
+				8439BF8E2CFDF00D0060B0A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC8A3F312CF07957003F08CD /* Build configuration list for PBXNativeTarget "TestOnceTask" */ = {
+		8439BF8F2CFDF00D0060B0A4 /* Build configuration list for PBXNativeTarget "TestGroupUpdates" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BC8A3F322CF07957003F08CD /* Debug */,
-				BC8A3F332CF07957003F08CD /* Release */,
+				8439BF902CFDF00D0060B0A4 /* Debug */,
+				8439BF912CFDF00D0060B0A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = BC8A3F1B2CF07956003F08CD /* Project object */;
+	rootObject = 8439BF792CFDF00B0060B0A4 /* Project object */;
 }

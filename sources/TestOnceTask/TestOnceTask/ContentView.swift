@@ -22,14 +22,15 @@ struct ContentView: View {
   func sleep() async {
     do {
       print("sleep begin")
-      let task = Task {
-        try await Task.sleep(for: .seconds(5))
-      }
-      try await task.value
+      defer { print("inner sleep end") }
 
-      print("sleep end")
+      print(Task.isCancelled)
+
+      try await Task.sleep(for: .seconds(5))
+    } catch is CancellationError {
+      print("Cancelled during inner task")
     } catch {
-      print("sleep", error)
+      print("Error during inner task: \(error)")
     }
   }
 }

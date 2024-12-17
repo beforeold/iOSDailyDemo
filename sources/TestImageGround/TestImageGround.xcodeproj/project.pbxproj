@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		BC8A3F232CF07956003F08CD /* TestOnceTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestOnceTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84A3B9432CF89D14004DDDF6 /* TestImageGround.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestImageGround.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		BC8A3F252CF07956003F08CD /* TestOnceTask */ = {
+		84A3B9452CF89D14004DDDF6 /* TestImageGround */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TestOnceTask;
+			path = TestImageGround;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BC8A3F202CF07956003F08CD /* Frameworks */ = {
+		84A3B9402CF89D14004DDDF6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BC8A3F1A2CF07956003F08CD = {
+		84A3B93A2CF89D14004DDDF6 = {
 			isa = PBXGroup;
 			children = (
-				BC8A3F252CF07956003F08CD /* TestOnceTask */,
-				BC8A3F242CF07956003F08CD /* Products */,
+				84A3B9452CF89D14004DDDF6 /* TestImageGround */,
+				84A3B9442CF89D14004DDDF6 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		BC8A3F242CF07956003F08CD /* Products */ = {
+		84A3B9442CF89D14004DDDF6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC8A3F232CF07956003F08CD /* TestOnceTask.app */,
+				84A3B9432CF89D14004DDDF6 /* TestImageGround.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BC8A3F222CF07956003F08CD /* TestOnceTask */ = {
+		84A3B9422CF89D14004DDDF6 /* TestImageGround */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC8A3F312CF07957003F08CD /* Build configuration list for PBXNativeTarget "TestOnceTask" */;
+			buildConfigurationList = 84A3B9512CF89D16004DDDF6 /* Build configuration list for PBXNativeTarget "TestImageGround" */;
 			buildPhases = (
-				BC8A3F1F2CF07956003F08CD /* Sources */,
-				BC8A3F202CF07956003F08CD /* Frameworks */,
-				BC8A3F212CF07956003F08CD /* Resources */,
+				84A3B93F2CF89D14004DDDF6 /* Sources */,
+				84A3B9402CF89D14004DDDF6 /* Frameworks */,
+				84A3B9412CF89D14004DDDF6 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				BC8A3F252CF07956003F08CD /* TestOnceTask */,
+				84A3B9452CF89D14004DDDF6 /* TestImageGround */,
 			);
-			name = TestOnceTask;
+			name = TestImageGround;
 			packageProductDependencies = (
 			);
-			productName = TestOnceTask;
-			productReference = BC8A3F232CF07956003F08CD /* TestOnceTask.app */;
+			productName = TestImageGround;
+			productReference = 84A3B9432CF89D14004DDDF6 /* TestImageGround.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		BC8A3F1B2CF07956003F08CD /* Project object */ = {
+		84A3B93B2CF89D14004DDDF6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
-					BC8A3F222CF07956003F08CD = {
+					84A3B9422CF89D14004DDDF6 = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
-			buildConfigurationList = BC8A3F1E2CF07956003F08CD /* Build configuration list for PBXProject "TestOnceTask" */;
+			buildConfigurationList = 84A3B93E2CF89D14004DDDF6 /* Build configuration list for PBXProject "TestImageGround" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = BC8A3F1A2CF07956003F08CD;
+			mainGroup = 84A3B93A2CF89D14004DDDF6;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = BC8A3F242CF07956003F08CD /* Products */;
+			productRefGroup = 84A3B9442CF89D14004DDDF6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BC8A3F222CF07956003F08CD /* TestOnceTask */,
+				84A3B9422CF89D14004DDDF6 /* TestImageGround */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BC8A3F212CF07956003F08CD /* Resources */ = {
+		84A3B9412CF89D14004DDDF6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BC8A3F1F2CF07956003F08CD /* Sources */ = {
+		84A3B93F2CF89D14004DDDF6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		BC8A3F2F2CF07957003F08CD /* Debug */ = {
+		84A3B94F2CF89D16004DDDF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -188,7 +188,7 @@
 			};
 			name = Debug;
 		};
-		BC8A3F302CF07957003F08CD /* Release */ = {
+		84A3B9502CF89D16004DDDF6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -244,14 +244,14 @@
 			};
 			name = Release;
 		};
-		BC8A3F322CF07957003F08CD /* Debug */ = {
+		84A3B9522CF89D16004DDDF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TestOnceTask/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TestImageGround/Preview Content\"";
 				DEVELOPMENT_TEAM = DJ587BPX4R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -260,13 +260,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestOnceTask;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestImageGround;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -274,14 +273,14 @@
 			};
 			name = Debug;
 		};
-		BC8A3F332CF07957003F08CD /* Release */ = {
+		84A3B9532CF89D16004DDDF6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TestOnceTask/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TestImageGround/Preview Content\"";
 				DEVELOPMENT_TEAM = DJ587BPX4R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -290,13 +289,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestOnceTask;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestImageGround;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -307,25 +305,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BC8A3F1E2CF07956003F08CD /* Build configuration list for PBXProject "TestOnceTask" */ = {
+		84A3B93E2CF89D14004DDDF6 /* Build configuration list for PBXProject "TestImageGround" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BC8A3F2F2CF07957003F08CD /* Debug */,
-				BC8A3F302CF07957003F08CD /* Release */,
+				84A3B94F2CF89D16004DDDF6 /* Debug */,
+				84A3B9502CF89D16004DDDF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC8A3F312CF07957003F08CD /* Build configuration list for PBXNativeTarget "TestOnceTask" */ = {
+		84A3B9512CF89D16004DDDF6 /* Build configuration list for PBXNativeTarget "TestImageGround" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BC8A3F322CF07957003F08CD /* Debug */,
-				BC8A3F332CF07957003F08CD /* Release */,
+				84A3B9522CF89D16004DDDF6 /* Debug */,
+				84A3B9532CF89D16004DDDF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = BC8A3F1B2CF07956003F08CD /* Project object */;
+	rootObject = 84A3B93B2CF89D14004DDDF6 /* Project object */;
 }

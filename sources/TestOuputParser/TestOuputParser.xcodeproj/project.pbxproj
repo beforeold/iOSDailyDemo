@@ -6,20 +6,32 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXCopyFilesBuildPhase section */
+		843AA76E2CF9D5C9004C4298 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		BC8A3F232CF07956003F08CD /* TestOnceTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestOnceTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		843AA7702CF9D5C9004C4298 /* TestOuputParser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestOuputParser; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		BC8A3F252CF07956003F08CD /* TestOnceTask */ = {
+		843AA7722CF9D5C9004C4298 /* TestOuputParser */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TestOnceTask;
+			path = TestOuputParser;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BC8A3F202CF07956003F08CD /* Frameworks */ = {
+		843AA76D2CF9D5C9004C4298 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +41,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BC8A3F1A2CF07956003F08CD = {
+		843AA7672CF9D5C9004C4298 = {
 			isa = PBXGroup;
 			children = (
-				BC8A3F252CF07956003F08CD /* TestOnceTask */,
-				BC8A3F242CF07956003F08CD /* Products */,
+				843AA7722CF9D5C9004C4298 /* TestOuputParser */,
+				843AA7712CF9D5C9004C4298 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		BC8A3F242CF07956003F08CD /* Products */ = {
+		843AA7712CF9D5C9004C4298 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC8A3F232CF07956003F08CD /* TestOnceTask.app */,
+				843AA7702CF9D5C9004C4298 /* TestOuputParser */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,74 +60,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BC8A3F222CF07956003F08CD /* TestOnceTask */ = {
+		843AA76F2CF9D5C9004C4298 /* TestOuputParser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC8A3F312CF07957003F08CD /* Build configuration list for PBXNativeTarget "TestOnceTask" */;
+			buildConfigurationList = 843AA7772CF9D5C9004C4298 /* Build configuration list for PBXNativeTarget "TestOuputParser" */;
 			buildPhases = (
-				BC8A3F1F2CF07956003F08CD /* Sources */,
-				BC8A3F202CF07956003F08CD /* Frameworks */,
-				BC8A3F212CF07956003F08CD /* Resources */,
+				843AA76C2CF9D5C9004C4298 /* Sources */,
+				843AA76D2CF9D5C9004C4298 /* Frameworks */,
+				843AA76E2CF9D5C9004C4298 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				BC8A3F252CF07956003F08CD /* TestOnceTask */,
+				843AA7722CF9D5C9004C4298 /* TestOuputParser */,
 			);
-			name = TestOnceTask;
+			name = TestOuputParser;
 			packageProductDependencies = (
 			);
-			productName = TestOnceTask;
-			productReference = BC8A3F232CF07956003F08CD /* TestOnceTask.app */;
-			productType = "com.apple.product-type.application";
+			productName = TestOuputParser;
+			productReference = 843AA7702CF9D5C9004C4298 /* TestOuputParser */;
+			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		BC8A3F1B2CF07956003F08CD /* Project object */ = {
+		843AA7682CF9D5C9004C4298 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
-					BC8A3F222CF07956003F08CD = {
+					843AA76F2CF9D5C9004C4298 = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
-			buildConfigurationList = BC8A3F1E2CF07956003F08CD /* Build configuration list for PBXProject "TestOnceTask" */;
+			buildConfigurationList = 843AA76B2CF9D5C9004C4298 /* Build configuration list for PBXProject "TestOuputParser" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = BC8A3F1A2CF07956003F08CD;
+			mainGroup = 843AA7672CF9D5C9004C4298;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = BC8A3F242CF07956003F08CD /* Products */;
+			productRefGroup = 843AA7712CF9D5C9004C4298 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BC8A3F222CF07956003F08CD /* TestOnceTask */,
+				843AA76F2CF9D5C9004C4298 /* TestOuputParser */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		BC8A3F212CF07956003F08CD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		BC8A3F1F2CF07956003F08CD /* Sources */ = {
+		843AA76C2CF9D5C9004C4298 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +127,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		BC8A3F2F2CF07957003F08CD /* Debug */ = {
+		843AA7752CF9D5C9004C4298 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -177,18 +179,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		BC8A3F302CF07957003F08CD /* Release */ = {
+		843AA7762CF9D5C9004C4298 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -234,98 +236,59 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		BC8A3F322CF07957003F08CD /* Debug */ = {
+		843AA7782CF9D5C9004C4298 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TestOnceTask/Preview Content\"";
 				DEVELOPMENT_TEAM = DJ587BPX4R;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestOnceTask;
+				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		BC8A3F332CF07957003F08CD /* Release */ = {
+		843AA7792CF9D5C9004C4298 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TestOnceTask/Preview Content\"";
 				DEVELOPMENT_TEAM = DJ587BPX4R;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestOnceTask;
+				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BC8A3F1E2CF07956003F08CD /* Build configuration list for PBXProject "TestOnceTask" */ = {
+		843AA76B2CF9D5C9004C4298 /* Build configuration list for PBXProject "TestOuputParser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BC8A3F2F2CF07957003F08CD /* Debug */,
-				BC8A3F302CF07957003F08CD /* Release */,
+				843AA7752CF9D5C9004C4298 /* Debug */,
+				843AA7762CF9D5C9004C4298 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC8A3F312CF07957003F08CD /* Build configuration list for PBXNativeTarget "TestOnceTask" */ = {
+		843AA7772CF9D5C9004C4298 /* Build configuration list for PBXNativeTarget "TestOuputParser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BC8A3F322CF07957003F08CD /* Debug */,
-				BC8A3F332CF07957003F08CD /* Release */,
+				843AA7782CF9D5C9004C4298 /* Debug */,
+				843AA7792CF9D5C9004C4298 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = BC8A3F1B2CF07956003F08CD /* Project object */;
+	rootObject = 843AA7682CF9D5C9004C4298 /* Project object */;
 }
