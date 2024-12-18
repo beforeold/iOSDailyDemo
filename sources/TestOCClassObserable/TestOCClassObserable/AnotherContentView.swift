@@ -1,7 +1,17 @@
 import SwiftUI
 
+@Observable
+class ParentModel {
+  var model =  OCObservable<MYPerson>(wrappedValue: .init())
+
+  func foo() {
+    model = .init(wrappedValue: .init())
+    // model.wrappedValue = .init()
+  }
+}
+
 struct AnotherContentView: View {
-  let model = OCObservable(MYPerson())
+  @State var model = OCObservable(wrappedValue: MYPerson())
 
   var body: some View {
     let _ = Self._printChanges()
@@ -22,7 +32,7 @@ struct AnotherContentView: View {
         let person = MYPerson()
         person.name = "new person"
         person.age = 666
-        model.base = person
+        model.wrappedValue = person
       }
       .buttonStyle(.borderedProminent)
     }
