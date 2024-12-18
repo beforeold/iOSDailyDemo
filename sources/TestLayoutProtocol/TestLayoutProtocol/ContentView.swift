@@ -83,6 +83,19 @@ struct HeaderKey: LayoutValueKey {
   typealias Value = Bool
 }
 
+enum Ratio: String, CaseIterable, Identifiable {
+  case oneOne = "1:1"
+  case twoThree = "2:3"
+  case threeTwo = "3:2"
+  var id: String { rawValue }
+}
+
+struct RatioKey: LayoutValueKey {
+  static var defaultValue: Ratio = .oneOne
+
+  typealias Value = Ratio
+}
+
 struct SectionedGridView: View {
   let sections: [GridSection]
 
