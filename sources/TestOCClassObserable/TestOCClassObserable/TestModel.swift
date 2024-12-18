@@ -10,9 +10,9 @@ extension NSObject: @retroactive Observable {
 
 }
 
-// @Observable
+@Observable
 @dynamicMemberLookup
-struct OCObservable<Base: Observable> {
+class OCObservable<Base: Observable> {
   public var wrappedValue: Base
 
   private let _$observationRegistrarForBase = Observation.ObservationRegistrar()
@@ -26,7 +26,7 @@ struct OCObservable<Base: Observable> {
       accessForBase(keyPath: keyPath)
       return wrappedValue[keyPath: keyPath]
     }
-    nonmutating set {
+    set {
       accessForBase(keyPath: keyPath)
       _$observationRegistrarForBase.willSet(wrappedValue, keyPath: keyPath)
 

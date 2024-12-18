@@ -8,6 +8,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger age;
 
+@property (nonatomic, assign) BOOL isPresented;
+
 @end
 
 NS_ASSUME_NONNULL_END

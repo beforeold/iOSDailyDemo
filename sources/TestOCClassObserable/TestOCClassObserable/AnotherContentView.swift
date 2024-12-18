@@ -2,7 +2,7 @@ import SwiftUI
 
 @Observable
 class ParentModel {
-  var model =  OCObservable<MYPerson>(wrappedValue: .init())
+  var model = OCObservable<MYPerson>(wrappedValue: .init())
 
   func foo() {
     model = .init(wrappedValue: .init())
@@ -14,9 +14,10 @@ struct AnotherContentView: View {
   @State var model = OCObservable(wrappedValue: MYPerson())
 
   var body: some View {
+    @Bindable var model = model
     let _ = Self._printChanges()
 
-    VStack {
+    VStack(spacing: 30) {
       Text("name: \(model.name ?? "null")")
 
       Button("Change Name") {
@@ -28,6 +29,10 @@ struct AnotherContentView: View {
 
       SubView(model: model)
 
+      Button("show detail") {
+        model.isPresented = true
+      }
+
       Button("Change Person") {
         let person = MYPerson()
         person.name = "new person"
@@ -37,6 +42,9 @@ struct AnotherContentView: View {
       .buttonStyle(.borderedProminent)
     }
     .padding()
+    .sheet(isPresented: $model.isPresented) {
+      Text("Person detail")
+    }
   }
 }
 
