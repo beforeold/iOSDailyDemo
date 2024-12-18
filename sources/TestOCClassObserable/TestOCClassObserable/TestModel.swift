@@ -10,43 +10,43 @@ extension NSObject: @retroactive Observable {
 
 }
 
-@Observable
+// @Observable
 @dynamicMemberLookup
-class OCObservable<Base: Observable> {
-  public var base: Base
+struct OCObservable<Base: Observable> {
+  public var wrappedValue: Base
 
   private let _$observationRegistrarForBase = Observation.ObservationRegistrar()
 
-  public init(_ base: Base) {
-    self.base = base
+  public init(wrappedValue: Base) {
+    self.wrappedValue = wrappedValue
   }
 
-  public subscript<Member>(dynamicMember keyPath: WritableKeyPath<Base, Member>) -> Member {
+  public subscript<Member>(dynamicMember keyPath: ReferenceWritableKeyPath<Base, Member>) -> Member {
     get {
       accessForBase(keyPath: keyPath)
-      return base[keyPath: keyPath]
+      return wrappedValue[keyPath: keyPath]
     }
-    set {
+    nonmutating set {
       accessForBase(keyPath: keyPath)
-      _$observationRegistrarForBase.willSet(base, keyPath: keyPath)
+      _$observationRegistrarForBase.willSet(wrappedValue, keyPath: keyPath)
 
       withMutationForBase(keyPath: keyPath) {
-        base[keyPath: keyPath] = newValue
+        wrappedValue[keyPath: keyPath] = newValue
       }
-      _$observationRegistrarForBase.didSet(base, keyPath: keyPath)
+      _$observationRegistrarForBase.didSet(wrappedValue, keyPath: keyPath)
     }
   }
 
   internal nonisolated func accessForBase<Member>(
     keyPath: KeyPath<Base, Member>
   ) {
-    _$observationRegistrarForBase.access(base, keyPath: keyPath)
+    _$observationRegistrarForBase.access(wrappedValue, keyPath: keyPath)
   }
 
   internal nonisolated func withMutationForBase<Member, MutationResult>(
     keyPath: KeyPath<Base, Member>,
     _ mutation: () throws -> MutationResult
   ) rethrows -> MutationResult {
-    try _$observationRegistrarForBase.withMutation(of: base, keyPath: keyPath, mutation)
+    try _$observationRegistrarForBase.withMutation(of: wrappedValue, keyPath: keyPath, mutation)
   }
 }
