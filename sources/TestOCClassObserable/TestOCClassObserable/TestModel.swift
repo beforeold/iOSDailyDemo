@@ -6,50 +6,47 @@ class TestModel {
   var name = ""
 }
 
+extension NSObject: @retroactive Observable {
+
+}
+
 @Observable
 @dynamicMemberLookup
-class OtherModel<Base> {
-  @ObservationIgnored
-  var base: Base
+class OCObservable<Base: Observable> {
+  public var base: Base
 
-  init(base: Base) {
+  private let _$observationRegistrarForBase = Observation.ObservationRegistrar()
+
+  public init(_ base: Base) {
     self.base = base
   }
 
-  @ObservationIgnored private let _$observationRegistrar = Observation.ObservationRegistrar()
-
-  subscript<Member>(dynamicMember keyPath: WritableKeyPath<Base, Member>) -> Member {
+  public subscript<Member>(dynamicMember keyPath: WritableKeyPath<Base, Member>) -> Member {
     get {
-      access(keyPath: keyPath)
+      accessForBase(keyPath: keyPath)
       return base[keyPath: keyPath]
     }
     set {
-        withMutation(keyPath: keyPath) {
-          base[keyPath: keyPath] = newValue
-        }
-    }
-    _modify {
-      access(keyPath: keyPath)
-      _$observationRegistrar.willSet(self, keyPath: \.base.append(keyPath))
-        defer {
-          _$observationRegistrar.didSet(self, keyPath: \.age)
-        }
-//        yield &_age
+      accessForBase(keyPath: keyPath)
+      _$observationRegistrarForBase.willSet(base, keyPath: keyPath)
+
+      withMutationForBase(keyPath: keyPath) {
+        base[keyPath: keyPath] = newValue
+      }
+      _$observationRegistrarForBase.didSet(base, keyPath: keyPath)
     }
   }
 
-//  private var age = 0
-
-  internal nonisolated func access<Member>(
-      keyPath: KeyPath<Base, Member>
+  internal nonisolated func accessForBase<Member>(
+    keyPath: KeyPath<Base, Member>
   ) {
-//    _$observationRegistrar.access(self, keyPath: \.age)
+    _$observationRegistrarForBase.access(base, keyPath: keyPath)
   }
 
-  internal nonisolated func withMutation<Member, MutationResult>(
-      keyPath: KeyPath<Base, Member>,
-      _ mutation: () throws -> MutationResult
+  internal nonisolated func withMutationForBase<Member, MutationResult>(
+    keyPath: KeyPath<Base, Member>,
+    _ mutation: () throws -> MutationResult
   ) rethrows -> MutationResult {
-//    try _$observationRegistrar.withMutation(of: self, keyPath: \.age, mutation)
+    try _$observationRegistrarForBase.withMutation(of: base, keyPath: keyPath, mutation)
   }
 }
