@@ -10,6 +10,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL isPresented;
 
+- (void)updateName:(NSString *)name;
+
 @end
 
 NS_ASSUME_NONNULL_END

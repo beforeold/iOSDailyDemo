@@ -4,7 +4,8 @@ import SwiftUI
 struct TestOCClassObserableApp: App {
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      // ContentView()
+      AnotherContentView()
     }
   }
 }
