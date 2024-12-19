@@ -1,10 +1,6 @@
 import Foundation
 import Observation
-
-@Observable
-class TestModel {
-  var name = ""
-}
+import SwiftUI
 
 extension NSObject: @retroactive Observable {
 
@@ -12,8 +8,19 @@ extension NSObject: @retroactive Observable {
 
 @Observable
 @dynamicMemberLookup
-class OCObservable<Base: Observable> {
-  public var wrappedValue: Base
+class OCObservable<Base: NSObject>: NSObject {
+  private var observationsKVO: [AnyKeyPath: NSKeyValueObservation] = [:]
+
+  public var wrappedValue: Base {
+    didSet {
+      observationsKVO = [:]
+    }
+  }
+
+  var projectedValue: Bindable<Base> {
+    @Bindable var value = wrappedValue
+    return $value
+  }
 
   private let _$observationRegistrarForBase = Observation.ObservationRegistrar()
 
@@ -21,11 +28,29 @@ class OCObservable<Base: Observable> {
     self.wrappedValue = wrappedValue
   }
 
-  public subscript<Member>(dynamicMember keyPath: ReferenceWritableKeyPath<Base, Member>) -> Member {
+  public subscript<Member>(
+    dynamicMember keyPath: ReferenceWritableKeyPath<Base, Member>
+  ) -> Member {
     get {
       accessForBase(keyPath: keyPath)
+
+      if observationsKVO[keyPath] == nil {
+        let obs = wrappedValue.observe(keyPath, options: .new) { [weak self] _, _ in
+          guard let self else { return }
+
+          // TODO: return for set from dynamicMember
+
+          accessForBase(keyPath: keyPath)
+          _$observationRegistrarForBase.willSet(wrappedValue, keyPath: keyPath)
+          _$observationRegistrarForBase.didSet(wrappedValue, keyPath: keyPath)
+        }
+
+        observationsKVO[keyPath] = obs
+      }
+
       return wrappedValue[keyPath: keyPath]
     }
+
     set {
       accessForBase(keyPath: keyPath)
       _$observationRegistrarForBase.willSet(wrappedValue, keyPath: keyPath)
