@@ -12,6 +12,7 @@ struct SecondView: View {
   @EnvironmentObject(ViewModel.self) private var vm2
 
   var body: some View {
+    Text("\(UIDevice.current.systemVersion)")
     Text("Hello, World! \(viewModel.count)")
   }
 }
