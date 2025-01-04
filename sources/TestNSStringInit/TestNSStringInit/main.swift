@@ -6,3 +6,4 @@ let string = NSString(format: format as NSString, "ok" as NSString, "3000", "8")
 
 print(string)
 
+print(DYStringFormatter.format(2000))
