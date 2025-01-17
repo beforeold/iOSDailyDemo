@@ -3,7 +3,7 @@ import SwiftUI
 var globalBinding: Binding<Int>?
 
 class Model: ObservableObject {
-  @Published var count = 0
+  @Published var count = 666
 }
 
 struct ContentView: View {
@@ -41,12 +41,17 @@ struct ButtonWrapper: UIViewRepresentable {
   }
 
   func updateUIView(_ uiView: UIButton, context: Context) {
-    print("updateui", context.coordinator.count, "current:", self.count, "value", context.coordinator.parent.count)
+    print("updateui", context.coordinator.count, "current:", self.count, "value", count)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      print("delay updateui", context.coordinator.count, "current:", self.count, "value", count)
+    }
 
   }
 
   class Coordinator {
     @Binding var count: Int
+    var items: [Int] = []
+
     var parent: ButtonWrapper
 
 //    var count: Binding<Int>? {
