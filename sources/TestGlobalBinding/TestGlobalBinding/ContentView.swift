@@ -1,9 +1,7 @@
 import SwiftUI
 
-var globalBinding: Binding<Int>?
-
 class Model: ObservableObject {
-  @Published var count = 666
+  @Published var count = 0
 }
 
 struct ContentView: View {
@@ -13,75 +11,47 @@ struct ContentView: View {
     VStack(spacing: 30) {
       Text("count: \(model.count)")
 
-//      SubView(count: $model.count)
       ButtonWrapper(count: $model.count)
-//        .id(model.count)
+        .frame(height: 100)
     }
     .padding()
   }
 }
 
-
 struct ButtonWrapper: UIViewRepresentable {
   @Binding var count: Int
 
   func makeCoordinator() -> Coordinator {
-    let ins = Coordinator(count: _count, parent: self)
+    let ins = Coordinator(count: $count)
     print(#function)
+
     return ins
   }
 
   func makeUIView(context: Context) -> UIButton {
-    UIButton(primaryAction: .init(title: "Plus", handler: { _ in
-      print("tap: \(context.coordinator.count)", "current", self.count)
+    UIButton(
+      primaryAction: .init(
+        title: "Plus",
+        handler: { _ in
+          print("tap context: \(context.coordinator.count)", "current", self.count)
 
-//      count += 1
-      context.coordinator.parent.count += 1
-    }))
+          count += 1
+        }))
   }
 
   func updateUIView(_ uiView: UIButton, context: Context) {
-    print("updateui", context.coordinator.count, "current:", self.count, "value", count)
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-      print("delay updateui", context.coordinator.count, "current:", self.count, "value", count)
-    }
+    print("updateUIView context", context.coordinator.count, "current:", self.count, "value", count)
 
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      print("delay updateUIView context", context.coordinator.count, "current:", self.count, "value", count)
+    }
   }
 
   class Coordinator {
     @Binding var count: Int
-    var items: [Int] = []
 
-    var parent: ButtonWrapper
-
-//    var count: Binding<Int>? {
-//      Coordinator.count
-//    }
-
-    init(count: Binding<Int>, parent: ButtonWrapper) {
-//      Coordinator.count = count
+    init(count: Binding<Int>) {
       self._count = .init(projectedValue: count)
-//      self.countValue = countValue
-      self.parent = parent
-    }
-  }
-}
-
-
-struct SubView: View {
-  @Binding var count: Int
-
-  var body: some View {
-    Button("plus") {
-      count += 1
-    }
-
-    .onAppear {
-      if globalBinding == nil {
-        globalBinding = $count
-      } else {
-        print("appear: \(count)")
-      }
     }
   }
 }
