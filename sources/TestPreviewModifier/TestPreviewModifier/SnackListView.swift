@@ -1,7 +1,7 @@
 import SwiftData
 import SwiftUI
 
-struct SnapListView: View {
+struct SnackListView: View {
   @Query private var snacks: [Snack]
 
   var body: some View {
@@ -12,5 +12,5 @@ struct SnapListView: View {
 }
 
 #Preview(traits: .modifier(SnackModifier())) {
-  SnapListView()
+  SnackListView()
 }
