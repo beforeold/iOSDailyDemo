@@ -5,7 +5,7 @@ struct SnackView: View {
   var snack: Snack
 
   var body: some View {
-    Text(snack.name + "same")
+    Text(snack.name)
   }
 }
 
@@ -13,5 +13,5 @@ struct SnackView: View {
   @Previewable @Query var snacks: [Snack]
   print("count", snacks.count)
 
-  return SnackView(snack: snacks.first!)
+  return SnackView(snack: snacks.last!)
 }

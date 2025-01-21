@@ -6,7 +6,7 @@ struct SnackModifier: PreviewModifier {
     print(#function)
 
     let container = try ModelContainer(for: Snack.self)
-    container.mainContext.insert(Snack.potatoChips)
+    container.mainContext.insert(Snack(name: "br: \(Int.random(in: 0..<1000))"))
 
     return container
   }
