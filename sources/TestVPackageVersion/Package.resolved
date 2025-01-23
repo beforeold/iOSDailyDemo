@@ -1,0 +1,15 @@
+{
+  "originHash" : "cc8287ec3a00b3621044656ae517039fd5b7ab8dc2f9f885532036608b073f05",
+  "pins" : [
+    {
+      "identity" : "sa-sdk-ios-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sensorsdata/sa-sdk-ios-spm",
+      "state" : {
+        "revision" : "6e9e2ecc20129e50161e93502d7a71652ae458aa",
+        "version" : "4.7.0"
+      }
+    }
+  ],
+  "version" : 3
+}
