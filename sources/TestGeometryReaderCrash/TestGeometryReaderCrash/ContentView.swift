@@ -1,56 +1,64 @@
+import ObservationBP
 import SwiftUI
 
-struct ContentView: View {
-  @State private var id = 0
+struct ContentView: ViewBP {
+  @State private var object = NSObject()
+  @State private var isLoading = true
+  @State private var showsScrollView = true
 
-  var body: some View {
+  var bodyBP: some View {
     NavigationView {
-      VStack {
+      VStack(spacing: 30) {
         Button("reset") {
-          id += 1
+          DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            showsScrollView.toggle()
+          }
         }
 
         NavigationLink("Push") {
           Text("Detail")
         }
 
-        SubView()
-          .frame(width: 100, height: 100)
-          .background(.gray.opacity(0.3))
-          .id(id)
+        if showsScrollView {
+          ScrollView {
+            VStack {
+              Text("Hello")
+                .frame(height: 300)
+                .background(footer)
+            }
+          }
+        } else {
+          Text("No ScrollView")
+        }
 
         Spacer()
       }
       .padding()
     }
   }
-}
 
-struct SubView: View {
-  @State private var isLoading = true
-
-  var body: some View {
-    GeometryReader { geo in
+  var footer: some View {
+    GeometryReader { [weak object] geo in
       DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-        let frame = geo.frame(in: .global).minY
-        print("delay", frame, isLoading)
+//        if object == nil {
+//          print("dismiss")
+//          return
+//        }
+//
+//        guard showsScrollView else {
+//          print("empty")
+//          return
+//        }
+
+        let minY = geo.frame(in: .global).minY
+        print("delay", "frame: \(Int(minY))", "isLoading: \(isLoading)")
         isLoading = false
       }
 
-      return VStack(spacing: 30) {
-        Group {
-          if isLoading {
-            ProgressView()
-          } else {
-
-          }
-        }
-        .frame(height: 40)
-
-        Color.blue
-      }
+      return Color.clear
     }
   }
+
 }
 
 #Preview {
