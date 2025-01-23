@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		847D8E222D41FCAC00CF7C0B /* ObservationBP in Frameworks */ = {isa = PBXBuildFile; productRef = 847D8E212D41FCAC00CF7C0B /* ObservationBP */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		94827B8E2D3B9689007D3459 /* TestGeometryReaderCrash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestGeometryReaderCrash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847D8E222D41FCAC00CF7C0B /* ObservationBP in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = TestGeometryReaderCrash;
 			packageProductDependencies = (
+				847D8E212D41FCAC00CF7C0B /* ObservationBP */,
 			);
 			productName = TestGeometryReaderCrash;
 			productReference = 94827B8E2D3B9689007D3459 /* TestGeometryReaderCrash.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 94827B852D3B9689007D3459;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				847D8E202D41FCAC00CF7C0B /* XCRemoteSwiftPackageReference "ObservationBP" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 94827B8F2D3B9689007D3459 /* Products */;
 			projectDirPath = "";
@@ -326,6 +335,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		847D8E202D41FCAC00CF7C0B /* XCRemoteSwiftPackageReference "ObservationBP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:beforeold/ObservationBP.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		847D8E212D41FCAC00CF7C0B /* ObservationBP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 847D8E202D41FCAC00CF7C0B /* XCRemoteSwiftPackageReference "ObservationBP" */;
+			productName = ObservationBP;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 94827B862D3B9689007D3459 /* Project object */;
 }
