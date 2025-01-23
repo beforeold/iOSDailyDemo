@@ -4,19 +4,25 @@ struct ContentView: View {
   @State private var id = 0
 
   var body: some View {
-    VStack {
-      Button("reset") {
-        id += 1
+    NavigationView {
+      VStack {
+        Button("reset") {
+          id += 1
+        }
+
+        NavigationLink("Push") {
+          Text("Detail")
+        }
+
+        SubView()
+          .frame(width: 100, height: 100)
+          .background(.gray.opacity(0.3))
+          .id(id)
+
+        Spacer()
       }
-
-      SubView()
-        .frame(width: 100, height: 100)
-        .background(.gray.opacity(0.3))
-        .id(id)
-
-      Spacer()
+      .padding()
     }
-    .padding()
   }
 }
 
