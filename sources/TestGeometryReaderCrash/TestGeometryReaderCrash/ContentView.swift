@@ -10,9 +10,14 @@ struct ContentView: ViewBP {
     NavigationView {
       VStack(spacing: 30) {
         Button("reset") {
-          DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//          DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            isLoading = false
             showsScrollView.toggle()
-          }
+//          }
+        }
+
+        if isLoading {
+          ProgressView()
         }
 
         NavigationLink("Push") {
@@ -20,13 +25,13 @@ struct ContentView: ViewBP {
         }
 
         if showsScrollView {
-          ScrollView {
+//          ScrollView {
             VStack {
               Text("Hello")
-                .frame(width: 320, height: 1000)
-                .background(footer)
+                .frame(width: 320, height: 30)
+                .background(footer())
             }
-          }
+//          }
         } else {
           Text("No ScrollView")
         }
@@ -37,13 +42,13 @@ struct ContentView: ViewBP {
     }
   }
 
-  var footer: some View {
+  func footer() -> some View {
     GeometryReader { geo in
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 //      DispatchQueue.main.async {
         let minY = geo.frame(in: .global).maxY
         print("delay", "frame: \(Int(minY))", "isLoading: \(isLoading)")
-        isLoading = false
+        isLoading = true
       }
 
       return Color.clear
