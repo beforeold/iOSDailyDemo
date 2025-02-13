@@ -29,6 +29,12 @@ struct ContentView: View {
 
   @Query var data: [Person]
 
+  func foo() {
+    let value: Query<Person, [Person]> = _data
+    // @Query macro generate two property data and _data
+    print(value)
+  }
+
   var body: some View {
     Button("tap") {
       _query.wrappedValue = "changed"
