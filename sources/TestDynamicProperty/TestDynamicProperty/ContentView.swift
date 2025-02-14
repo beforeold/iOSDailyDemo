@@ -20,6 +20,23 @@ struct MyState: DynamicProperty {
 }
 
 @propertyWrapper
+struct Network: DynamicProperty {
+  @State private var list: [String] = []
+
+  var wrappedValue: [String] {
+    list
+  }
+
+  func update() {
+    if list.isEmpty {
+      Task {
+        list = ["H"]
+      }
+    }
+  }
+}
+
+@propertyWrapper
 struct MyState2: DynamicProperty {
   var wrappedValue: String {
     get { UserDefaults.standard.string(forKey: "name2") ?? "initial" }
@@ -32,6 +49,8 @@ struct MyState2: DynamicProperty {
 }
 
 struct ContentView: View {
+  @Network var list
+
   @MyState private var name = "initial"
   @MyState2 private var name2
 
