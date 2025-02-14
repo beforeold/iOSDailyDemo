@@ -30,7 +30,7 @@ struct ContentView: View {
       //      Text("count 4: \(count4)")
 
       Button("Plus") {
-        //        count += 1
+//                count += 1
         model.count2 += 1
         // model.count3 += 1
         // count4 += 1
