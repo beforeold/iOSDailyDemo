@@ -12,7 +12,9 @@ class Zack: ObservableObject {
   }
 }
 
-struct ZackModifier: PreviewModifier, Equatable {
+struct ZackModifier: PreviewModifier {
+  @Environment(\.colorScheme) var colorScheme
+
   static func makeSharedContext() async throws -> Zack {
     print(#function)
     try await Task.sleep(for: .seconds(2))
@@ -20,7 +22,8 @@ struct ZackModifier: PreviewModifier, Equatable {
   }
 
   func body(content: Content, context: Zack) -> some View {
-    print(#function)
+    print(#function, colorScheme)
+
     return content.environmentObject(context)
   }
 
@@ -28,6 +31,7 @@ struct ZackModifier: PreviewModifier, Equatable {
 
 #Preview("z1", traits: .modifier(ZackModifier())) {
   ZackView()
+    .preferredColorScheme(.dark)
 }
 
 #Preview("z2", traits: .modifier(ZackModifier())) {
