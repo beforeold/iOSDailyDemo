@@ -53,12 +53,37 @@ struct ContentView: ViewBP {
 
       return Color.clear
     }
+    .stacked()
 
 //    AsyncGeoReader { geo in
 //      let minY = geo.frame(in: .global).minY
 //      print("delay", "frame: \(Int(minY))", "isLoading: \(isLoading)")
 //      isLoading = false
 //    }
+  }
+}
+
+struct ObjectView: View {
+  class Object {
+    deinit {
+      print("object deinit")
+    }
+  }
+
+  @State private var object = Object()
+
+  var body: some View {
+    Text("object")
+  }
+}
+
+extension View {
+  func stacked() -> some View {
+    ZStack {
+      self
+
+      ObjectView()
+    }
   }
 }
 
