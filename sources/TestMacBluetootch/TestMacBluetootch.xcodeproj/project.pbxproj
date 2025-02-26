@@ -6,46 +6,41 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		84344E3B2D6D536700C5DB22 /* ObservationBP in Frameworks */ = {isa = PBXBuildFile; productRef = 84344E3A2D6D536700C5DB22 /* ObservationBP */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
-		84344E282D6D52DB00C5DB22 /* TestObserable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestObserable.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		843461CF2D6EAFD900C5DB22 /* TestMacBluetootch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestMacBluetootch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		84344E2A2D6D52DB00C5DB22 /* TestObserable */ = {
+		843461D12D6EAFD900C5DB22 /* TestMacBluetootch */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TestObserable;
+			path = TestMacBluetootch;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		84344E252D6D52DB00C5DB22 /* Frameworks */ = {
+		843461CC2D6EAFD900C5DB22 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84344E3B2D6D536700C5DB22 /* ObservationBP in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		84344E1F2D6D52DB00C5DB22 = {
+		843461C62D6EAFD900C5DB22 = {
 			isa = PBXGroup;
 			children = (
-				84344E2A2D6D52DB00C5DB22 /* TestObserable */,
-				84344E292D6D52DB00C5DB22 /* Products */,
+				843461D12D6EAFD900C5DB22 /* TestMacBluetootch */,
+				843461D02D6EAFD900C5DB22 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		84344E292D6D52DB00C5DB22 /* Products */ = {
+		843461D02D6EAFD900C5DB22 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84344E282D6D52DB00C5DB22 /* TestObserable.app */,
+				843461CF2D6EAFD900C5DB22 /* TestMacBluetootch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -53,68 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		84344E272D6D52DB00C5DB22 /* TestObserable */ = {
+		843461CE2D6EAFD900C5DB22 /* TestMacBluetootch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84344E362D6D52DD00C5DB22 /* Build configuration list for PBXNativeTarget "TestObserable" */;
+			buildConfigurationList = 843461DE2D6EAFDA00C5DB22 /* Build configuration list for PBXNativeTarget "TestMacBluetootch" */;
 			buildPhases = (
-				84344E242D6D52DB00C5DB22 /* Sources */,
-				84344E252D6D52DB00C5DB22 /* Frameworks */,
-				84344E262D6D52DB00C5DB22 /* Resources */,
+				843461CB2D6EAFD900C5DB22 /* Sources */,
+				843461CC2D6EAFD900C5DB22 /* Frameworks */,
+				843461CD2D6EAFD900C5DB22 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				84344E2A2D6D52DB00C5DB22 /* TestObserable */,
+				843461D12D6EAFD900C5DB22 /* TestMacBluetootch */,
 			);
-			name = TestObserable;
+			name = TestMacBluetootch;
 			packageProductDependencies = (
-				84344E3A2D6D536700C5DB22 /* ObservationBP */,
 			);
-			productName = TestObserable;
-			productReference = 84344E282D6D52DB00C5DB22 /* TestObserable.app */;
+			productName = TestMacBluetootch;
+			productReference = 843461CF2D6EAFD900C5DB22 /* TestMacBluetootch.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		84344E202D6D52DB00C5DB22 /* Project object */ = {
+		843461C72D6EAFD900C5DB22 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					84344E272D6D52DB00C5DB22 = {
+					843461CE2D6EAFD900C5DB22 = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
-			buildConfigurationList = 84344E232D6D52DB00C5DB22 /* Build configuration list for PBXProject "TestObserable" */;
+			buildConfigurationList = 843461CA2D6EAFD900C5DB22 /* Build configuration list for PBXProject "TestMacBluetootch" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 84344E1F2D6D52DB00C5DB22;
+			mainGroup = 843461C62D6EAFD900C5DB22;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				84344E392D6D536700C5DB22 /* XCRemoteSwiftPackageReference "ObservationBP" */,
-			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 84344E292D6D52DB00C5DB22 /* Products */;
+			productRefGroup = 843461D02D6EAFD900C5DB22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				84344E272D6D52DB00C5DB22 /* TestObserable */,
+				843461CE2D6EAFD900C5DB22 /* TestMacBluetootch */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		84344E262D6D52DB00C5DB22 /* Resources */ = {
+		843461CD2D6EAFD900C5DB22 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -124,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		84344E242D6D52DB00C5DB22 /* Sources */ = {
+		843461CB2D6EAFD900C5DB22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -134,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		84344E342D6D52DD00C5DB22 /* Debug */ = {
+		843461DC2D6EAFDA00C5DB22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -186,18 +177,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		84344E352D6D52DD00C5DB22 /* Release */ = {
+		843461DD2D6EAFDA00C5DB22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -243,115 +234,91 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		84344E372D6D52DD00C5DB22 /* Debug */ = {
+		843461DF2D6EAFDA00C5DB22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TestMacBluetootch/TestMacBluetootch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TestObserable/Preview Content\"";
 				DEVELOPMENT_TEAM = DJ587BPX4R;
-				ENABLE_PREVIEWS = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestObserable;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestMacBluetootch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		84344E382D6D52DD00C5DB22 /* Release */ = {
+		843461E02D6EAFDA00C5DB22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TestMacBluetootch/TestMacBluetootch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TestObserable/Preview Content\"";
 				DEVELOPMENT_TEAM = DJ587BPX4R;
-				ENABLE_PREVIEWS = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestObserable;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beforeold.TestMacBluetootch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		84344E232D6D52DB00C5DB22 /* Build configuration list for PBXProject "TestObserable" */ = {
+		843461CA2D6EAFD900C5DB22 /* Build configuration list for PBXProject "TestMacBluetootch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				84344E342D6D52DD00C5DB22 /* Debug */,
-				84344E352D6D52DD00C5DB22 /* Release */,
+				843461DC2D6EAFDA00C5DB22 /* Debug */,
+				843461DD2D6EAFDA00C5DB22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		84344E362D6D52DD00C5DB22 /* Build configuration list for PBXNativeTarget "TestObserable" */ = {
+		843461DE2D6EAFDA00C5DB22 /* Build configuration list for PBXNativeTarget "TestMacBluetootch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				84344E372D6D52DD00C5DB22 /* Debug */,
-				84344E382D6D52DD00C5DB22 /* Release */,
+				843461DF2D6EAFDA00C5DB22 /* Debug */,
+				843461E02D6EAFDA00C5DB22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		84344E392D6D536700C5DB22 /* XCRemoteSwiftPackageReference "ObservationBP" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:beforeold/ObservationBP.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		84344E3A2D6D536700C5DB22 /* ObservationBP */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 84344E392D6D536700C5DB22 /* XCRemoteSwiftPackageReference "ObservationBP" */;
-			productName = ObservationBP;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 84344E202D6D52DB00C5DB22 /* Project object */;
+	rootObject = 843461C72D6EAFD900C5DB22 /* Project object */;
 }
