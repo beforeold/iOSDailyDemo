@@ -1,24 +1,27 @@
-//
-//  ContentView.swift
-//  TestObserable
-//
-//  Created by Brook_Mobius on 2/25/25.
-//
-
+import ObservationBP
 import SwiftUI
 
+@Perceptible
+class Model {
+  var count = 0
+}
+
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+  @State private var count = 0
+  @State private var model = Model()
+  var model2: Model
+
+  var bodyBP: some View {
+    VStack {
+      Image(systemName: "globe")
+        .imageScale(.large)
+        .foregroundStyle(.tint)
+      Text("Hello, world!")
     }
+    .padding()
+  }
 }
 
 #Preview {
-    ContentView()
+  ContentView(model2: .init())
 }
