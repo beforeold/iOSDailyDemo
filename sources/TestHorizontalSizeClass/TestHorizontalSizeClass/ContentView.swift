@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-  @Environment(\.verticalSizeClass) private var horizontalSizeClass
+  @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
   var body: some View {
     Text(horizontalSizeClass == .compact ? "Landscape" : "Portrait")
@@ -10,6 +10,9 @@ struct ContentView: View {
       }
       .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
         print("new value", UIDevice.current.orientation.rawValue, UIScreen.main.bounds)
+        DispatchQueue.main.async {
+          print("async new value", UIDevice.current.orientation.rawValue, UIScreen.main.bounds)
+        }
       }
   }
 }
