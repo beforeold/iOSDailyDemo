@@ -46,6 +46,7 @@ class ViewController: UIViewController {
 
 }
 
+@available(iOS 17.0, *)
 #Preview {
   ViewController()
 }
