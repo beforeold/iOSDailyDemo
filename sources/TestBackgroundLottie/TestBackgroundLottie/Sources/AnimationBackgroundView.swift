@@ -95,7 +95,7 @@ class AnimationBackgroundView: UIView {
       // portrait
       print("portrait")
       // rotate the frame, then transform
-      let origin = (bounds.size.height - bounds.size.width) / -2
+      let origin = (bounds.size.height - bounds.size.width) / 2
       let frame = CGRect(x: -origin, y: origin, width: bounds.size.height, height: bounds.size.width)
       lottieView.frame = frame
       print("lottie frame", frame)
