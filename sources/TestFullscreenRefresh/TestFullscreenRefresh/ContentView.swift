@@ -1,3 +1,4 @@
+import Observation
 import SwiftUI
 
 struct Item: Identifiable {
@@ -23,16 +24,35 @@ class ViewModel: ObservableObject {
   }
 }
 
-struct ContentView: View {
-  @StateObject private var viewModel = ViewModel()
-//  @State private var count = 0
-  var count: Int {
-    viewModel.count
+@Observable
+class ViewModel2 {
+  @ObservationIgnored
+  private var timer: Timer?
+
+  var count = 0
+
+  func startTimer() {
+    if timer == nil {
+      timer = Timer.scheduledTimer(
+        withTimeInterval: 2,
+        repeats: true
+      ) { _ in
+        self.count += 1
+      }
+    }
   }
+}
+
+struct ContentView: View {
+   @StateObject private var viewModel = ViewModel()
+//  let viewModel = ViewModel2()
+//  @State private var count = 0
+
+  var count: Int { viewModel.count }
 
   @State private var timer: Timer? = nil
 
-  @State private var showsDetail: Item? = nil
+  @State private var item: Item? = nil
 
   var body: some View {
     let _ = print("home body", count)
@@ -41,13 +61,19 @@ struct ContentView: View {
       Text("count: \(count)")
 
       Button("Detail") {
-        showsDetail = Item(value: count)
+        item = Item(value: count)
       }
     }
-    .fullScreenCover(item: $showsDetail) { value in
-      DetailView(value: value.value) {
-        viewModel.count += 100
-      }
+    .sheet(item: $item) { item in
+//      DetailView(value: item.value) {
+//        viewModel.count += 100
+//      }
+      let _ = print("full screen closure")
+
+      Text("detail value: \(item.value)")
+        .onTapGesture {
+//          viewModel.count += 100
+        }
     }
     .onAppear {
       viewModel.startTimer()
@@ -81,7 +107,7 @@ struct DetailView: View {
   var body: some View {
     let _ = print("detail body", value)
 
-    Text("detqil: \(value)")
+    Text("detail value: \(value)")
       .onTapGesture {
 //        dismiss()
         action()
