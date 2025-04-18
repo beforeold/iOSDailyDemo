@@ -41,11 +41,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
   }
 
   @objc private func refreshItems() {
-    let indexPathsToReload = [IndexPath(item: 400, section: 0)]
-//    for indexPath in indexPathsToReload {
-//      data[indexPath.item] = "Updated \(indexPath.item)"
-//    }
-    collectionView.reloadItems(at: indexPathsToReload)
+//    let indexPathsToReload = [IndexPath(item: 400, section: 400)]
+////    for indexPath in indexPathsToReload {
+////      data[indexPath.item] = "Updated \(indexPath.item)"
+////    }
+//    collectionView.reloadItems(at: indexPathsToReload)
+
+    collectionView.reloadSections(.init(integer: 400))
   }
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
