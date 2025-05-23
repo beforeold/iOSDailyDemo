@@ -47,17 +47,19 @@ class Cell: UITableViewCell {
     super.setHighlighted(highlighted, animated: animated)
     print(#function, highlighted)
     if highlighted {
-      print(self.backgroundColor ?? "Null", self.contentView.backgroundColor ?? "null")
+      // print(self.backgroundColor ?? "Null", self.contentView.backgroundColor ?? "null")
       print(self.subviews.first?.subviews ?? "null")
 
       let back = self.subviews.first?.subviews.first
       let color = back?.backgroundColor as! UIColor
 
+      UIColor.systemBackground
+
       var red: CGFloat = 0.0
       var green: CGFloat = 0.0
       var blue: CGFloat = 0.0
       var alpha: CGFloat = 0.0
-      _ = UIColor.tertiarySystemGroupedBackground.getRed(
+      _ = color.getRed(
         &red,
         green: &green,
         blue: &blue,
@@ -70,11 +72,28 @@ class Cell: UITableViewCell {
 
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
-    print(#function, selected)
+    // print(#function, selected)
   }
 }
 
 @available(iOS 17.0, *)
 #Preview {
   ViewController()
+}
+
+@available(iOS 17.0, *)
+#Preview {
+  let cell = UITableViewCell()
+  cell.isSelected = true
+  cell.isHighlighted = true
+  cell.textLabel?.text = "cell"
+  return cell
+}
+
+#Preview {
+  VStack {
+    Color(uiColor: .systemBackground)
+    Color(uiColor: .secondarySystemBackground)
+    Color(uiColor: .tertiarySystemBackground)
+  }
 }
