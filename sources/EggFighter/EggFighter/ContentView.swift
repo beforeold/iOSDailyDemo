@@ -10,8 +10,8 @@ struct Power: Hashable, Identifiable {
 }
 
 struct ContentView: View {
-  @AppStorage("sarahScore") var sarahScore = 0
-  @AppStorage("brookScore") var brookScore = 0
+  @AppStorage("sarahScore1") var sarahScore = 0
+  @AppStorage("brookScore1") var brookScore = 0
 
   @State var randomPower: Power?
   @State var showsRollPanel = false
@@ -24,13 +24,19 @@ struct ContentView: View {
 
   @State var offset: CGSize = .zero
 
+  @State var showsPower = false
+
   var body: some View {
-    VStack(spacing: 30) {
+    VStack(spacing: 0) {
       Text("蛋蛋大作战")
         .font(.largeTitle)
 
       score
         .font(.headline)
+        .padding(.top, 24)
+
+      power
+        .padding(.top, 12)
 
       Spacer()
 
@@ -84,7 +90,7 @@ struct ContentView: View {
   }
 
   var roll: some View {
-    Button("开始摇点") {
+    Button("开始战力摇点") {
       withAnimation {
         hit = false
         offset = .zero
@@ -95,6 +101,17 @@ struct ContentView: View {
     }
     .buttonStyle(.borderedProminent)
     .tint(.red)
+  }
+
+  var power: some View {
+    HStack {
+      Text(randomPower?.sarah.description ?? "--")
+
+      Spacer().frame(width: 100)
+
+      Text(randomPower?.brook.description ?? "--")
+    }
+    .opacity(showsPower ? 1.0 : 0)
   }
 
   var goButton: some View {
@@ -125,6 +142,14 @@ struct ContentView: View {
                 sarahScore += 1
               } else {
                 // same power
+              }
+              showsPower = true
+            } completion: {
+              Task {
+                try await Task.sleep(for: .seconds(2))
+                withAnimation {
+                  showsPower = false
+                }
               }
             }
           }

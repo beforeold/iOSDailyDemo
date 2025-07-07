@@ -14,7 +14,7 @@ struct RollPanel: View {
 
   var body: some View {
     VStack(spacing: 40) {
-      Text("力量摇点")
+      Text("战力摇点")
         .font(.title)
 
       HStack(spacing: 50) {
