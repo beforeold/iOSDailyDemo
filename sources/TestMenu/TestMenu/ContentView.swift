@@ -5,19 +5,30 @@ struct ContentView: View {
   var body: some View {
     Menu {
       let _ = print("menu content")
-      Button("Menu 1") {
-
+      Button {
+        print("menu 1")
+      } label: {
+        Label {
+          Text("Menu 1")
+        } icon: {
+          Image(systemName: "pencil")
+        }
+      }
+      .onAppear {
+        print("item appear")
       }
     } label: {
-      Text("Hello")
-        .padding()
-        .background(Color.blue)
-        .onTapGesture {
-          print("menu tapped")
-        }
-    } primaryAction: {
-      print("primary")
+      HStack {
+        Text("Hello")
+          .padding()
+          .onTapGesture {
+            print("menu tapped")
+          }
+
+        Image(systemName: "circle")
+      }
     }
+    .menuStyle(.button)
   }
 }
 
@@ -49,9 +60,6 @@ struct ButtonWrapper: UIViewRepresentable {
       }
     }
 
-
-
-
     button.addTarget(
       Coordinator.shared,
       action: #selector(Coordinator.onTouchDown),
@@ -67,5 +75,7 @@ struct ButtonWrapper: UIViewRepresentable {
 }
 
 #Preview {
+  ContentView()
+
   ButtonWrapper()
 }
