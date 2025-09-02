@@ -8,8 +8,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     // Override point for customization after application launch.
+    
+    #if targetEnvironment(macCatalyst)
+    setupMacFeatures()
+    #endif
+    
     return true
   }
+  
+  #if targetEnvironment(macCatalyst)
+  private func setupMacFeatures() {
+    // 设置Mac专有的窗口标题
+    DispatchQueue.main.async {
+      if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+         let window = windowScene.windows.first {
+        window.windowScene?.title = "DemoMacCatalyst - Mac专有功能演示"
+      }
+    }
+    
+    // 设置Mac专有的功能
+    setupMacSpecificFeatures()
+  }
+  
+  private func setupMacSpecificFeatures() {
+    // 在Mac Catalyst中，我们可以使用一些Mac专有的功能
+    print("Mac专有功能已启用：")
+    print("• Mac风格的窗口标题")
+    print("• Mac原生交互体验")
+    print("• 系统集成")
+    print("• 键盘快捷键支持（通过UIKeyCommand）")
+    
+    // 发送通知给ViewController，告知Mac专有功能已启用
+    NotificationCenter.default.post(name: NSNotification.Name("MacFeaturesEnabled"), object: nil)
+  }
+  #endif
 
   // MARK: UISceneSession Lifecycle
 
