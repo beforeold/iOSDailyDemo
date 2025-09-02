@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     alert.addAction(okAction)
     alert.addAction(cancelAction)
     
-    // 在iPad上设置为popover样式
+    // 在iPad和Mac Catalyst上设置为popover样式
     if let popover = alert.popoverPresentationController {
       popover.sourceView = view
       popover.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
