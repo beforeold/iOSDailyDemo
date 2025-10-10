@@ -4,15 +4,18 @@ import UIKit
 struct DemoView: View {
   var body: some View {
     Menu {
-      Toggle(isOn: .constant(true)) {
-        Label("下载 4K 图片", systemImage: "arrow.down.circle.fill")
+      // Toggle(isOn: .constant(true)) {
+      Button(action: {}) {
+        // Label("下载 4K 图片", systemImage: "arrow.down.circle.fill")
+        Text("下载 4K 图片")
         Text("3000x4096, 文件较大")
       }
 
       Button(action: {
         print("下载原尺寸")
       }) {
-        Label("下载原尺寸", systemImage: "arrow.down.circle.fill")
+        // Label("下载原尺寸", systemImage: "arrow.down.circle.fill")
+        Text("下载原尺寸")
         Text("400x960, 文件较小")
       }
     } label: {
