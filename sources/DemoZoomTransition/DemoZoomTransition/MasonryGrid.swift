@@ -80,33 +80,14 @@ struct MasonryLayout: Layout {
 }
 
 struct DemoView: View {
-  struct Photo: Identifiable, Equatable {
+  struct Photo: Identifiable {
     let id = UUID()
     let url: URL
     let height: CGFloat
   }
 
   let photos: [Photo] = [
-    Photo(url: URL(string: "https://picsum.photos/300/400")!, height: 400),
-    Photo(url: URL(string: "https://picsum.photos/300/250")!, height: 250),
-    Photo(url: URL(string: "https://picsum.photos/300/350")!, height: 350),
-    Photo(url: URL(string: "https://picsum.photos/300/300")!, height: 300),
-    Photo(url: URL(string: "https://picsum.photos/300/450")!, height: 450),
-    Photo(url: URL(string: "https://picsum.photos/300/280")!, height: 280),
-    Photo(url: URL(string: "https://picsum.photos/300/320")!, height: 320),
-    Photo(url: URL(string: "https://picsum.photos/300/380")!, height: 380),
-    Photo(url: URL(string: "https://picsum.photos/300/290")!, height: 290),
-    Photo(url: URL(string: "https://picsum.photos/300/360")!, height: 360),
-    Photo(url: URL(string: "https://picsum.photos/300/270")!, height: 270),
-    Photo(url: URL(string: "https://picsum.photos/300/410")!, height: 410),
-    Photo(url: URL(string: "https://picsum.photos/300/310")!, height: 310),
-    Photo(url: URL(string: "https://picsum.photos/300/340")!, height: 340),
-    Photo(url: URL(string: "https://picsum.photos/300/260")!, height: 260),
-    Photo(url: URL(string: "https://picsum.photos/300/390")!, height: 390),
-    Photo(url: URL(string: "https://picsum.photos/300/330")!, height: 330),
-    Photo(url: URL(string: "https://picsum.photos/300/370")!, height: 370),
-    Photo(url: URL(string: "https://picsum.photos/300/420")!, height: 420),
-    Photo(url: URL(string: "https://picsum.photos/300/240")!, height: 240),
+    // populate with URL + varying heights
   ]
 
   var body: some View {
@@ -123,12 +104,6 @@ struct DemoView: View {
           ProgressView()
             .frame(height: photo.height)
         }
-      }
-      .onAppear {
-        print("appear", photos.firstIndex(of: photo)!)
-      }
-      .onDisappear {
-        print("dissss", photos.firstIndex(of: photo)!)
       }
     }
   }

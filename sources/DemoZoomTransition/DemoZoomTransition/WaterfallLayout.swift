@@ -1,131 +1,219 @@
 import UIKit
 
-// 瀑布流布局实现
+private final class WaterfallLayoutInvalidationContext: UICollectionViewLayoutInvalidationContext {
+  var shouldInvalidateEverything = false
+  
+  override var invalidateEverything: Bool {
+    shouldInvalidateEverything || super.invalidateEverything
+  }
+}
+
+// MARK: - 瀑布流 Cell 基类（支持 Self-sizing）
+class WaterfallCollectionViewCell: UICollectionViewCell {
+  override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+    // 强制布局更新以获取准确的大小
+    setNeedsLayout()
+    layoutIfNeeded()
+    
+    // 使用 Auto Layout 计算实际需要的大小
+    let targetSize = CGSize(width: layoutAttributes.frame.width, height: UIView.layoutFittingCompressedSize.height)
+    let autoLayoutSize = contentView.systemLayoutSizeFitting(
+      targetSize,
+      withHorizontalFittingPriority: .required,
+      verticalFittingPriority: .fittingSizeLevel
+    )
+    
+    // 更新布局属性的大小
+    var newFrame = layoutAttributes.frame
+    newFrame.size.height = ceil(autoLayoutSize.height)
+    layoutAttributes.frame = newFrame
+    
+    return layoutAttributes
+  }
+}
+
+// MARK: - 瀑布流布局实现
 class WaterfallLayout: UICollectionViewLayout {
+  override class var invalidationContextClass: AnyClass {
+    WaterfallLayoutInvalidationContext.self
+  }
+  
+  // MARK: - 配置属性
+  
   // 列数
-  var columnCount: Int = 2
+  var columnCount: Int = 2 {
+    didSet {
+      invalidateLayout()
+    }
+  }
   
   // 列间距
-  var minimumColumnSpacing: CGFloat = 10
+  var minimumColumnSpacing: CGFloat = 10 {
+    didSet {
+      invalidateLayout()
+    }
+  }
   
   // 行间距
-  var minimumInteritemSpacing: CGFloat = 10
+  var minimumInteritemSpacing: CGFloat = 10 {
+    didSet {
+      invalidateLayout()
+    }
+  }
   
   // section 内边距
-  var sectionInset: UIEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+  var sectionInset: UIEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10) {
+    didSet {
+      invalidateLayout()
+    }
+  }
   
-  // 存储每列的高度
-  private var columnHeights: [CGFloat] = []
+  // MARK: - 私有属性
   
-  // 存储所有 item 的布局属性
-  private var attributesCache: [UICollectionViewLayoutAttributes] = []
-  
-  // 存储每个 item 的大小（通过测量 cell 获得）
-  private var itemSizes: [IndexPath: CGSize] = [:]
-  
-  // 内容高度
+  private var cachedAttributes: [IndexPath: UICollectionViewLayoutAttributes] = [:]
+  private var orderedAttributes: [UICollectionViewLayoutAttributes] = []
+  private var itemHeightCache: [IndexPath: CGFloat] = [:]
   private var contentHeight: CGFloat = 0
+  private var needsFullReprepare = true
   
-  // 用于测量 cell 大小的闭包
-  var sizeForItem: ((IndexPath, CGFloat) -> CGSize)?
+  // MARK: - 布局生命周期
   
-  // 计算内容大小
   override var collectionViewContentSize: CGSize {
     guard let collectionView = collectionView else {
       return .zero
     }
     
-    let width = collectionView.bounds.width - sectionInset.left - sectionInset.right
+    let width = collectionView.bounds.width
     return CGSize(width: width, height: contentHeight)
   }
   
-  // 准备布局
   override func prepare() {
     super.prepare()
     
-    guard let collectionView = collectionView else {
+    guard needsFullReprepare, let collectionView = collectionView else {
       return
     }
     
-    // 重置
-    columnHeights = Array(repeating: sectionInset.top, count: columnCount)
-    attributesCache.removeAll()
-    contentHeight = sectionInset.top
+    needsFullReprepare = false
     
-    let itemWidth = (collectionView.bounds.width - sectionInset.left - sectionInset.right - CGFloat(columnCount - 1) * minimumColumnSpacing) / CGFloat(columnCount)
+    cachedAttributes.removeAll(keepingCapacity: true)
+    orderedAttributes.removeAll(keepingCapacity: true)
     
-    // 遍历所有 item
-    let itemCount = collectionView.numberOfItems(inSection: 0)
-    for item in 0..<itemCount {
-      let indexPath = IndexPath(item: item, section: 0)
+    let adjustedInset = collectionView.adjustedContentInset
+    let contentWidth = collectionView.bounds.width - adjustedInset.left - adjustedInset.right
+    let resolvedColumnCount = max(columnCount, 1)
+    let columnSpacing = max(minimumColumnSpacing, 0)
+    let rowSpacing = max(minimumInteritemSpacing, 0)
+    let totalColumnSpacing = CGFloat(max(resolvedColumnCount - 1, 0)) * columnSpacing
+    let horizontalInset = sectionInset.left + sectionInset.right
+    let usableWidth = max(contentWidth - horizontalInset - totalColumnSpacing, 0)
+    let itemWidth = resolvedColumnCount > 0 ? usableWidth / CGFloat(resolvedColumnCount) : 0
+    
+    contentHeight = 0
+    var validIndexPaths = Set<IndexPath>()
+    
+    let numberOfSections = collectionView.numberOfSections
+    for section in 0..<numberOfSections {
+      let itemsCount = collectionView.numberOfItems(inSection: section)
+      let sectionTop = contentHeight + sectionInset.top
       
-      // 获取 item 大小（通过 self-sizing 测量）
-      let itemSize: CGSize
-      if let cachedSize = itemSizes[indexPath] {
-        itemSize = cachedSize
-      } else if let sizeForItem = sizeForItem {
-        itemSize = sizeForItem(indexPath, itemWidth)
-        itemSizes[indexPath] = itemSize
-      } else {
-        // 默认大小
-        itemSize = CGSize(width: itemWidth, height: itemWidth)
+      guard itemsCount > 0 else {
+        contentHeight = sectionTop + sectionInset.bottom
+        continue
       }
       
-      // 找到最短的列
-      var shortestColumnIndex = 0
-      var shortestHeight = columnHeights[0]
-      for (index, height) in columnHeights.enumerated() {
-        if height < shortestHeight {
-          shortestHeight = height
-          shortestColumnIndex = index
-        }
+      var columnHeights = Array(repeating: sectionTop, count: resolvedColumnCount)
+      
+      for item in 0..<itemsCount {
+        let indexPath = IndexPath(item: item, section: section)
+        validIndexPaths.insert(indexPath)
+        
+        let column = columnHeights.enumerated().min(by: { $0.element < $1.element }) ?? (offset: 0, element: sectionTop)
+        let columnIndex = column.offset
+        let yOffset = column.element
+        let xOffset = sectionInset.left + CGFloat(columnIndex) * (itemWidth + columnSpacing)
+        let cachedHeight = itemHeightCache[indexPath] ?? itemWidth
+        let itemHeight = max(ceil(cachedHeight), 0)
+        
+        let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+        attributes.frame = CGRect(x: xOffset, y: yOffset, width: itemWidth, height: itemHeight)
+        
+        cachedAttributes[indexPath] = attributes
+        orderedAttributes.append(attributes)
+        
+        columnHeights[columnIndex] = attributes.frame.maxY + rowSpacing
       }
       
-      // 计算位置
-      let x = sectionInset.left + CGFloat(shortestColumnIndex) * (itemWidth + minimumColumnSpacing)
-      let y = columnHeights[shortestColumnIndex]
-      
-      // 创建布局属性
-      let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-      attributes.frame = CGRect(x: x, y: y, width: itemSize.width, height: itemSize.height)
-      attributesCache.append(attributes)
-      
-      // 更新列高度
-      columnHeights[shortestColumnIndex] = y + itemSize.height + minimumInteritemSpacing
-      
-      // 更新内容高度
-      contentHeight = max(contentHeight, columnHeights[shortestColumnIndex])
+      let maxColumnHeight = columnHeights.max() ?? sectionTop
+      let sectionBottom = maxColumnHeight - rowSpacing
+      contentHeight = max(sectionBottom + sectionInset.bottom, contentHeight)
     }
     
-    contentHeight += sectionInset.bottom - minimumInteritemSpacing
+    if numberOfSections == 0 {
+      contentHeight = 0
+    }
+    
+    itemHeightCache = itemHeightCache.filter { validIndexPaths.contains($0.key) }
   }
   
-  // 返回指定区域内的布局属性
   override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-    return attributesCache.filter { $0.frame.intersects(rect) }
+    orderedAttributes.filter { $0.frame.intersects(rect) }
   }
   
-  // 返回指定 indexPath 的布局属性
   override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-    return attributesCache[indexPath.item]
+    cachedAttributes[indexPath]
   }
   
-  // 当 bounds 改变时重新计算布局
+  // MARK: - 处理 Self-sizing
+  
   override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-    guard let collectionView = collectionView else {
-      return false
+    guard let collectionView = collectionView else { return false }
+    let widthChanged = abs(collectionView.bounds.width - newBounds.width) > .ulpOfOne
+    if widthChanged {
+      needsFullReprepare = true
     }
-    if collectionView.bounds.width != newBounds.width {
-      // 宽度改变时，清除缓存的大小
-      itemSizes.removeAll()
+    return widthChanged
+  }
+  
+  override func shouldInvalidateLayout(
+    forPreferredLayoutAttributes preferredAttributes: UICollectionViewLayoutAttributes,
+    withOriginalAttributes originalAttributes: UICollectionViewLayoutAttributes
+  ) -> Bool {
+    // 只有当高度有显著变化时才失效
+    let heightDelta = abs(preferredAttributes.frame.height - originalAttributes.frame.height)
+    if heightDelta > 0.1 {
+      needsFullReprepare = true
       return true
     }
     return false
   }
   
-  // 清除大小缓存
-  func invalidateItemSizes() {
-    itemSizes.removeAll()
+  override func invalidationContext(
+    forPreferredLayoutAttributes preferredAttributes: UICollectionViewLayoutAttributes,
+    withOriginalAttributes originalAttributes: UICollectionViewLayoutAttributes
+  ) -> UICollectionViewLayoutInvalidationContext {
+    let context = super.invalidationContext(
+      forPreferredLayoutAttributes: preferredAttributes,
+      withOriginalAttributes: originalAttributes
+    )
+    
+    let indexPath = preferredAttributes.indexPath
+    itemHeightCache[indexPath] = preferredAttributes.frame.height
+    needsFullReprepare = true
+    if let waterfallContext = context as? WaterfallLayoutInvalidationContext {
+      waterfallContext.shouldInvalidateEverything = true
+    }
+    
+    return context
+  }
+  
+  override func invalidateLayout(with context: UICollectionViewLayoutInvalidationContext) {
+    super.invalidateLayout(with: context)
+    
+    if context.invalidateDataSourceCounts {
+      itemHeightCache.removeAll()
+    }
+    
+    needsFullReprepare = true
   }
 }
-
