@@ -56,16 +56,16 @@ struct ImageCellView: View {
     var hasher = Hasher()
     hasher.combine(model.id)
     let hash = abs(hasher.finalize())
-    // 返回 0.8 到 1.6 之间的比例
-    return 0.8 + CGFloat(hash % 80) / 100.0
+    // 返回 0.6 到 1.5 之间的比例（更大的范围，更明显的差异）
+    return 0.6 + CGFloat(hash % 90) / 100.0
   }
 
   var body: some View {
-    ZStack {
-      // 背景
+    VStack(spacing: 0) {
+      // 使用颜色块来模拟不同高度的内容
       RoundedRectangle(cornerRadius: 8)
-        .fill(model.color.opacity(0.1))
-      
+        // .fill(model.color.opacity(0.1))
+
       // 图片，自适应大小，根据 aspectRatio 决定高度
       Image(systemName: model.imageName)
         .resizable()
@@ -75,28 +75,7 @@ struct ImageCellView: View {
         .padding(8)
     }
     .aspectRatio(1.0 / aspectRatio, contentMode: .fit)
-    .visualEffect { content, geometry in
-
-      let frame = geometry.frame(in: .global)
-      let screenHeight = UIScreen.main.bounds.height
-      let screenCenter = screenHeight / 2
-      let viewCenter = frame.midY
-      
-      // 计算距离屏幕中心的距离比例
-      let distance = abs(viewCenter - screenCenter)
-      let maxDistance = screenHeight / 2
-      let normalizedDistance = min(distance / maxDistance, 1.0)
-      
-      // 基于距离计算透明度和缩放（越远越小越透明）
-      let opacity = 1.0 - normalizedDistance * 0.4
-      let scale = 1.0 - normalizedDistance * 0.1
-
-      print("visual effect", opacity, scale * 0.33)
-
-      return content
-        .opacity(opacity)
-        .scaleEffect(scale)
-    }
+    .background(Color.gray)
   }
 }
 
@@ -154,29 +133,17 @@ struct CollectionViewRepresentable: UIViewRepresentable {
     layout.minimumColumnSpacing = 10
     layout.minimumInteritemSpacing = 10
     layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    
-    // 设置 self-sizing 测量闭包
-    let coordinator = context.coordinator
-    layout.sizeForItem = { indexPath, itemWidth in
-      coordinator.measureCellSize(at: indexPath, width: itemWidth)
-    }
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.backgroundColor = .systemBackground
     collectionView.delegate = context.coordinator
     collectionView.dataSource = context.coordinator
-    collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+    collectionView.register(WaterfallCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
 
     return collectionView
   }
 
   func updateUIView(_ uiView: UICollectionView, context: Context) {
-    // 当 bounds 改变时，需要重新计算布局
-    if let layout = uiView.collectionViewLayout as? WaterfallLayout {
-      layout.invalidateItemSizes()
-      context.coordinator.sizeCache.removeAll()
-      layout.invalidateLayout()
-    }
     uiView.reloadData()
   }
 
@@ -186,9 +153,6 @@ struct CollectionViewRepresentable: UIViewRepresentable {
 
   class Coordinator: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
     let parent: CollectionViewRepresentable
-    
-    // 缓存测量的大小
-    var sizeCache: [IndexPath: CGSize] = [:]
 
     init(_ parent: CollectionViewRepresentable) {
       self.parent = parent
@@ -206,12 +170,6 @@ struct CollectionViewRepresentable: UIViewRepresentable {
       let model = parent.items[indexPath.item]
       cell.contentConfiguration = UIHostingConfiguration {
         ImageCellView(model: model, namespace: parent.namespace)
-          .onAppear {
-            print("apppppear", model)
-          }
-          .onDisappear {
-            print("dissssssssssss", model)
-          }
       }
 
       return cell
@@ -220,37 +178,6 @@ struct CollectionViewRepresentable: UIViewRepresentable {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
       let model = parent.items[indexPath.item]
       parent.navigationPath.wrappedValue.append(model)
-    }
-    
-    // 测量 cell 的大小（self-sizing）
-    func measureCellSize(at indexPath: IndexPath, width: CGFloat) -> CGSize {
-      // 检查缓存
-      if let cachedSize = sizeCache[indexPath] {
-        return cachedSize
-      }
-      
-      // 创建临时 cell 进行测量
-      let cell = UICollectionViewCell()
-      let model = parent.items[indexPath.item]
-      
-      // 使用 UIHostingConfiguration 配置 cell
-      cell.contentConfiguration = UIHostingConfiguration {
-        ImageCellView(model: model, namespace: parent.namespace)
-          .frame(width: width)
-      }
-      
-      // 使用 systemLayoutSizeFitting 测量大小
-      let targetSize = CGSize(width: width, height: UIView.layoutFittingExpandedSize.height)
-      let size = cell.contentView.systemLayoutSizeFitting(
-        targetSize,
-        withHorizontalFittingPriority: .required,
-        verticalFittingPriority: .fittingSizeLevel
-      )
-      
-      // 缓存结果
-      sizeCache[indexPath] = size
-      
-      return size
     }
   }
 }

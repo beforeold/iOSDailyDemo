@@ -10,9 +10,22 @@
 		945D74EB2EBAE9A900BBE22C /* DemoZoomTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoZoomTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		94DEDAC72EBCAB08002C79EB /* Exceptions for "DemoZoomTransition" folder in "DemoZoomTransition" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MagazineLayout.swift,
+			);
+			target = 945D74EA2EBAE9A900BBE22C /* DemoZoomTransition */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		945D74ED2EBAE9A900BBE22C /* DemoZoomTransition */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				94DEDAC72EBCAB08002C79EB /* Exceptions for "DemoZoomTransition" folder in "DemoZoomTransition" target */,
+			);
 			path = DemoZoomTransition;
 			sourceTree = "<group>";
 		};
