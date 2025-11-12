@@ -12,10 +12,21 @@ struct ContentView: View {
         .padding()
       
       // 使用 UIMenuSwiftUI wrapper，sliderValue 现在在内部管理
-      UIMenuSwiftUI(
-        title: "显示菜单",
-        children: createMenuElements()
-      )
+      Group {
+        if #available(iOS 26.0, *) {
+          UIMenuSwiftUI(
+            title: "显示菜单",
+            children: createMenuElements()
+          )
+          .glassEffect()
+        } else {
+          UIMenuSwiftUI(
+            title: "显示菜单",
+            children: createMenuElements()
+          )
+        }
+      }
+      .frame(width: 100, height: 50)
       .padding()
       
       // 显示当前值（只显示数量，sliderValue 不再需要显示）
