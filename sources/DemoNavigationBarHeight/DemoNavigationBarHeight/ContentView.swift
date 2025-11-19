@@ -27,7 +27,9 @@ final class DemoViewController: UIViewController {
 
   private func configureRightBarButton() {
     let button = UIButton(type: .system)
-    button.setTitle("Tap Me", for: .normal)
+    // button.setTitle("Tap Me", for: .normal)
+    button.setImage(.init(systemName: "gean"), for: .normal)
+    button.tintColor = .white
     button.addTarget(self, action: #selector(didTapRightButton(_:)), for: .touchUpInside)
     navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     self.button = button
