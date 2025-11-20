@@ -73,6 +73,8 @@ final class IndexCell: UICollectionViewCell {
   }()
 
   override init(frame: CGRect) {
+    print("init cell")
+
     super.init(frame: frame)
     contentView.backgroundColor = .secondarySystemBackground
     contentView.addSubview(indexLabel)
@@ -89,6 +91,8 @@ final class IndexCell: UICollectionViewCell {
   }
 
   func configure(with index: Int) {
+    print("Configuring cell with index: \(index)")
+
     indexLabel.text = "Item \(index)"
   }
 }
