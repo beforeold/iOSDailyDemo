@@ -309,7 +309,7 @@ struct AVPlayerViewControllerRepresented: UIViewControllerRepresentable {
         let controller = AVPlayerViewController()
         controller.player = player
         controller.showsPlaybackControls = true
-        controller.allowsPictureInPicturePlayback = true
+        // controller.allowsPictureInPicturePlayback = true
         // 关闭自动更新 Now Playing，我们手动管理
         controller.updatesNowPlayingInfoCenter = false
         // 确保视频可以在后台继续播放
