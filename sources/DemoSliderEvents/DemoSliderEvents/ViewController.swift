@@ -4,9 +4,19 @@ class ViewController: UIViewController {
 
   private let slider: UISlider = {
     let slider = UISlider()
+    slider.setThumbImage(
+      UIImage(
+        systemName: "circle.fill",
+        withConfiguration: UIImage.SymbolConfiguration(pointSize: 10)
+      ),
+      for: .normal
+    )
+    slider.minimumTrackTintColor = .white
+    slider.maximumTrackTintColor = .white.withAlphaComponent(0.2)
     slider.minimumValue = 0
-    slider.maximumValue = 100
-    slider.value = 50
+    slider.maximumValue = 1
+    slider.tintColor = .blue
+    slider.value = 0.5
     return slider
   }()
 
@@ -61,6 +71,7 @@ struct ViewControllerPreview_Previews: PreviewProvider {
     ViewControllerPreview()
       .edgesIgnoringSafeArea(.all)
       .previewDisplayName("Demo Slider Events")
+      .colorScheme(.dark)
   }
 }
 #endif
