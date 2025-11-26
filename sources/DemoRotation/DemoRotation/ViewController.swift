@@ -20,14 +20,28 @@ class ViewController: UIViewController {
     return button
   }()
 
+  private let pushButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setTitle("Push Second View", for: .normal)
+    button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
+  }()
+
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    title = "Demo Rotation"
+
     view.backgroundColor = .systemBackground
     setupLayout()
     rotateButton.addTarget(self, action: #selector(rotateToLandscapeLeft), for: .touchUpInside)
+    pushButton.addTarget(self, action: #selector(pushSecondViewController), for: .touchUpInside)
     UIDevice.current.beginGeneratingDeviceOrientationNotifications()
     NotificationCenter.default.addObserver(self, selector: #selector(handleOrientationChange), name: UIDevice.orientationDidChangeNotification, object: nil)
     updateLabelForCurrentOrientation()
+
+//    navigationController?.delegate = self
   }
 
   deinit {
@@ -37,18 +51,27 @@ class ViewController: UIViewController {
   private func setupLayout() {
     view.addSubview(infoLabel)
     view.addSubview(rotateButton)
+    view.addSubview(pushButton)
 
     NSLayoutConstraint.activate([
       infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       infoLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20),
 
       rotateButton.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 24),
-      rotateButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+      rotateButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
+      pushButton.topAnchor.constraint(equalTo: rotateButton.bottomAnchor, constant: 16),
+      pushButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
     ])
   }
 
   @objc
   private func rotateToLandscapeLeft() {
+    guard supportedInterfaceOrientations.contains(.landscapeLeft) else {
+      infoLabel.text = "当前页面仅支持竖屏"
+      return
+    }
+
     guard let windowScene = view.window?.windowScene else {
       infoLabel.text = "当前朝向：无法获取 windowScene"
       return
@@ -75,6 +98,12 @@ class ViewController: UIViewController {
     updateLabelForCurrentOrientation()
   }
 
+  @objc
+  private func pushSecondViewController() {
+    let controller = SecondViewController()
+    navigationController?.pushViewController(controller, animated: true)
+  }
+
   private func updateLabelForCurrentOrientation() {
     let description: String
     if let interfaceOrientation = view.window?.windowScene?.interfaceOrientation {
@@ -86,12 +115,6 @@ class ViewController: UIViewController {
       print("Device orientation changed: \(description) (\(deviceOrientation.rawValue))")
     }
     infoLabel.text = "当前朝向：\(description)"
-  }
-
-  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-    super.traitCollectionDidChange(previousTraitCollection)
-
-    print("Trait collection changed: \(traitCollection)")
   }
 
   private func deviceOrientationDescription(for orientation: UIDeviceOrientation) -> String {
@@ -117,18 +140,23 @@ class ViewController: UIViewController {
   }
 
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    print(#function, size)
+
     super.viewWillTransition(to: size, with: coordinator)
+
     coordinator.animate(alongsideTransition: nil) { [weak self] _ in
       self?.updateLabelForCurrentOrientation()
     }
   }
 
-  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-    return .all
-  }
+//  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+//    return .portrait
+//  }
 
-  override var shouldAutorotate: Bool {
-    return true
-  }
+}
 
+extension ViewController: UINavigationControllerDelegate {
+  func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+    navigationController.topViewController?.supportedInterfaceOrientations ?? .all
+  }
 }
