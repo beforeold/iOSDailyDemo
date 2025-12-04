@@ -18,7 +18,9 @@ struct ContentView: View {
 
       HStack {
         Text("0")
-        Spacer()
+
+        Text("iOS \(UIDevice.current.systemVersion)")
+
         Text("1")
       }
       .font(.subheadline.monospacedDigit())
@@ -61,11 +63,11 @@ struct UIKitSlider: UIViewRepresentable {
     slider.maximumValue = 1
     slider.value = Float(value)
 
-    let minImage = Self.trackImage(color: .systemGray, height: 3)
-    slider.setMinimumTrackImage(minImage, for: .normal)
-
-    let maxImage = Self.trackImage(color: .yellow, height: 3)
-    slider.setMaximumTrackImage(maxImage, for: .normal)
+//    let minImage = Self.trackImage(color: .systemGray, height: 1)
+//    slider.setMinimumTrackImage(minImage, for: .normal)
+//
+//    let maxImage = Self.trackImage(color: .yellow, height: 1)
+//    slider.setMaximumTrackImage(maxImage, for: .normal)
 
     slider.addTarget(context.coordinator, action: #selector(Coordinator.valueChanged(_:)), for: .valueChanged)
 
@@ -76,7 +78,13 @@ struct UIKitSlider: UIViewRepresentable {
       ),
       for: .normal
     )
+    slider.setThumbImage(nil, for: .normal)
     slider.tintColor = .purple
+
+    if #available(iOS 26.0, *) {
+      slider.sliderStyle = .thumbless
+      slider.transform = .init(scaleX: 1, y: 0.5)
+    }
 
     return slider
   }
