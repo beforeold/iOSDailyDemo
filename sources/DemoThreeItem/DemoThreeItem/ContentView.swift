@@ -1,24 +1,65 @@
-//
-//  ContentView.swift
-//  DemoThreeItem
-//
-//  Created by beforeold on 2025/12/5.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+  var body: some View {
+    NavigationStack {
+      VStack {
+        Image(systemName: "globe")
+          .imageScale(.large)
+          .foregroundStyle(.tint)
+        Text("Hello, world!")
+      }
+      .padding()
+      .toolbar {
+        ToolbarItem(placement: .topBarLeading) {
+          Text("hello")
+            .font(.largeTitle)
+            .fontWeight(.heavy)
+            .fixedSize()
         }
-        .padding()
+
+        ToolbarItem(placement: .topBarTrailing) {
+          Button {
+
+          } label: {
+            Image(systemName: "gear")
+          }
+        }
+
+        ToolbarItem(placement: .topBarTrailing) {
+          Button {
+
+          } label: {
+            Image(systemName: "gear")
+          }
+        }
+
+
+        ToolbarItem(placement: .topBarTrailing) {
+          Button {
+
+          } label: {
+            Image(systemName: "gear")
+          }
+        }
+
+
+//        Button {
+//
+//        } label: {
+//          Image(systemName: "gear")
+//        }
+
+//        Button {
+//
+//        } label: {
+//          Image(systemName: "gear")
+//        }
+      }
     }
+  }
 }
 
 #Preview {
-    ContentView()
+  ContentView()
 }
