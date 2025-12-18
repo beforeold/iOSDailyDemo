@@ -1,13 +1,40 @@
 import UIKit
 
-@main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+  @main
+  class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    UITabBarController.installTabBarHooks()
+    startTabBarSweep()
     return true
+  }
+
+  private func startTabBarSweep() {
+    // Periodically scan all windows for any UITabBar instances that slipped past lifecycle hooks.
+    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+      let windows = UIApplication.shared.connectedScenes
+        .compactMap { $0 as? UIWindowScene }
+        .flatMap { $0.windows }
+
+      for window in windows {
+        self.hideTabBars(in: window)
+      }
+    }
+  }
+
+  private func hideTabBars(in root: UIView?) {
+    guard let root = root else { return }
+
+    if let tabBar = root as? UITabBar {
+      print("[TabBarHook] sweep hiding UITabBar", type(of: tabBar))
+      tabBar.isHidden = true
+    }
+
+    for subview in root.subviews {
+      hideTabBars(in: subview)
+    }
   }
 
   // MARK: UISceneSession Lifecycle
@@ -26,4 +53,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
