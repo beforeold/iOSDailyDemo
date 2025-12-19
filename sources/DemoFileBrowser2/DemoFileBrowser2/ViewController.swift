@@ -2,9 +2,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-  private let tabBarCoverHeight: CGFloat = 88
   private let horizontalPadding: CGFloat = 16
-  private var tabBarCover: UIView?
 
   private let docVC: UIDocumentBrowserViewController = {
     let controller = UIDocumentBrowserViewController(
@@ -32,9 +30,10 @@ class ViewController: UIViewController {
   }
 
   private func layoutDocumentBrowser() {
-    let height: CGFloat = 500
+    let visibleHeight: CGFloat = 500
+    let hideOffset: CGFloat = 120 // push the bottom (tab bar) beyond the screen
     let safeBottom = view.safeAreaInsets.bottom
-    let y = max(0, view.bounds.height - safeBottom - height)
+    let y = max(0, view.bounds.height - safeBottom - visibleHeight)
     let x = horizontalPadding
     let width = view.bounds.width - horizontalPadding * 2
 
@@ -42,10 +41,8 @@ class ViewController: UIViewController {
       x: x,
       y: y,
       width: width,
-      height: height
+      height: visibleHeight + hideOffset
     )
-
-    updateTabBarCover(for: docVC.view.frame)
   }
 
   private func hideTabBarIfNeeded(startingAt root: UIViewController) {
@@ -60,29 +57,5 @@ class ViewController: UIViewController {
 
       stack.append(contentsOf: current.children)
     }
-  }
-
-  private func updateTabBarCover(for docFrame: CGRect) {
-    let coverFrame = CGRect(
-      x: docFrame.minX,
-      y: docFrame.maxY - tabBarCoverHeight,
-      width: docFrame.width,
-      height: tabBarCoverHeight
-    )
-
-    let coverView: UIView
-    if let existing = tabBarCover {
-      coverView = existing
-    } else {
-      let newCover = UIView()
-      newCover.backgroundColor = .lightGray
-      newCover.isUserInteractionEnabled = false
-      tabBarCover = newCover
-      coverView = newCover
-      view.addSubview(coverView)
-    }
-
-    coverView.frame = coverFrame
-    view.bringSubviewToFront(coverView)
   }
 }
