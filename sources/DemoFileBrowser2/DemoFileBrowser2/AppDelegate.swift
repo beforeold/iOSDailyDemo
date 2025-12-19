@@ -25,16 +25,16 @@ import UIKit
   }
 
   private func hideTabBars(in root: UIView?) {
-    guard let root = root else { return }
-
-    if let tabBar = root as? UITabBar {
-      print("[TabBarHook] sweep hiding UITabBar", type(of: tabBar))
-      tabBar.isHidden = true
-    }
-
-    for subview in root.subviews {
-      hideTabBars(in: subview)
-    }
+//    guard let root = root else { return }
+//
+//    if let tabBar = root as? UITabBar {
+//      print("[TabBarHook] sweep hiding UITabBar", type(of: tabBar))
+//      tabBar.isHidden = true
+//    }
+//
+//    for subview in root.subviews {
+//      hideTabBars(in: subview)
+//    }
   }
 
   // MARK: UISceneSession Lifecycle
