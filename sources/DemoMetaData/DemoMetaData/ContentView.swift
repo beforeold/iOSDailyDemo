@@ -228,7 +228,6 @@ private final class VideoLibraryModel: ObservableObject {
             options.predicate = NSPredicate(format: "mediaType == %d", PHAssetMediaType.video.rawValue)
 
             var collected: [VideoAlbum] = []
-            let smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .any, options: nil)
             let userAlbums = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: nil)
 
             func appendAlbums(from fetchResult: PHFetchResult<PHAssetCollection>) {
@@ -247,7 +246,6 @@ private final class VideoLibraryModel: ObservableObject {
                 }
             }
 
-            appendAlbums(from: smartAlbums)
             appendAlbums(from: userAlbums)
             collected.sort { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending }
 
