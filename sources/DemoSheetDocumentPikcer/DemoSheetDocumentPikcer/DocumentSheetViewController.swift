@@ -82,6 +82,12 @@ class SheetContainerViewController: UIViewController {
 // MARK: - DocumentSheetViewController
 
 class DocumentSheetViewController: UIViewController {
+  private var isPresentingDocumentPicker = false {
+    didSet {
+      pickerButton.isEnabled = !isPresentingDocumentPicker
+      floatingPanelButton.isEnabled = !isPresentingDocumentPicker
+    }
+  }
 
   // MARK: - UI
 
@@ -137,6 +143,9 @@ class DocumentSheetViewController: UIViewController {
   // MARK: - Actions
 
   @objc private func showPicker() {
+    guard !isPresentingDocumentPicker else { return }
+    isPresentingDocumentPicker = true
+
     let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.item])
     picker.allowsMultipleSelection = true
 
@@ -154,6 +163,9 @@ class DocumentSheetViewController: UIViewController {
   }
 
   @objc private func showFloatingPanelPicker() {
+    guard !isPresentingDocumentPicker else { return }
+    isPresentingDocumentPicker = true
+
     let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.item])
     picker.allowsMultipleSelection = true
 
@@ -166,7 +178,7 @@ class DocumentSheetViewController: UIViewController {
     fpc.surfaceView.grabberHandlePadding = 12
     fpc.delegate = self
     fpc.contentMode = .fitToBounds
-    fpc.panGestureRecognizer.isEnabled = false
+    fpc.panGestureRecognizer.isEnabled = true
 
     present(fpc, animated: true) { [weak fpc] in
       guard let fpc else { return }
@@ -193,13 +205,14 @@ class DocumentSheetViewController: UIViewController {
       sheet.prefersGrabberVisible = true
       sheet.prefersScrollingExpandsWhenScrolledToEdge = true
       sheet.largestUndimmedDetentIdentifier = .medium
-      sheet.overrideTraitCollection = UITraitCollection(userInterfaceLevel: .base)
+      sheet.traitOverrides.userInterfaceLevel = .base
 
       sheet.backgroundEffect = UIColorEffect(color: .red)
     }
     present(picker, animated: true) { [picker = picker] in
       if let presentationController = picker.presentationController {
-        presentationController.overrideTraitCollection = UITraitCollection(userInterfaceLevel: .base)
+        presentationController.traitOverrides.userInterfaceLevel = .base
+        presentationController.delegate = self
       }
 
       DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -238,12 +251,18 @@ class DocumentSheetViewController: UIViewController {
 // MARK: - FloatingPanelControllerDelegate
 
 extension DocumentSheetViewController: FloatingPanelControllerDelegate,
-                                       UIGestureRecognizerDelegate {
+                                       UIGestureRecognizerDelegate,
+                                       UIAdaptivePresentationControllerDelegate {
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
         if fpc.state == .hidden {
             removeTouchObserver()
             fpc.dismiss(animated: false)
+            isPresentingDocumentPicker = false
         }
+    }
+
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        isPresentingDocumentPicker = false
     }
 
     func floatingPanel(_ fpc: FloatingPanelController, contentOffsetForPinning trackedScrollView: UIScrollView) -> CGPoint {
@@ -282,7 +301,7 @@ class DocumentPickerFloatingLayout: FloatingPanelLayout {
     var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] {
         [
             .half: FloatingPanelLayoutAnchor(fractionalInset: 0.5, edge: .bottom, referenceGuide: .safeArea),
-            .full: FloatingPanelLayoutAnchor(fractionalInset: 1.0, edge: .bottom, referenceGuide: .safeArea),
+            .full: FloatingPanelLayoutAnchor(absoluteInset: 16, edge: .top, referenceGuide: .safeArea),
         ]
     }
 }
