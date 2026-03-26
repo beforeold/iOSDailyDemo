@@ -185,6 +185,8 @@ class DocumentSheetViewController: UIViewController {
     presentAsSheet(browser) { [weak browser] in
       guard let browser else { return }
 
+      browser.view.backgroundColor = .clear
+
       // 方案一：私有 API 直接设置 editing mode
       let selectors = ["_enterSelectionMode", "setEditing:", "_setMode:"]
       for selName in selectors {
