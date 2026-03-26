@@ -10,8 +10,9 @@ import SwiftUI
 @main
 struct DemoSheetDocumentPikcerApp: App {
     init() {
-        // UISheetPresentationControllerHook.install()
-        // UIApplicationTouchHook.setup()
+        UISheetPresentationControllerHook.install()
+        UISheetPresentationControllerHook.dumpAllMethods()
+        UIApplicationTouchHook.setup()
     }
 
     var body: some Scene {
