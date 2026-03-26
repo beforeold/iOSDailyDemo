@@ -7,108 +7,15 @@ import UIKit
 import UniformTypeIdentifiers
 import FloatingPanel
 
-// MARK: - Container VC
-
-class SheetContainerViewController: UIViewController {
-    private let childVC: UIViewController
-    var disableGlassEffect = false
-
-    init(child: UIViewController) {
-        self.childVC = child
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder: NSCoder) { fatalError() }
-
-    private let overlay = HitTestOverlayView()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = .blue
-        addChild(childVC)
-        childVC.view.frame = view.bounds
-        childVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(childVC.view)
-        childVC.didMove(toParent: self)
-
-        setupOverlay()
-    }
-
-    private func setupOverlay() {
-        overlay.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(overlay)
-        NSLayoutConstraint.activate([
-            overlay.topAnchor.constraint(equalTo: view.topAnchor),
-            overlay.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            overlay.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            overlay.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ])
-
-        overlay.onHitTest = { [weak self] _ in
-            guard let self else { return }
-            // 立即移除 overlay，不等下一个 runloop，本次触摸透传给 picker
-            self.overlay.removeFromSuperview()
-            // 切换到 large detent
-            self.sheetPresentationController?.animateChanges {
-                self.sheetPresentationController?.selectedDetentIdentifier = .large
-            }
-            print("[Container] HitTest 触发 → overlay 移除，切换 large")
-        }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if disableGlassEffect {
-            removeGlassEffect()
-        }
-    }
-
-    private func removeGlassEffect() {
-        guard let sheet = sheetPresentationController else {
-            print("[GlassEffect] sheetPresentationController not found")
-            return
-        }
-
-        // 方案一：公开 API，设置 backgroundEffect 为 nil 去掉 blur
-        sheet.backgroundEffect = nil
-        print("[GlassEffect] backgroundEffect → nil")
-
-        // 方案二：KVC 替换私有背景 view（兼容 iOS 18 以下）
-        for key in ["_largeBackground", "_nonLargeBackground"] {
-            if let old = sheet.value(forKey: key) as? UIView {
-                let replacement = UIView()
-                replacement.backgroundColor = .systemBackground
-                replacement.frame = old.frame
-                replacement.autoresizingMask = old.autoresizingMask
-                sheet.setValue(replacement, forKey: key)
-                print("[GlassEffect] KVC \(key) replaced: \(type(of: old))")
-            } else {
-                print("[GlassEffect] KVC \(key) not found")
-            }
-        }
-
-        // 方案三：遍历容器视图，找到所有 UIVisualEffectView 并清除 effect
-        if let containerView = sheet.containerView {
-            removeVisualEffects(in: containerView)
-        }
-    }
-
-    private func removeVisualEffects(in view: UIView, depth: Int = 0) {
-        if let effectView = view as? UIVisualEffectView {
-            effectView.effect = nil
-            print("[GlassEffect] UIVisualEffectView.effect = nil at depth \(depth): \(effectView)")
-        }
-        for sub in view.subviews {
-            removeVisualEffects(in: sub, depth: depth + 1)
-        }
-    }
-}
-
 // MARK: - DocumentSheetViewController
 
 class DocumentSheetViewController: UIViewController {
+  private var isPresentingDocumentPicker = false {
+    didSet {
+      pickerButton.isEnabled = !isPresentingDocumentPicker
+      floatingPanelButton.isEnabled = !isPresentingDocumentPicker
+    }
+  }
 
   // MARK: - UI
 
@@ -157,87 +64,37 @@ class DocumentSheetViewController: UIViewController {
 
     NSLayoutConstraint.activate([
       stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      stack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 200),
+      stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
     ])
   }
 
   // MARK: - Actions
 
   @objc private func showPicker() {
+    guard !isPresentingDocumentPicker else { return }
+    isPresentingDocumentPicker = true
+
     let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.item])
     picker.allowsMultipleSelection = true
 
-    let container = SheetContainerViewController(child: picker)
-    container.disableGlassEffect = true
-
-    presentAsSheet(picker) {
-      let sheet = picker.sheetPresentationController
-      sheet?.setValue(true, forKey: "_didExpand")
-       let ret = sheet?.perform(NSSelectorFromString("_didExpand"))
-       // print("_didExpand", ret)
-
+    let sheet = NativeSheetContainerController(content: picker)
+    sheet.onDismiss = { [weak self] in
+      self?.isPresentingDocumentPicker = false
     }
+    present(sheet, animated: false)
   }
 
   @objc private func showBrowser() {
     let browser = UIDocumentBrowserViewController(forOpening: [.item])
     browser.allowsDocumentCreation = false
-    browser.allowsPickingMultipleItems = true
-    browser.delegate = self
-    presentAsSheet(browser) { [weak browser] in
-      guard let browser else { return }
-
-      // 方案一：私有 API 直接设置 editing mode
-      let selectors = ["_enterSelectionMode", "setEditing:", "_setMode:"]
-      for selName in selectors {
-        let sel = NSSelectorFromString(selName)
-        if browser.responds(to: sel) {
-          print("[Browser] 找到私有方法: \(selName)")
-          if selName == "setEditing:" {
-            browser.perform(sel, with: true)
-          } else {
-            browser.perform(sel)
-          }
-          return
-        }
-      }
-
-      // 方案二：遍历导航栏 barButtonItems，找 "Select" 按钮并触发
-      print("[Browser] 私有方法未找到，尝试查找 Select 按钮")
-      Self.triggerSelectButton(in: browser)
-    }
-  }
-
-  private static func triggerSelectButton(in browser: UIDocumentBrowserViewController) {
-    // dump browser 的方法列表，辅助找私有 API
-    dumpMethods(of: type(of: browser))
-
-    // 遍历所有 child VC 的导航栏找 Select 按钮
-    func findAndTap(in vc: UIViewController) -> Bool {
-      let allItems = (vc.navigationItem.rightBarButtonItems ?? [])
-                   + (vc.navigationItem.leftBarButtonItems ?? [])
-      for item in allItems {
-        let title = item.title ?? ""
-        let action = item.action.map { NSStringFromSelector($0) } ?? ""
-        print("[Browser] barButtonItem title=\(title)  action=\(action)  target=\(String(describing: item.target))")
-        if title.lowercased().contains("select") || action.lowercased().contains("select") {
-          _ = item.target?.perform(item.action)
-          print("[Browser] 触发 Select 按钮")
-          return true
-        }
-      }
-      for child in vc.children {
-        if findAndTap(in: child) { return true }
-      }
-      return false
-    }
-
-    if !findAndTap(in: browser) {
-      print("[Browser] 未找到 Select 按钮")
-    }
+    browser.allowsPickingMultipleItems = false
+    presentAsSheet(browser)
   }
 
   @objc private func showFloatingPanelPicker() {
+    guard !isPresentingDocumentPicker else { return }
+    isPresentingDocumentPicker = true
+
     let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.item])
     picker.allowsMultipleSelection = true
 
@@ -250,71 +107,27 @@ class DocumentSheetViewController: UIViewController {
     fpc.surfaceView.grabberHandlePadding = 12
     fpc.delegate = self
     fpc.contentMode = .fitToBounds
-    fpc.panGestureRecognizer.isEnabled = false
+    fpc.panGestureRecognizer.isEnabled = true
 
-    present(fpc, animated: true) { [weak fpc] in
-      guard let fpc else { return }
-      UIApplicationTouchHook.onTouchBegan = { [weak fpc] touch in
-        guard let fpc, fpc.state != .full else { return }
-        print("[FloatingPanel] onTouchBegan fired, fpc.state=\(fpc.state)")
-        DispatchQueue.main.async {
-          fpc.move(to: .full, animated: true)
-          print("[FloatingPanel] → full")
-        }
-      }
-    }
+    present(fpc, animated: true)
   }
 
-  private func removeTouchObserver() {
-    UIApplicationTouchHook.onTouchBegan = nil
-  }
+  // MARK: - Sheet Presentation (仅用于 Document Browser)
 
-  // MARK: - Sheet Presentation
-
-  private func presentAsSheet(_ picker: UIViewController, completion: (() -> Void)? = nil) {
+  /// 注意：此方法仅用于 UIDocumentBrowserViewController。
+  /// UIDocumentPickerViewController 已改用 NativeSheetContainerController，
+  /// 以规避 iOS 26 dark mode + medium detent 下的发灰问题。
+  private func presentAsSheet(_ picker: UIViewController) {
     if let sheet = picker.sheetPresentationController {
       sheet.detents = [.medium(), .large()]
       sheet.prefersGrabberVisible = true
       sheet.prefersScrollingExpandsWhenScrolledToEdge = true
       sheet.largestUndimmedDetentIdentifier = .medium
-      sheet.overrideTraitCollection = UITraitCollection(userInterfaceLevel: .base)
     }
     present(picker, animated: true) { [picker = picker] in
       if let presentationController = picker.presentationController {
-        presentationController.overrideTraitCollection = UITraitCollection(userInterfaceLevel: .base)
+        presentationController.delegate = self
       }
-
-      completion?()
-
-      DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-        print("[presentAsSheet] 1s 后触发")
-        Self.dumpChildVCs(picker, depth: 0)
-      }
-    }
-  }
-
-  private static func dumpChildVCs(_ vc: UIViewController, depth: Int) {
-    let indent = String(repeating: "  ", count: depth)
-    let view = vc.viewIfLoaded
-    let viewInfo: String
-    if let v = view {
-      let size = v.bounds.size
-      viewInfo = "view=\(type(of: v)) (\(Int(size.width))×\(Int(size.height)))"
-    } else {
-      viewInfo = "view=not loaded"
-    }
-    print("\(indent)[\(depth)] \(type(of: vc))  \(viewInfo)")
-    for child in vc.children {
-      dumpChildVCs(child, depth: depth + 1)
-    }
-  }
-
-  private static func colorizeViews(_ view: UIView, depth: Int) {
-    view.backgroundColor = .random
-    let indent = String(repeating: "  ", count: depth)
-    print("\(indent)[\(depth)] \(type(of: view)) → \(view.backgroundColor!)")
-    for subview in view.subviews {
-      colorizeViews(subview, depth: depth + 1)
     }
   }
 }
@@ -322,77 +135,20 @@ class DocumentSheetViewController: UIViewController {
 // MARK: - FloatingPanelControllerDelegate
 
 extension DocumentSheetViewController: FloatingPanelControllerDelegate,
-                                       UIGestureRecognizerDelegate {
+                                       UIAdaptivePresentationControllerDelegate {
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
         if fpc.state == .hidden {
-            removeTouchObserver()
             fpc.dismiss(animated: false)
+            isPresentingDocumentPicker = false
         }
+    }
+
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        isPresentingDocumentPicker = false
     }
 
     func floatingPanel(_ fpc: FloatingPanelController, contentOffsetForPinning trackedScrollView: UIScrollView) -> CGPoint {
         trackedScrollView.contentOffset
-    }
-
-    // MARK: - UIGestureRecognizerDelegate
-
-    func gestureRecognizer(
-        _ gestureRecognizer: UIGestureRecognizer,
-        shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
-    ) -> Bool {
-        true
-    }
-}
-
-// MARK: - UIDocumentBrowserViewControllerDelegate
-
-extension DocumentSheetViewController: UIDocumentBrowserViewControllerDelegate {
-
-    func documentBrowser(
-        _ controller: UIDocumentBrowserViewController,
-        didPickDocumentsAt documentURLs: [URL]
-    ) {
-        print("[Browser] 选中文件（\(documentURLs.count) 个）：")
-        documentURLs.forEach { print("  \($0.lastPathComponent)  →  \($0)") }
-        controller.dismiss(animated: true)
-    }
-
-    func documentBrowser(
-        _ controller: UIDocumentBrowserViewController,
-        didRequestDocumentCreationWithHandler importHandler: @escaping (URL?, UIDocumentBrowserViewController.ImportMode) -> Void
-    ) {
-        print("[Browser] 请求创建文档")
-        importHandler(nil, .none)
-    }
-
-    func documentBrowser(
-        _ controller: UIDocumentBrowserViewController,
-        didImportDocumentAt sourceURL: URL,
-        toDestinationURL destinationURL: URL
-    ) {
-        print("[Browser] 导入完成: \(sourceURL.lastPathComponent) → \(destinationURL)")
-    }
-
-    func documentBrowser(
-        _ controller: UIDocumentBrowserViewController,
-        failedToImportDocumentAt documentURL: URL,
-        error: (any Error)?
-    ) {
-        let msg = error?.localizedDescription ?? "未知错误"
-        print("[Browser] 导入失败: \(documentURL.lastPathComponent)  error=\(msg)")
-    }
-}
-
-// MARK: - UIColor Random
-
-extension UIColor {
-    static var random: UIColor {
-        UIColor(
-            red: .random(in: 0.3...1),
-            green: .random(in: 0.3...1),
-            blue: .random(in: 0.3...1),
-            alpha: 0.5
-        )
     }
 }
 
@@ -405,7 +161,7 @@ class DocumentPickerFloatingLayout: FloatingPanelLayout {
     var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] {
         [
             .half: FloatingPanelLayoutAnchor(fractionalInset: 0.5, edge: .bottom, referenceGuide: .safeArea),
-            .full: FloatingPanelLayoutAnchor(fractionalInset: 1.0, edge: .bottom, referenceGuide: .safeArea),
+            .full: FloatingPanelLayoutAnchor(absoluteInset: 16, edge: .top, referenceGuide: .safeArea),
         ]
     }
 }
