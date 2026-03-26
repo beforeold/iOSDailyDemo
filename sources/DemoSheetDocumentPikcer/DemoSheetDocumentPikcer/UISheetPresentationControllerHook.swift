@@ -48,14 +48,6 @@ private let swizzleOnce: Void = {
         return
     }
 
-    // dump 所有实例方法（含父类可通过遍历层级获取）
-    var current: AnyClass? = cls
-    while let c = current {
-        dumpMethods(of: c)
-        current = class_getSuperclass(c)
-        if let c = current, NSStringFromClass(c) == "NSObject" { break }
-    }
-
     swizzle(cls,
             original: NSSelectorFromString("initWithSourceView:"),
             swizzled: #selector(UISheetPresentationController.hook_initWithSourceView(_:)))
@@ -82,19 +74,69 @@ enum UISheetPresentationControllerHook {
 extension UISheetPresentationController {
     @objc func hook_initWithSourceView(_ sourceView: UIView) -> UISheetPresentationController {
         let instance = hook_initWithSourceView(sourceView)
-        print("[Hook] initWithSourceView: \(instance), sourceView: \(sourceView)")
+        instance.sanitizePresentationSurface()
         return instance
     }
 
     @objc func hook_setLargeBackground(_ background: AnyObject?) {
-        let desc = background.map { "\(type(of: $0)): \($0)" } ?? "nil"
-        print("[Hook] _setLargeBackground: \(desc)  (self: \(self))")
-        hook_setLargeBackground(background)
+        sanitizePresentationSurface()
+        hook_setLargeBackground(makeOpaqueBackground(from: background))
     }
 
     @objc func hook_setNonLargeBackground(_ background: AnyObject?) {
-        let desc = background.map { "\(type(of: $0)): \($0)" } ?? "nil"
-        print("[Hook] _setNonLargeBackground: \(desc)  (self: \(self))")
-        hook_setNonLargeBackground(background)
+        sanitizePresentationSurface()
+        hook_setNonLargeBackground(makeOpaqueBackground(from: background))
+    }
+
+    private func makeOpaqueBackground(from background: AnyObject?) -> AnyObject? {
+        guard let view = background as? UIView else {
+            return background
+        }
+
+        let replacement = UIView(frame: view.frame)
+        replacement.backgroundColor = .systemBackground
+        replacement.autoresizingMask = view.autoresizingMask
+        replacement.layer.cornerRadius = view.layer.cornerRadius
+        replacement.layer.cornerCurve = view.layer.cornerCurve
+        replacement.layer.maskedCorners = view.layer.maskedCorners
+        replacement.clipsToBounds = true
+        return replacement
+    }
+
+    private func sanitizePresentationSurface() {
+        backgroundEffect = nil
+
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+
+            for key in ["_largeBackground", "_nonLargeBackground"] {
+                guard let backgroundView = self.value(forKey: key) as? UIView else { continue }
+                backgroundView.backgroundColor = .systemBackground
+                self.clearVisualEffects(in: backgroundView)
+            }
+
+            if let containerView = self.containerView {
+                containerView.backgroundColor = .clear
+                self.clearVisualEffects(in: containerView)
+            }
+
+            if let presentedView = presentedViewController.viewIfLoaded {
+                presentedView.backgroundColor = .systemBackground
+                self.clearVisualEffects(in: presentedView)
+            }
+        }
+    }
+
+    private func clearVisualEffects(in view: UIView) {
+        if let effectView = view as? UIVisualEffectView {
+            effectView.effect = nil
+            effectView.backgroundColor = .systemBackground
+        } else if view.backgroundColor == nil {
+            view.backgroundColor = .clear
+        }
+
+        for subview in view.subviews {
+            clearVisualEffects(in: subview)
+        }
     }
 }
