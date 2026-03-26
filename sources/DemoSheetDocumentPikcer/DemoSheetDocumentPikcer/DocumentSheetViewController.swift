@@ -32,7 +32,7 @@ class SheetContainerViewController: UIViewController {
         view.addSubview(childVC.view)
         childVC.didMove(toParent: self)
 
-        // setupOverlay()
+        setupOverlay()
     }
 
     private func setupOverlay() {
@@ -111,43 +111,39 @@ class DocumentSheetViewController: UIViewController {
 
   // MARK: - UI
 
-  private lazy var pickerButton: UIButton = {
-    var config = UIButton.Configuration.filled()
-    config.title = "Document Picker in Native"
-    config.cornerStyle = .medium
-    let btn = UIButton(configuration: config)
-    btn.addTarget(self, action: #selector(showNativePicker), for: .touchUpInside)
-    return btn
-  }()
+  private lazy var sheetPickerButton: UIButton = makeButton(
+    title: "UISheet Picker",
+    color: .systemOrange,
+    action: #selector(showSheetPicker)
+  )
 
-  private lazy var browserButton: UIButton = {
-    var config = UIButton.Configuration.filled()
-    config.title = "Document Browser"
-    config.cornerStyle = .medium
-    let btn = UIButton(configuration: config)
-    btn.addTarget(self, action: #selector(showBrowser), for: .touchUpInside)
-    return btn
-  }()
+  private lazy var pickerContainerButton: UIButton = makeButton(
+    title: "Picker in Container",
+    color: .systemBlue,
+    action: #selector(showPickerInContainer)
+  )
 
-  private lazy var floatingPanelButton: UIButton = {
-    var config = UIButton.Configuration.filled()
-    config.title = "FloatingPanel Picker"
-    config.baseBackgroundColor = .systemGreen
-    config.cornerStyle = .medium
-    let btn = UIButton(configuration: config)
-    btn.addTarget(self, action: #selector(showFloatingPanelPicker), for: .touchUpInside)
-    return btn
-  }()
+  private lazy var browserButton: UIButton = makeButton(
+    title: "Document Browser",
+    color: .systemPurple,
+    action: #selector(showBrowser)
+  )
 
-  private lazy var sheetPickerButton: UIButton = {
+  private lazy var floatingPanelButton: UIButton = makeButton(
+    title: "FloatingPanel Picker",
+    color: .systemGreen,
+    action: #selector(showFloatingPanelPicker)
+  )
+
+  private func makeButton(title: String, color: UIColor, action: Selector) -> UIButton {
     var config = UIButton.Configuration.filled()
-    config.title = "UISheet Picker"
-    config.baseBackgroundColor = .systemOrange
+    config.title = title
+    config.baseBackgroundColor = color
     config.cornerStyle = .medium
     let btn = UIButton(configuration: config)
-    btn.addTarget(self, action: #selector(showSheetPicker), for: .touchUpInside)
+    btn.addTarget(self, action: action, for: .touchUpInside)
     return btn
-  }()
+  }
 
   // MARK: - Lifecycle
 
@@ -157,7 +153,7 @@ class DocumentSheetViewController: UIViewController {
     title = "UIKit Sheet"
     view.backgroundColor = .systemBackground
 
-    let stack = UIStackView(arrangedSubviews: [pickerButton, browserButton, floatingPanelButton, sheetPickerButton])
+    let stack = UIStackView(arrangedSubviews: [sheetPickerButton, pickerContainerButton, browserButton, floatingPanelButton])
     stack.axis = .vertical
     stack.spacing = 20
     stack.alignment = .center
@@ -172,12 +168,11 @@ class DocumentSheetViewController: UIViewController {
 
   // MARK: - Actions
 
-  @objc private func showNativePicker() {
+  @objc private func showPickerInContainer() {
     let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.item])
     picker.allowsMultipleSelection = true
 
-    let container = SheetContainerViewController(child: picker)
-    container.disableGlassEffect = true
+    let container = NativeSheetContainerController(content: picker)
 
     presentAsSheet(container)
   }
@@ -276,11 +271,8 @@ class DocumentSheetViewController: UIViewController {
     let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.item])
     picker.allowsMultipleSelection = false
     picker.delegate = self
-    picker.traitOverrides.userInterfaceLevel = .elevated
 
-    presentAsSheet(picker) {
-      picker.traitOverrides.userInterfaceLevel = .elevated
-    }
+    presentAsSheet(picker)
   }
 
   // MARK: - Sheet Presentation
@@ -293,6 +285,7 @@ class DocumentSheetViewController: UIViewController {
       sheet.largestUndimmedDetentIdentifier = .medium
       sheet.traitOverrides.userInterfaceLevel = .elevated
     }
+    picker.traitOverrides.userInterfaceLevel = .elevated
     present(picker, animated: true) { [picker = picker] in
       completion?()
 
