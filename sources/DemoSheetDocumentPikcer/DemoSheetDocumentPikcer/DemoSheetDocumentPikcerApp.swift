@@ -9,12 +9,6 @@ import SwiftUI
 
 @main
 struct DemoSheetDocumentPikcerApp: App {
-    init() {
-        UISheetPresentationControllerHook.install()
-        UISheetPresentationControllerHook.dumpAllMethods()
-        UIApplicationTouchHook.setup()
-    }
-
     var body: some Scene {
         WindowGroup {
             ContentView()
