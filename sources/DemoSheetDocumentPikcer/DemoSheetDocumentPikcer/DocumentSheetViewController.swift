@@ -21,14 +21,41 @@ class SheetContainerViewController: UIViewController {
     @available(*, unavailable)
     required init?(coder: NSCoder) { fatalError() }
 
+    private let overlay = HitTestOverlayView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+
+        view.backgroundColor = .blue
         addChild(childVC)
         childVC.view.frame = view.bounds
         childVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(childVC.view)
         childVC.didMove(toParent: self)
+
+        setupOverlay()
+    }
+
+    private func setupOverlay() {
+        overlay.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(overlay)
+        NSLayoutConstraint.activate([
+            overlay.topAnchor.constraint(equalTo: view.topAnchor),
+            overlay.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            overlay.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            overlay.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+
+        overlay.onHitTest = { [weak self] _ in
+            guard let self else { return }
+            // 立即移除 overlay，不等下一个 runloop，本次触摸透传给 picker
+            self.overlay.removeFromSuperview()
+            // 切换到 large detent
+            self.sheetPresentationController?.animateChanges {
+                self.sheetPresentationController?.selectedDetentIdentifier = .large
+            }
+            print("[Container] HitTest 触发 → overlay 移除，切换 large")
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -82,12 +109,6 @@ class SheetContainerViewController: UIViewController {
 // MARK: - DocumentSheetViewController
 
 class DocumentSheetViewController: UIViewController {
-  private var isPresentingDocumentPicker = false {
-    didSet {
-      pickerButton.isEnabled = !isPresentingDocumentPicker
-      floatingPanelButton.isEnabled = !isPresentingDocumentPicker
-    }
-  }
 
   // MARK: - UI
 
@@ -136,36 +157,87 @@ class DocumentSheetViewController: UIViewController {
 
     NSLayoutConstraint.activate([
       stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+      stack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 200),
     ])
   }
 
   // MARK: - Actions
 
   @objc private func showPicker() {
-    guard !isPresentingDocumentPicker else { return }
-    isPresentingDocumentPicker = true
-
     let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.item])
     picker.allowsMultipleSelection = true
 
     let container = SheetContainerViewController(child: picker)
     container.disableGlassEffect = true
 
-    presentAsSheet(picker)
+    presentAsSheet(picker) {
+      let sheet = picker.sheetPresentationController
+      sheet?.setValue(true, forKey: "_didExpand")
+       let ret = sheet?.perform(NSSelectorFromString("_didExpand"))
+       // print("_didExpand", ret)
+
+    }
   }
 
   @objc private func showBrowser() {
     let browser = UIDocumentBrowserViewController(forOpening: [.item])
     browser.allowsDocumentCreation = false
-    browser.allowsPickingMultipleItems = false
-    presentAsSheet(browser)
+    browser.allowsPickingMultipleItems = true
+    browser.delegate = self
+    presentAsSheet(browser) { [weak browser] in
+      guard let browser else { return }
+
+      // 方案一：私有 API 直接设置 editing mode
+      let selectors = ["_enterSelectionMode", "setEditing:", "_setMode:"]
+      for selName in selectors {
+        let sel = NSSelectorFromString(selName)
+        if browser.responds(to: sel) {
+          print("[Browser] 找到私有方法: \(selName)")
+          if selName == "setEditing:" {
+            browser.perform(sel, with: true)
+          } else {
+            browser.perform(sel)
+          }
+          return
+        }
+      }
+
+      // 方案二：遍历导航栏 barButtonItems，找 "Select" 按钮并触发
+      print("[Browser] 私有方法未找到，尝试查找 Select 按钮")
+      Self.triggerSelectButton(in: browser)
+    }
+  }
+
+  private static func triggerSelectButton(in browser: UIDocumentBrowserViewController) {
+    // dump browser 的方法列表，辅助找私有 API
+    dumpMethods(of: type(of: browser))
+
+    // 遍历所有 child VC 的导航栏找 Select 按钮
+    func findAndTap(in vc: UIViewController) -> Bool {
+      let allItems = (vc.navigationItem.rightBarButtonItems ?? [])
+                   + (vc.navigationItem.leftBarButtonItems ?? [])
+      for item in allItems {
+        let title = item.title ?? ""
+        let action = item.action.map { NSStringFromSelector($0) } ?? ""
+        print("[Browser] barButtonItem title=\(title)  action=\(action)  target=\(String(describing: item.target))")
+        if title.lowercased().contains("select") || action.lowercased().contains("select") {
+          _ = item.target?.perform(item.action)
+          print("[Browser] 触发 Select 按钮")
+          return true
+        }
+      }
+      for child in vc.children {
+        if findAndTap(in: child) { return true }
+      }
+      return false
+    }
+
+    if !findAndTap(in: browser) {
+      print("[Browser] 未找到 Select 按钮")
+    }
   }
 
   @objc private func showFloatingPanelPicker() {
-    guard !isPresentingDocumentPicker else { return }
-    isPresentingDocumentPicker = true
-
     let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.item])
     picker.allowsMultipleSelection = true
 
@@ -178,7 +250,7 @@ class DocumentSheetViewController: UIViewController {
     fpc.surfaceView.grabberHandlePadding = 12
     fpc.delegate = self
     fpc.contentMode = .fitToBounds
-    fpc.panGestureRecognizer.isEnabled = true
+    fpc.panGestureRecognizer.isEnabled = false
 
     present(fpc, animated: true) { [weak fpc] in
       guard let fpc else { return }
@@ -199,21 +271,20 @@ class DocumentSheetViewController: UIViewController {
 
   // MARK: - Sheet Presentation
 
-  private func presentAsSheet(_ picker: UIViewController) {
+  private func presentAsSheet(_ picker: UIViewController, completion: (() -> Void)? = nil) {
     if let sheet = picker.sheetPresentationController {
       sheet.detents = [.medium(), .large()]
       sheet.prefersGrabberVisible = true
       sheet.prefersScrollingExpandsWhenScrolledToEdge = true
       sheet.largestUndimmedDetentIdentifier = .medium
-      sheet.traitOverrides.userInterfaceLevel = .base
-
-      sheet.backgroundEffect = UIColorEffect(color: .red)
+      sheet.overrideTraitCollection = UITraitCollection(userInterfaceLevel: .base)
     }
     present(picker, animated: true) { [picker = picker] in
       if let presentationController = picker.presentationController {
-        presentationController.traitOverrides.userInterfaceLevel = .base
-        presentationController.delegate = self
+        presentationController.overrideTraitCollection = UITraitCollection(userInterfaceLevel: .base)
       }
+
+      completion?()
 
       DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
         print("[presentAsSheet] 1s 后触发")
@@ -251,18 +322,12 @@ class DocumentSheetViewController: UIViewController {
 // MARK: - FloatingPanelControllerDelegate
 
 extension DocumentSheetViewController: FloatingPanelControllerDelegate,
-                                       UIGestureRecognizerDelegate,
-                                       UIAdaptivePresentationControllerDelegate {
+                                       UIGestureRecognizerDelegate {
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
         if fpc.state == .hidden {
             removeTouchObserver()
             fpc.dismiss(animated: false)
-            isPresentingDocumentPicker = false
         }
-    }
-
-    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        isPresentingDocumentPicker = false
     }
 
     func floatingPanel(_ fpc: FloatingPanelController, contentOffsetForPinning trackedScrollView: UIScrollView) -> CGPoint {
@@ -276,6 +341,45 @@ extension DocumentSheetViewController: FloatingPanelControllerDelegate,
         shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
     ) -> Bool {
         true
+    }
+}
+
+// MARK: - UIDocumentBrowserViewControllerDelegate
+
+extension DocumentSheetViewController: UIDocumentBrowserViewControllerDelegate {
+
+    func documentBrowser(
+        _ controller: UIDocumentBrowserViewController,
+        didPickDocumentsAt documentURLs: [URL]
+    ) {
+        print("[Browser] 选中文件（\(documentURLs.count) 个）：")
+        documentURLs.forEach { print("  \($0.lastPathComponent)  →  \($0)") }
+        controller.dismiss(animated: true)
+    }
+
+    func documentBrowser(
+        _ controller: UIDocumentBrowserViewController,
+        didRequestDocumentCreationWithHandler importHandler: @escaping (URL?, UIDocumentBrowserViewController.ImportMode) -> Void
+    ) {
+        print("[Browser] 请求创建文档")
+        importHandler(nil, .none)
+    }
+
+    func documentBrowser(
+        _ controller: UIDocumentBrowserViewController,
+        didImportDocumentAt sourceURL: URL,
+        toDestinationURL destinationURL: URL
+    ) {
+        print("[Browser] 导入完成: \(sourceURL.lastPathComponent) → \(destinationURL)")
+    }
+
+    func documentBrowser(
+        _ controller: UIDocumentBrowserViewController,
+        failedToImportDocumentAt documentURL: URL,
+        error: (any Error)?
+    ) {
+        let msg = error?.localizedDescription ?? "未知错误"
+        print("[Browser] 导入失败: \(documentURL.lastPathComponent)  error=\(msg)")
     }
 }
 
@@ -301,7 +405,7 @@ class DocumentPickerFloatingLayout: FloatingPanelLayout {
     var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] {
         [
             .half: FloatingPanelLayoutAnchor(fractionalInset: 0.5, edge: .bottom, referenceGuide: .safeArea),
-            .full: FloatingPanelLayoutAnchor(absoluteInset: 16, edge: .top, referenceGuide: .safeArea),
+            .full: FloatingPanelLayoutAnchor(fractionalInset: 1.0, edge: .bottom, referenceGuide: .safeArea),
         ]
     }
 }
