@@ -7,6 +7,7 @@ final class FolderBookmarkStore: ObservableObject {
   @Published var folderName: String?
   @Published var fileCount: Int?
   @Published var errorText: String?
+  @Published var mockWriteStatus: String?
 
   private var securityScopedURL: URL?
   private var isAccessingSecurityScope = false
@@ -22,6 +23,7 @@ final class FolderBookmarkStore: ObservableObject {
 
   func restoreFromKeychainIfPresent() {
     errorText = nil
+    mockWriteStatus = nil
     guard let data = KeychainBookmarkStore.load() else {
       folderName = nil
       fileCount = nil
@@ -32,6 +34,7 @@ final class FolderBookmarkStore: ObservableObject {
 
   func handlePickedFolder(at url: URL) {
     errorText = nil
+    mockWriteStatus = nil
     stopSecurityScopedAccess()
     guard url.startAccessingSecurityScopedResource() else {
       Self.log.error("书签链路(选取器): 开启 security-scoped 访问失败 path=\(url.path, privacy: .public)")
@@ -118,6 +121,36 @@ final class FolderBookmarkStore: ObservableObject {
       return reinstallHint
     }
     return "\(reinstallHint)\n（\(underlying.localizedDescription)）"
+  }
+
+  /// 在当前已授权文件夹内写入一行 Mock `.txt`（内容为 ISO8601 写入时间与随机 UUID）。
+  func writeMockTextFileToBookmarkedFolder() {
+    errorText = nil
+    mockWriteStatus = nil
+    guard let folderURL = securityScopedURL, isAccessingSecurityScope else {
+      errorText = "当前没有可写入的文件夹访问权，请先选择或恢复书签。"
+      return
+    }
+    let uuid = UUID().uuidString
+    let iso = Self.isoTimestampString(for: Date())
+    let body = "writtenAt: \(iso)\nuuid: \(uuid)\n"
+    let fileName = "bookmark_mock_\(uuid.prefix(8)).txt"
+    let fileURL = folderURL.appendingPathComponent(fileName, isDirectory: false)
+    do {
+      try body.write(to: fileURL, atomically: true, encoding: .utf8)
+      updateDisplay(for: folderURL)
+      mockWriteStatus = "已写入：\(fileName)"
+      Self.log.info("mock txt 写入成功 path=\(fileURL.path, privacy: .public)")
+    } catch {
+      errorText = error.localizedDescription
+      Self.log.error("mock txt 写入失败 \(error.localizedDescription, privacy: .public)")
+    }
+  }
+
+  private static func isoTimestampString(for date: Date) -> String {
+    let formatter = ISO8601DateFormatter()
+    formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+    return formatter.string(from: date)
   }
 
   private func updateDisplay(for folderURL: URL) {
