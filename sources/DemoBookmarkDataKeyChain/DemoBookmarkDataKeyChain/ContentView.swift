@@ -24,10 +24,22 @@ struct ContentView: View {
           .foregroundColor(.red)
       }
 
+      if let mockStatus = store.mockWriteStatus {
+        Text(mockStatus)
+          .font(.footnote)
+          .foregroundColor(.green)
+      }
+
       Button("从文件 App 选择文件夹…") {
         isPickingFolder = true
       }
       .buttonStyle(.borderedProminent)
+
+      Button("向该文件夹写入 Mock TXT（时间 + UUID）") {
+        store.writeMockTextFileToBookmarkedFolder()
+      }
+      .buttonStyle(.bordered)
+      .disabled(store.folderName == nil)
     }
     .padding()
     .fileImporter(
