@@ -7,32 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		94F4D4FB2F60382600E3E55E /* DemoFilePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoFilePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94A9F6952F91CCAB00AA86D9 /* DemoDoubleToJSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoDoubleToJSON.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		94F4D50D2F60382800E3E55E /* Exceptions for "DemoFilePicker" folder in "DemoFilePicker" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 94F4D4FA2F60382600E3E55E /* DemoFilePicker */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		94F4D4FD2F60382600E3E55E /* DemoFilePicker */ = {
+		94A9F6972F91CCAB00AA86D9 /* DemoDoubleToJSON */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				94F4D50D2F60382800E3E55E /* Exceptions for "DemoFilePicker" folder in "DemoFilePicker" target */,
-			);
-			path = DemoFilePicker;
+			path = DemoDoubleToJSON;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		94F4D4F82F60382600E3E55E /* Frameworks */ = {
+		94A9F6922F91CCAB00AA86D9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		94F4D4F22F60382600E3E55E = {
+		94A9F68C2F91CCAB00AA86D9 = {
 			isa = PBXGroup;
 			children = (
-				94F4D4FD2F60382600E3E55E /* DemoFilePicker */,
-				94F4D4FC2F60382600E3E55E /* Products */,
+				94A9F6972F91CCAB00AA86D9 /* DemoDoubleToJSON */,
+				94A9F6962F91CCAB00AA86D9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		94F4D4FC2F60382600E3E55E /* Products */ = {
+		94A9F6962F91CCAB00AA86D9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				94F4D4FB2F60382600E3E55E /* DemoFilePicker.app */,
+				94A9F6952F91CCAB00AA86D9 /* DemoDoubleToJSON.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		94F4D4FA2F60382600E3E55E /* DemoFilePicker */ = {
+		94A9F6942F91CCAB00AA86D9 /* DemoDoubleToJSON */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 94F4D50E2F60382800E3E55E /* Build configuration list for PBXNativeTarget "DemoFilePicker" */;
+			buildConfigurationList = 94A9F6A02F91CCAC00AA86D9 /* Build configuration list for PBXNativeTarget "DemoDoubleToJSON" */;
 			buildPhases = (
-				94F4D4F72F60382600E3E55E /* Sources */,
-				94F4D4F82F60382600E3E55E /* Frameworks */,
-				94F4D4F92F60382600E3E55E /* Resources */,
+				94A9F6912F91CCAB00AA86D9 /* Sources */,
+				94A9F6922F91CCAB00AA86D9 /* Frameworks */,
+				94A9F6932F91CCAB00AA86D9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				94F4D4FD2F60382600E3E55E /* DemoFilePicker */,
+				94A9F6972F91CCAB00AA86D9 /* DemoDoubleToJSON */,
 			);
-			name = DemoFilePicker;
+			name = DemoDoubleToJSON;
 			packageProductDependencies = (
 			);
-			productName = DemoFilePicker;
-			productReference = 94F4D4FB2F60382600E3E55E /* DemoFilePicker.app */;
+			productName = DemoDoubleToJSON;
+			productReference = 94A9F6952F91CCAB00AA86D9 /* DemoDoubleToJSON.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		94F4D4F32F60382600E3E55E /* Project object */ = {
+		94A9F68D2F91CCAB00AA86D9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2630;
-				LastUpgradeCheck = 2630;
+				LastSwiftUpdateCheck = 2640;
+				LastUpgradeCheck = 2640;
 				TargetAttributes = {
-					94F4D4FA2F60382600E3E55E = {
-						CreatedOnToolsVersion = 26.3;
+					94A9F6942F91CCAB00AA86D9 = {
+						CreatedOnToolsVersion = 26.4;
 					};
 				};
 			};
-			buildConfigurationList = 94F4D4F62F60382600E3E55E /* Build configuration list for PBXProject "DemoFilePicker" */;
+			buildConfigurationList = 94A9F6902F91CCAB00AA86D9 /* Build configuration list for PBXProject "DemoDoubleToJSON" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 94F4D4F22F60382600E3E55E;
+			mainGroup = 94A9F68C2F91CCAB00AA86D9;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 94F4D4FC2F60382600E3E55E /* Products */;
+			productRefGroup = 94A9F6962F91CCAB00AA86D9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				94F4D4FA2F60382600E3E55E /* DemoFilePicker */,
+				94A9F6942F91CCAB00AA86D9 /* DemoDoubleToJSON */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		94F4D4F92F60382600E3E55E /* Resources */ = {
+		94A9F6932F91CCAB00AA86D9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -128,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		94F4D4F72F60382600E3E55E /* Sources */ = {
+		94A9F6912F91CCAB00AA86D9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -138,73 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		94F4D50F2F60382800E3E55E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DJ587BPX4R;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DemoFilePicker/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.darkp.DemoFilePicker.2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		94F4D5102F60382800E3E55E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DJ587BPX4R;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DemoFilePicker/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.darkp.DemoFilePicker.2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		94F4D5112F60382800E3E55E /* Debug */ = {
+		94A9F69E2F91CCAC00AA86D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -257,7 +178,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -268,7 +189,7 @@
 			};
 			name = Debug;
 		};
-		94F4D5122F60382800E3E55E /* Release */ = {
+		94A9F69F2F91CCAC00AA86D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -315,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -325,28 +246,92 @@
 			};
 			name = Release;
 		};
+		94A9F6A12F91CCAC00AA86D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WS8S43M437;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.darkp.DemoDoubleToJSON;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		94A9F6A22F91CCAC00AA86D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WS8S43M437;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.darkp.DemoDoubleToJSON;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		94F4D4F62F60382600E3E55E /* Build configuration list for PBXProject "DemoFilePicker" */ = {
+		94A9F6902F91CCAB00AA86D9 /* Build configuration list for PBXProject "DemoDoubleToJSON" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				94F4D5112F60382800E3E55E /* Debug */,
-				94F4D5122F60382800E3E55E /* Release */,
+				94A9F69E2F91CCAC00AA86D9 /* Debug */,
+				94A9F69F2F91CCAC00AA86D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94F4D50E2F60382800E3E55E /* Build configuration list for PBXNativeTarget "DemoFilePicker" */ = {
+		94A9F6A02F91CCAC00AA86D9 /* Build configuration list for PBXNativeTarget "DemoDoubleToJSON" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				94F4D50F2F60382800E3E55E /* Debug */,
-				94F4D5102F60382800E3E55E /* Release */,
+				94A9F6A12F91CCAC00AA86D9 /* Debug */,
+				94A9F6A22F91CCAC00AA86D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 94F4D4F32F60382600E3E55E /* Project object */;
+	rootObject = 94A9F68D2F91CCAB00AA86D9 /* Project object */;
 }
