@@ -68,6 +68,10 @@ or add a new iOS demo project under `sources/`.
 New iOS demos should use iOS 16.0 as the minimum deployment target unless the
 user explicitly requests a different version.
 
+New demo names should follow the `Demo___` pattern: use `Demo` as the prefix
+and replace `___` with a concise PascalCase feature name, for example
+`DemoNewFeature` or `DemoHelloWorld`.
+
 The skill creates an isolated XcodeGen-backed demo at:
 
 ```text
@@ -104,6 +108,7 @@ python3 ~/.codex/skills/new-demo/scripts/create_xcodegen_demo.py --repo-root . -
 
 When using `$new-demo`:
 
+- Normalize requested demo names to the `Demo___` pattern before scaffolding.
 - Keep the write scope limited to `sources/<DemoName>/`.
 - Do not modify other demos while scaffolding the new one.
 - Do not update root-level files unless explicitly requested.
