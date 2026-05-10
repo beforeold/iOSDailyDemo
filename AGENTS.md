@@ -112,6 +112,8 @@ When using `$new-demo`:
 - Keep the write scope limited to `sources/<DemoName>/`.
 - Do not modify other demos while scaffolding the new one.
 - Do not update root-level files unless explicitly requested.
+- Do not add header comments to generated project files.
+- Use 2-space indentation for Swift source files.
 - Use iOS 16.0 as the minimum deployment target unless instructed otherwise.
 - Prefer `xcodegen generate --spec sources/<DemoName>/project.yml` for project
   regeneration.
