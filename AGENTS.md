@@ -115,6 +115,11 @@ When using `$new-demo`:
 - Do not add header comments to generated project files.
 - Use 2-space indentation for Swift source files.
 - Use iOS 16.0 as the minimum deployment target unless instructed otherwise.
+- When providing a custom `Info.plist`, include the standard bundle metadata
+  keys needed for installable app bundles, especially
+  `CFBundleIdentifier` with the value `$(PRODUCT_BUNDLE_IDENTIFIER)`, plus
+  `CFBundleExecutable`, `CFBundleName`, `CFBundlePackageType`,
+  `CFBundleShortVersionString`, and `CFBundleVersion`.
 - Prefer `xcodegen generate --spec sources/<DemoName>/project.yml` for project
   regeneration.
 - Verify with the new demo's own Xcode project and scheme only.
