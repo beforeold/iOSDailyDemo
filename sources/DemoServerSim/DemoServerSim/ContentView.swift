@@ -2,17 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
   var body: some View {
-    TabView {
-      ServerDashboardView()
-        .tabItem {
-          Label("Server", systemImage: "terminal")
-        }
-
-      JumpGameView()
-        .tabItem {
-          Label("Jump", systemImage: "gamecontroller.fill")
-        }
-    }
+    JumpGameView()
   }
 }
 

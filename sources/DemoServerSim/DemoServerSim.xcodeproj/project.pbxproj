@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3E227FC743CD7763F7DE90A9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD38C49D6DECDB4E90CDCFDD /* ContentView.swift */; };
+		930468190B1C72EFCA6A4B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 033B176392D895299B6BDF56 /* Assets.xcassets */; };
 		BCC137AC3FE41A356F4E9283 /* JumpGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFA832A9D51D5C8F3EB5C7D /* JumpGameView.swift */; };
 		FF99BBD1FA9AAF8CCC42E95D /* DemoServerSimApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED960B25AD0F80A6FD430A9C /* DemoServerSimApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		033B176392D895299B6BDF56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		124D1438AB58FF67355256A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		30FD068A53CEE7C8217F05BE /* DemoServerSim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoServerSim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BFA832A9D51D5C8F3EB5C7D /* JumpGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpGameView.swift; sourceTree = "<group>"; };
@@ -40,6 +42,7 @@
 		85543EF11457303E098945FF /* DemoServerSim */ = {
 			isa = PBXGroup;
 			children = (
+				033B176392D895299B6BDF56 /* Assets.xcassets */,
 				AD38C49D6DECDB4E90CDCFDD /* ContentView.swift */,
 				ED960B25AD0F80A6FD430A9C /* DemoServerSimApp.swift */,
 				124D1438AB58FF67355256A2 /* Info.plist */,
@@ -56,6 +59,7 @@
 			buildConfigurationList = 74E967ED04E3CD89174B709D /* Build configuration list for PBXNativeTarget "DemoServerSim" */;
 			buildPhases = (
 				445C12A0CB95797099623DA0 /* Sources */,
+				33C9D115E8025E06DD8415BC /* Resources */,
 			);
 			buildRules = (
 			);
@@ -95,6 +99,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		33C9D115E8025E06DD8415BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				930468190B1C72EFCA6A4B37 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		445C12A0CB95797099623DA0 /* Sources */ = {
