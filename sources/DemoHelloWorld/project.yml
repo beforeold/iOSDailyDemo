@@ -17,3 +17,25 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.example.demohelloworld
         INFOPLIST_FILE: DemoHelloWorld/Info.plist
+  DemoHelloWorldUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: DemoHelloWorldUITests
+    dependencies:
+      - target: DemoHelloWorld
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.demohelloworld.uitests
+schemes:
+  DemoHelloWorld:
+    build:
+      targets:
+        DemoHelloWorld: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - name: DemoHelloWorldUITests
