@@ -1,0 +1,347 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2BC8232E3AFA67B351C78571 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED417A3D42419458932D2510 /* SceneDelegate.swift */; };
+		30F63CE7CC15BCA994C0D5A9 /* RouteAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C06B662722520A782FC22BD /* RouteAViewController.swift */; };
+		44C12023A5A2B6548A01A847 /* PlayerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F3F326148CB68F38A4221 /* PlayerContentView.swift */; };
+		5D92CD7AA5BEC63472225B51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3482133803A1F318F5392AF9 /* ViewController.swift */; };
+		6B8B71A82E73387FCE50213C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F402CF405C772CBAD83DB1 /* AppDelegate.swift */; };
+		A43C5864CDBA0738D8747C65 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 317C636772BAFA88AF0862C7 /* FloatingPanel */; };
+		F82A38D5EB64ED306C6A4DC7 /* RouteBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F83A28A07FB791DEE3AACF /* RouteBViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		04E1591664335D22D2D14A83 /* DemoPlanCFastRise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoPlanCFastRise.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C06B662722520A782FC22BD /* RouteAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAViewController.swift; sourceTree = "<group>"; };
+		3482133803A1F318F5392AF9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		44F402CF405C772CBAD83DB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		53416290C677D35D644885FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6F6F3F326148CB68F38A4221 /* PlayerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerContentView.swift; sourceTree = "<group>"; };
+		98F83A28A07FB791DEE3AACF /* RouteBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteBViewController.swift; sourceTree = "<group>"; };
+		ED417A3D42419458932D2510 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0CEE6167933D2151D130F062 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A43C5864CDBA0738D8747C65 /* FloatingPanel in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		073B5C5E73525921FD7B645D = {
+			isa = PBXGroup;
+			children = (
+				C98C12C1F144673CC6E65638 /* DemoPlanCFastRise */,
+				DFD9F7187D608DA522E65335 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C98C12C1F144673CC6E65638 /* DemoPlanCFastRise */ = {
+			isa = PBXGroup;
+			children = (
+				44F402CF405C772CBAD83DB1 /* AppDelegate.swift */,
+				53416290C677D35D644885FC /* Info.plist */,
+				6F6F3F326148CB68F38A4221 /* PlayerContentView.swift */,
+				1C06B662722520A782FC22BD /* RouteAViewController.swift */,
+				98F83A28A07FB791DEE3AACF /* RouteBViewController.swift */,
+				ED417A3D42419458932D2510 /* SceneDelegate.swift */,
+				3482133803A1F318F5392AF9 /* ViewController.swift */,
+			);
+			path = DemoPlanCFastRise;
+			sourceTree = "<group>";
+		};
+		DFD9F7187D608DA522E65335 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04E1591664335D22D2D14A83 /* DemoPlanCFastRise.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		20C0206584381FA923EB12AE /* DemoPlanCFastRise */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D51DABF29F1968F7F6BB6D6 /* Build configuration list for PBXNativeTarget "DemoPlanCFastRise" */;
+			buildPhases = (
+				6950E2C786156388CA67F452 /* Sources */,
+				0CEE6167933D2151D130F062 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DemoPlanCFastRise;
+			packageProductDependencies = (
+				317C636772BAFA88AF0862C7 /* FloatingPanel */,
+			);
+			productName = DemoPlanCFastRise;
+			productReference = 04E1591664335D22D2D14A83 /* DemoPlanCFastRise.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9AFFB6FB3AA6CC55BEA2C296 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					20C0206584381FA923EB12AE = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = D634E0211A894E34B9EA05D3 /* Build configuration list for PBXProject "DemoPlanCFastRise" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 073B5C5E73525921FD7B645D;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9EBBD145AE4B8C554C18E145 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = DFD9F7187D608DA522E65335 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				20C0206584381FA923EB12AE /* DemoPlanCFastRise */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6950E2C786156388CA67F452 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B8B71A82E73387FCE50213C /* AppDelegate.swift in Sources */,
+				44C12023A5A2B6548A01A847 /* PlayerContentView.swift in Sources */,
+				30F63CE7CC15BCA994C0D5A9 /* RouteAViewController.swift in Sources */,
+				F82A38D5EB64ED306C6A4DC7 /* RouteBViewController.swift in Sources */,
+				2BC8232E3AFA67B351C78571 /* SceneDelegate.swift in Sources */,
+				5D92CD7AA5BEC63472225B51 /* ViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		28039213EC6ABAAA5E6F9781 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WS8S43M437;
+				INFOPLIST_FILE = DemoPlanCFastRise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.demoplancfastrise;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		419AEFD7E58B72AF6D64BA26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		5338D0BFF8FE3D5AC3E082E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		C5B4D9C3461D3BC15F074E49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WS8S43M437;
+				INFOPLIST_FILE = DemoPlanCFastRise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.demoplancfastrise;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8D51DABF29F1968F7F6BB6D6 /* Build configuration list for PBXNativeTarget "DemoPlanCFastRise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28039213EC6ABAAA5E6F9781 /* Debug */,
+				C5B4D9C3461D3BC15F074E49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D634E0211A894E34B9EA05D3 /* Build configuration list for PBXProject "DemoPlanCFastRise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5338D0BFF8FE3D5AC3E082E9 /* Debug */,
+				419AEFD7E58B72AF6D64BA26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9EBBD145AE4B8C554C18E145 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		317C636772BAFA88AF0862C7 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9EBBD145AE4B8C554C18E145 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 9AFFB6FB3AA6CC55BEA2C296 /* Project object */;
+}
