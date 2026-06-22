@@ -60,6 +60,11 @@ reference, project configuration, or build setting.
 - When creating or restyling demo UI, first read the root `DESIGN.md` and apply
   its iOS 16+ UIKit design tokens, component rules, and visual guardrails.
 
+## Code Style
+
+- Swift code uses **2-space indentation** (no tabs). Match this in all new and
+  edited Swift files.
+
 ## Creating New Demos
 
 Use the `$new-demo` skill when the user asks to create, scaffold, initialize,
