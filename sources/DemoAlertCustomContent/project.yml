@@ -1,0 +1,21 @@
+name: DemoAlertCustomContent
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "15.0"
+settings:
+  base:
+    SWIFT_VERSION: 5.9
+targets:
+  DemoAlertCustomContent:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: DemoAlertCustomContent
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.demoalertcustomcontent
+        INFOPLIST_FILE: DemoAlertCustomContent/Info.plist
+        DEVELOPMENT_TEAM: WS8S43M437
+        CODE_SIGN_STYLE: Automatic
