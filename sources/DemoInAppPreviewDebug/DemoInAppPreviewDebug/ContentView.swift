@@ -1,0 +1,3 @@
+import DemoInAppPreviewDebugUI
+
+typealias ContentView = DemoInAppPreviewDebugUI.ContentView
