@@ -65,6 +65,16 @@ reference, project configuration, or build setting.
 - Swift code uses **2-space indentation** (no tabs). Match this in all new and
   edited Swift files.
 
+## Git And Attribution
+
+- Do not include agent or tool provider information in any git operation or
+  generated output.
+- This applies to branch names, commit messages, PR/MR titles and descriptions,
+  and tags.
+- Do not add provider attribution to file comments or headers, either.
+- Specifically, do not add `Co-Authored-By:` agent lines, "Generated with …"
+  footers, or provider name tags.
+
 ## Creating New Demos
 
 Use the `$new-demo` skill when the user asks to create, scaffold, initialize,
