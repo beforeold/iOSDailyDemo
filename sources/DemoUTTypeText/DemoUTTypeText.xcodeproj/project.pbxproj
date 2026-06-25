@@ -21,7 +21,7 @@
 		4F55C2DEE6F4F5C9F901AA25 /* TextFileDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFileDocument.swift; sourceTree = "<group>"; };
 		610E842F0DEBA30D48B23AFF /* UTType+LRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+LRC.swift"; sourceTree = "<group>"; };
 		67970F0803EBB4AAC595D08A /* UTTypeProbe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTTypeProbe.swift; sourceTree = "<group>"; };
-		74294DCA1348E5E12178CD86 /* DemoUTTypeText.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DemoUTTypeText.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		74294DCA1348E5E12178CD86 /* DemoUTTypeText.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoUTTypeText.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847FC152E0E248023EC955E8 /* FileActionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileActionsSection.swift; sourceTree = "<group>"; };
 		ED66C2A6D095849B66D8E500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,8 +85,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 9D9054739786B335B2E66064 /* Build configuration list for PBXProject "DemoUTTypeText" */;
 			developmentRegion = en;
@@ -129,6 +127,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DemoUTTypeText/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -146,6 +145,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DemoUTTypeText/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
