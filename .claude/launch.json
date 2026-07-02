@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "serve-sim",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve-sim", "--port", "3200"],
+      "port": 3200
+    }
+  ]
+}
